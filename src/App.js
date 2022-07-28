@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import intro from './assets/introloop.mp3';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <audio class='intro' loop autoPlay >
+        <source src={intro} type="audio/mpeg"/>
+      </audio>
+
+      <div className="content">
+        <img src="https://cdn.upshow.tv/watch-to-win/UPshow_Logo.png" />
+      </div>
+      <div className="interactions">
+        <p>Bienvenido lazer a una aventura sin igual con la chota</p>
+      </div>
     </div>
   );
 }
