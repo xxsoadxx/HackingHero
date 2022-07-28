@@ -1,19 +1,36 @@
+import React, { useState, useEffect } from 'react';
 import './App.scss';
+import Splash from './views/Splash';
+import Screen from './views/Screen';
 import intro from './assets/introloop.mp3';
 
+const ScreenView = (props) => <Screen {...props} />;
+const SplashView = (props) => <Splash {...props} />;
+
+
+const STAGES = [
+  { component: SplashView, duration: 3000 },
+  { component: ScreenView, duration: 0, audio: intro },
+]
+
 function App() {
+  const [index, setIndex] = useState(0);
+  const Stage = STAGES[index];
+
+
+  const next = () => {
+    console.log('Stage Ended');
+    setIndex(index + 1);
+  }
+
   return (
     <div className="App">
-      <audio class='intro' loop autoPlay >
-        <source src={intro} type="audio/mpeg"/>
-      </audio>
-
-      <div className="content">
-        <img src="https://cdn.upshow.tv/watch-to-win/UPshow_Logo.png" />
-      </div>
-      <div className="interactions">
-        <p>Bienvenido lazer a una aventura sin igual con la chota</p>
-      </div>
+      { Stage.audio && 
+        <audio class='intro' loop autoPlay >
+          <source src={Stage.audio} type="audio/mpeg"/>
+        </audio> 
+      }
+      <Stage.component index={index} next={next} duration={Stage.duration} />
     </div>
   );
 }
