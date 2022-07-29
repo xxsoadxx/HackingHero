@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-
+import Logo from '../assets/logo.png';
+import './Splash.scss';
 function Splash({ next, duration }) {
 
     useEffect(() => {
@@ -12,7 +13,7 @@ function Splash({ next, duration }) {
     }, [duration, next]);
 
     return (
-        <div>Splash</div>
+        <div><img className="logo" src={Logo}></img></div>
     )
 }
 

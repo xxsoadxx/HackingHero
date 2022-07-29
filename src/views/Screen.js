@@ -1,6 +1,6 @@
 import './Screen.scss';
 import TypeWriter from '../components/TypeWriter';
-function Screen() {
+function Screen({ next }) {
   console.log('Screen Screen');
   return (
     <div className="Screen">
@@ -14,6 +14,7 @@ function Screen() {
           speed={100}
           onDone={() => {
             console.log('terminooo')
+            next()
           }} />
       </div>
     </div>
