@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Splash from './views/Splash';
 import Screen from './views/Screen';
@@ -9,11 +9,12 @@ const SplashView = (props) => <Splash {...props} />;
 
 
 const STAGES = [
-  { component: SplashView, duration: 3000 },
-  { component: ScreenView, duration: 0, audio: intro },
+  { Component: SplashView, duration: 3000 },
+  { Component: ScreenView, duration: 0, audio: intro },
 ]
 
 function App() {
+  console.log('Render App');
   const [index, setIndex] = useState(0);
   const Stage = STAGES[index];
 
@@ -26,11 +27,11 @@ function App() {
   return (
     <div className="App">
       { Stage.audio && 
-        <audio class='intro' loop autoPlay >
+        <audio className='intro' loop autoPlay >
           <source src={Stage.audio} type="audio/mpeg"/>
         </audio> 
       }
-      <Stage.component index={index} next={next} duration={Stage.duration} />
+      <Stage.Component index={index} next={next} duration={Stage.duration} />
     </div>
   );
 }

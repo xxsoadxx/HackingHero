@@ -9,7 +9,7 @@ function Splash({ next, duration }) {
             }, duration);
             return () => clearTimeout(timer);
         }
-    }, []);
+    }, [duration, next]);
 
     return (
         <div>Splash</div>
