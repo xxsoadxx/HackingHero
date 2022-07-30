@@ -3,6 +3,7 @@ import './App.scss';
 import Splash from './views/Splash';
 import Screen from './views/Screen';
 import MazeGame from './views/MazeGame';
+import Windows from './views/Windows';
 import intro from './assets/introloop.mp3';
 
 const ScreenView = (props) => <Screen {...props} />;
@@ -12,6 +13,7 @@ const MazeView = (props) => <MazeGame {...props} />;
 
 
 const STAGES = [
+  { Component: Windows, duration: 0 },
   { Component: SplashView, duration: 3000 },
   { Component: ScreenView, duration: 0, audio: intro },
   { Component: MazeView, duration: 0 },
