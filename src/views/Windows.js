@@ -5,9 +5,13 @@ const Windows = () => {
     const [state, setState] = useState({
         address: "https://ui.upshow.tv/",
         startmenu: false,
-        ie: false,
-        mine: true,
+        ie: true,
+        ieVisibility: true,
+        mine: false,
+        mineVisibility: true,
         notepad: false,
+        notepadVisibility: true,
+        poopVisibility: true,
         notepadText:
             `class TodoApp extends React.Component {   
             constructor(props) {
@@ -138,21 +142,21 @@ const Windows = () => {
                         <span className="label">Start</span>
                     </label>
                     <nav id="tasklist">
-                        <label className="btn" id="task-notepad" htmlFor="fore-notepad" onClick={()=> { if(!state.notepad) setState( {...state, notepad: !state.notepad, mine: state.notepad, ie: state.notepad }) }}>
+                        <label className="btn" id="task-notepad" htmlFor="fore-notepad" onClick={()=> { if(!state.notepad) setState( {...state, notepad: !state.notepad, mine: state.notepad, ie: state.notepad, notepadVisibility: !state.notepad }) }}>
                             <i className="sm pad"></i>
                             <span className="label">todo.jsx - Notepad</span>
                         </label>
-                        <label className="btn" id="task-mine" onClick={()=> { if(!state.mine) setState( {...state, notepad: state.mine, mine: !state.mine, ie: state.mine }) }}>
+                        <label className="btn" id="task-mine" onClick={()=> { if(!state.mine) setState( {...state, notepad: state.mine, mine: !state.mine, ie: state.mine, mineVisibility: !state.mine }) }}>
                             <i className="sm bomb"></i>
                             <span className="label">Minesweeper</span>
                         </label>
-                        <label className="btn" id="task-ie" htmlFor="fore-ie" onClick={()=>{if(!state.ie) setState( {...state, notepad: state.ie, mine: state.ie, ie: !state.ie })}}>
+                        <label className="btn" id="task-ie" htmlFor="fore-ie" onClick={()=>{if(!state.ie) setState( {...state, notepad: state.ie, mine: state.ie, ie: !state.ie, ieVisibility: !state.ie })}}>
                             <i className="sm globe"></i>
                             <span className="label">Microsoft Internet Explorer - [One mind blowing fact you didn't know about CSS4]</span>
                         </label>
                     </nav>
                     <div id="notify">
-                        <label id="poop" htmlFor="open-poopup" onClick={()=> { setState( {...state, poopup: !state.poopup}) }}>
+                        <label id="poop" htmlFor="open-poopup" style={{ display: state.poopVisibility ? 'block' : 'none' }} onClick={()=> { setState( {...state, poopup: !state.poopup}) }}>
                             <i className="sm poo"></i>
                         </label>
                         <div id="clock">
@@ -160,10 +164,8 @@ const Windows = () => {
                             <div className="digit">0</div>
                             <div className="digit tictoc">
                                 0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />0
-                                <div>
-                                    <span>&nbsp;AM</span>
-                                </div>
                             </div>
+                            <span>&nbsp;AM</span>
                         </div>
                     </div>
                 </div>
@@ -206,11 +208,13 @@ const Windows = () => {
                         </a>
                     </nav>
                 </div>
-                <form id="app-ie" role="dialog">
+                <form id="app-ie" role="dialog" style={{ visibility: state.ieVisibility ? 'visible' : 'hidden' }}>
                     <h2>
                         <i className="sm globe"></i>
                         <label className="label" htmlFor="fore-ie" onClick={()=>{if(!state.ie) setState( {...state, notepad: state.ie, mine: state.ie, ie: !state.ie })}}>Microsoft Internet Explorer - [One mind blowing fact you didn't know about CSS3]</label>
-                        <a className="btn min" href="#error"></a>
+                        <a className="btn min" onClick={() => {
+                            setState( {...state, notepad: !state.ieVisibility, mine: !state.ieVisibility, ie: !state.ieVisibility, ieVisibility: !state.ieVisibility  })
+                        }}></a>
                         <a className="btn max" href="#error"></a>
                         <label className="btn close" htmlFor="open-ie"></label>
                     </h2>
@@ -249,11 +253,13 @@ const Windows = () => {
                         </footer>
                     </div>
                 </form>
-                <form id="app-notepad" role="dialog">
+                <form id="app-notepad" role="dialog" style={{ visibility: state.notepadVisibility ? 'visible' : 'hidden' }}>
                     <h2>
                         <i className="sm pad"></i>
                         <label className="label" htmlFor="fore-notepad" onClick={()=> { if(!state.notepad) setState( {...state, notepad: !state.notepad, mine: state.notepad, ie: state.notepad }) }}>todo.jsx - Notepad</label>
-                        <a className="btn min" href="#error"></a>
+                        <a className="btn min" onClick={() => {
+                            setState( {...state, notepad: !state.notepadVisibility, mine: !state.notepadVisibility, ie: !state.notepadVisibility, notepadVisibility: !state.notepadVisibility  })
+                        }}></a>
                         <a className="btn max" href="#error"></a>
                         <label className="btn close" htmlFor="open-notepad"></label>
                     </h2>
@@ -267,11 +273,13 @@ const Windows = () => {
                         <textarea rows="22" cols="60" onChange={(event) => { setState({ ...state, notepadText: event.target.value }) }} spellCheck="false" value={state.notepadText}></textarea>
                     </div>
                 </form>
-                <form id="app-mine" role="dialog">
+                <form id="app-mine" role="dialog" style={{ visibility: state.mineVisibility ? 'visible' : 'hidden' }}>
                     <h2>
                         <i className="sm bomb"></i>
                         <label className="label" onClick={()=> { if(!state.mine) setState( {...state, notepad: state.mine, mine: !state.mine, ie: state.mine }) }}>Minesweeper</label>
-                        <a className="btn min" href="#error"></a>
+                        <a className="btn min" onClick={() => {
+                            setState( {...state, notepad: !state.mineVisibility, mine: !state.mineVisibility, ie: !state.mineVisibility, mineVisibility: !state.mineVisibility  })
+                        }}></a>
                         <a className="btn max" href="#error"></a>
                         <label className="btn close" htmlFor="open-mine"></label>
                     </h2>
@@ -514,7 +522,7 @@ const Windows = () => {
                 </form>
                 <form id="poopup" role="dialog">
                     <div className="client">
-                        <label htmlFor="open-poop" onClick={()=> { setState( {...state, poopup: !state.poopup}) }}>&#x1F4A9; Cheers!</label>
+                        <label htmlFor="open-poop" onClick={()=> { setState( {...state, poopup: !state.poopup, poopVisibility: !state.poopup}) }}>&#x1F4A9; Cheers!</label>
                     </div>
                 </form>
                 <article id="error" className="blue">
