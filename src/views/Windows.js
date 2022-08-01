@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Draggable from "react-draggable";
 import './Windows.scss';
 const Windows = () => {
 
@@ -104,7 +105,7 @@ const Windows = () => {
         m62: false,
         m63: false,
         m64: false,
-        poopup:false
+        poopup: false
     });
 
 
@@ -112,51 +113,55 @@ const Windows = () => {
         <div className="Windows">
             <div id="screen">
                 <input type="checkbox" id="open-startmenu" onChange={(event) => { setState({ ...state, startmenu: !state.startmenu }); }} checked={state.startmenu} />
-                <input type="checkbox" id="open-poopup" onChange={(event) => { }} checked={state.poopup}/>
+                <input type="checkbox" id="open-poopup" onChange={(event) => { }} checked={state.poopup} />
                 <input type="checkbox" id="open-poop" checked onChange={() => { }} />
                 <input type="checkbox" id="open-notepad" checked onChange={() => { }} />
                 <input type="checkbox" id="open-mine" checked onChange={() => { }} />
                 <input type="checkbox" id="open-ie" checked onChange={() => { }} />
-                <input type="radio" name="task" id="fore-notepad" onChange={(event) => { }} checked={state.notepad}/>
+                <input type="radio" name="task" id="fore-notepad" onChange={(event) => { }} checked={state.notepad} />
                 <input type="radio" name="task" id="fore-mine" onChange={(event) => { }} checked={state.mine} />
                 <input type="radio" name="task" id="fore-ie" onChange={(event) => { }} checked={state.ie} />
                 <input type="radio" name="deskicon" id="focus-pc" />
                 <input type="radio" name="deskicon" id="focus-recycle" />
                 <div id="desktop">
                     <nav id="icons">
-                        <label id="icon-pc" htmlFor="focus-pc">
-                            <i className="lg pc"></i>
-                            <span className="label">My Computer</span>
-                        </label>
-                        <label id="icon-recycle" htmlFor="focus-recycle">
-                            <i className="lg recycle"></i>
-                            <span className="label">Recycle Bin</span>
-                        </label>
+                        <Draggable>
+                            <label id="icon-pc" htmlFor="focus-pc">
+                                <i className="lg pc"></i>
+                                <span className="label">My Computer</span>
+                            </label>
+                        </Draggable>
+                        <Draggable>
+                            <label id="icon-recycle" htmlFor="focus-recycle">
+                                <i className="lg recycle"></i>
+                                <span className="label">Recycle Bin</span>
+                            </label>
+                        </Draggable>
                     </nav>
                 </div>
                 <label id="close-startmenu" htmlFor="open-startmenu"></label>
-                <label id="close-poopup" htmlFor="open-poopup" onClick={()=> { setState( {...state, poopup: !state.poopup}) }}></label>
+                <label id="close-poopup" htmlFor="open-poopup" onClick={() => { setState({ ...state, poopup: !state.poopup }) }}></label>
                 <div id="taskbar">
                     <label id="start" htmlFor="open-startmenu">
                         <i className="sm win"></i>
                         <span className="label">Start</span>
                     </label>
                     <nav id="tasklist">
-                        <label className="btn" id="task-notepad" htmlFor="fore-notepad" onClick={()=> { if(!state.notepad) setState( {...state, notepad: !state.notepad, mine: state.notepad, ie: state.notepad, notepadVisibility: !state.notepad }) }}>
+                        <label className="btn" id="task-notepad" htmlFor="fore-notepad" onClick={() => { if (!state.notepad) setState({ ...state, notepad: !state.notepad, mine: state.notepad, ie: state.notepad, notepadVisibility: !state.notepad }) }}>
                             <i className="sm pad"></i>
                             <span className="label">todo.jsx - Notepad</span>
                         </label>
-                        <label className="btn" id="task-mine" onClick={()=> { if(!state.mine) setState( {...state, notepad: state.mine, mine: !state.mine, ie: state.mine, mineVisibility: !state.mine }) }}>
+                        <label className="btn" id="task-mine" onClick={() => { if (!state.mine) setState({ ...state, notepad: state.mine, mine: !state.mine, ie: state.mine, mineVisibility: !state.mine }) }}>
                             <i className="sm bomb"></i>
                             <span className="label">Minesweeper</span>
                         </label>
-                        <label className="btn" id="task-ie" htmlFor="fore-ie" onClick={()=>{if(!state.ie) setState( {...state, notepad: state.ie, mine: state.ie, ie: !state.ie, ieVisibility: !state.ie })}}>
+                        <label className="btn" id="task-ie" htmlFor="fore-ie" onClick={() => { if (!state.ie) setState({ ...state, notepad: state.ie, mine: state.ie, ie: !state.ie, ieVisibility: !state.ie }) }}>
                             <i className="sm globe"></i>
                             <span className="label">Microsoft Internet Explorer - [One mind blowing fact you didn't know about CSS4]</span>
                         </label>
                     </nav>
                     <div id="notify">
-                        <label id="poop" htmlFor="open-poopup" style={{ display: state.poopVisibility ? 'block' : 'none' }} onClick={()=> { setState( {...state, poopup: !state.poopup}) }}>
+                        <label id="poop" htmlFor="open-poopup" style={{ display: state.poopVisibility ? 'block' : 'none' }} onClick={() => { setState({ ...state, poopup: !state.poopup }) }}>
                             <i className="sm poo"></i>
                         </label>
                         <div id="clock">
@@ -208,321 +213,328 @@ const Windows = () => {
                         </a>
                     </nav>
                 </div>
-                <form id="app-ie" role="dialog" style={{ visibility: state.ieVisibility ? 'visible' : 'hidden' }}>
-                    <h2>
-                        <i className="sm globe"></i>
-                        <label className="label" htmlFor="fore-ie" onClick={()=>{if(!state.ie) setState( {...state, notepad: state.ie, mine: state.ie, ie: !state.ie })}}>Microsoft Internet Explorer - [One mind blowing fact you didn't know about CSS3]</label>
-                        <a className="btn min" onClick={() => {
-                            setState( {...state, notepad: !state.ieVisibility, mine: !state.ieVisibility, ie: !state.ieVisibility, ieVisibility: !state.ieVisibility  })
-                        }}></a>
-                        <a className="btn max" href="#error"></a>
-                        <label className="btn close" htmlFor="open-ie"></label>
-                    </h2>
-                    <nav className="menu">
-                        <a href="#error">File</a>
-                        <a href="#error">Edit</a>
-                        <a href="#error">View</a>
-                        <a href="#error">Go</a>
-                        <a href="#error">Favorites</a>
-                        <a href="#error">Help</a>
-                    </nav>
-                    <div className="client">
-                        <header>
-                            <div className="label">Address:</div>
-                            <div className="combo">
-                                <input spellCheck="false" onChange={(event) => { setState({ ...state, address: event.target.value }); }} value={state.address} />
-                                <a className="dropdown" href="#error"></a>
+                <Draggable handle=".handle-ie">
+                    <form id="app-ie" role="dialog" style={{ visibility: state.ieVisibility ? 'visible' : 'hidden' }}>
+                        <h2 className="handle-ie">
+                            <i className="sm globe"></i>
+                            <label className="label" htmlFor="fore-ie" onClick={() => { if (!state.ie) setState({ ...state, notepad: state.ie, mine: state.ie, ie: !state.ie }) }}>Microsoft Internet Explorer - [One mind blowing fact you didn't know about CSS3]</label>
+                            <a className="btn min" onClick={() => {
+                                setState({ ...state, notepad: !state.ieVisibility, mine: !state.ieVisibility, ie: !state.ieVisibility, ieVisibility: !state.ieVisibility })
+                            }}></a>
+                            <a className="btn max" href="#error"></a>
+                            <label className="btn close" htmlFor="open-ie"></label>
+                        </h2>
+                        <nav className="menu">
+                            <a href="#error">File</a>
+                            <a href="#error">Edit</a>
+                            <a href="#error">View</a>
+                            <a href="#error">Go</a>
+                            <a href="#error">Favorites</a>
+                            <a href="#error">Help</a>
+                        </nav>
+                        <div className="client">
+                            <header>
+                                <div className="label">Address:</div>
+                                <div className="combo">
+                                    <input spellCheck="false" onChange={(event) => { setState({ ...state, address: event.target.value }); }} value={state.address} />
+                                    <a className="dropdown" href="#error"></a>
+                                </div>
+                                <div className="win">
+                                    <i className="clouds"></i>
+                                    <i className="logo"></i>
+                                </div>
+                            </header>
+                            <div className="content">
+                                <h3>One mind blowing fact you didn't know about CSS4</h3>
+                                <p className="logo"><a href="https://www.w3.org/" target="_blank" title="HTML5 Logo by W3C"><i className="html5"></i></a></p>
+                                <h4>1. There is no such a thing in the first place.</h4>
+                                <p>Believe it or not, it's true.</p>
+                                <h5>Reference</h5>
+                                <p><a href="https://rachelandrew.co.uk/archives/2016/09/13/why-there-is-no-css4-explaining-css-levels/" target="_blank">Why there is no CSS4 - explaining CSS Levels</a></p>
                             </div>
-                            <div className="win">
-                                <i className="clouds"></i>
-                                <i className="logo"></i>
-                            </div>
-                        </header>
-                        <div className="content">
-                            <h3>One mind blowing fact you didn't know about CSS4</h3>
-                            <p className="logo"><a href="https://www.w3.org/" target="_blank" title="HTML5 Logo by W3C"><i className="html5"></i></a></p>
-                            <h4>1. There is no such a thing in the first place.</h4>
-                            <p>Believe it or not, it's true.</p>
-                            <h5>Reference</h5>
-                            <p><a href="https://rachelandrew.co.uk/archives/2016/09/13/why-there-is-no-css4-explaining-css-levels/" target="_blank">Why there is no CSS4 - explaining CSS Levels</a></p>
+                            <footer>
+                                <div className="pane-1">&#8203;</div>
+                                <div className="pane-2">&#8203;</div>
+                                <div className="pane-3">&#8203;</div>
+                            </footer>
                         </div>
-                        <footer>
-                            <div className="pane-1">&#8203;</div>
-                            <div className="pane-2">&#8203;</div>
-                            <div className="pane-3">&#8203;</div>
-                        </footer>
-                    </div>
-                </form>
-                <form id="app-notepad" role="dialog" style={{ visibility: state.notepadVisibility ? 'visible' : 'hidden' }}>
-                    <h2>
-                        <i className="sm pad"></i>
-                        <label className="label" htmlFor="fore-notepad" onClick={()=> { if(!state.notepad) setState( {...state, notepad: !state.notepad, mine: state.notepad, ie: state.notepad }) }}>todo.jsx - Notepad</label>
-                        <a className="btn min" onClick={() => {
-                            setState( {...state, notepad: !state.notepadVisibility, mine: !state.notepadVisibility, ie: !state.notepadVisibility, notepadVisibility: !state.notepadVisibility  })
-                        }}></a>
-                        <a className="btn max" href="#error"></a>
-                        <label className="btn close" htmlFor="open-notepad"></label>
-                    </h2>
-                    <nav className="menu">
-                        <a href="#error">File</a>
-                        <a href="#error">Edit</a>
-                        <a href="#error">Search</a>
-                        <a href="#error">Help</a>
-                    </nav>
-                    <div className="client">
-                        <textarea rows="22" cols="60" onChange={(event) => { setState({ ...state, notepadText: event.target.value }) }} spellCheck="false" value={state.notepadText}></textarea>
-                    </div>
-                </form>
-                <form id="app-mine" role="dialog" style={{ visibility: state.mineVisibility ? 'visible' : 'hidden' }}>
-                    <h2>
-                        <i className="sm bomb"></i>
-                        <label className="label" onClick={()=> { if(!state.mine) setState( {...state, notepad: state.mine, mine: !state.mine, ie: state.mine }) }}>Minesweeper</label>
-                        <a className="btn min" onClick={() => {
-                            setState( {...state, notepad: !state.mineVisibility, mine: !state.mineVisibility, ie: !state.mineVisibility, mineVisibility: !state.mineVisibility  })
-                        }}></a>
-                        <a className="btn max" href="#error"></a>
-                        <label className="btn close" htmlFor="open-mine"></label>
-                    </h2>
-                    <nav className="menu">
-                        <a href="#error">Game</a>
-                        <a href="#error">Help</a>
-                    </nav>
-                    <div className="client">
+                    </form>
+                </Draggable>
+                <Draggable handle=".handle-notepad">
+                    <form id="app-notepad" role="dialog" style={{ visibility: state.notepadVisibility ? 'visible' : 'hidden' }}>
+                        <h2 className="handle-notepad">
+                            <i className="sm pad"></i>
+                            <label className="label" htmlFor="fore-notepad" onClick={() => { if (!state.notepad) setState({ ...state, notepad: !state.notepad, mine: state.notepad, ie: state.notepad }) }}>todo.jsx - Notepad</label>
+                            <a className="btn min" onClick={() => {
+                                setState({ ...state, notepad: !state.notepadVisibility, mine: !state.notepadVisibility, ie: !state.notepadVisibility, notepadVisibility: !state.notepadVisibility })
+                            }}></a>
+                            <a className="btn max" href="#error"></a>
+                            <label className="btn close" htmlFor="open-notepad"></label>
+                        </h2>
+                        <nav className="menu">
+                            <a href="#error">File</a>
+                            <a href="#error">Edit</a>
+                            <a href="#error">Search</a>
+                            <a href="#error">Help</a>
+                        </nav>
+                        <div className="client">
+                            <textarea rows="22" cols="60" onChange={(event) => { setState({ ...state, notepadText: event.target.value }) }} spellCheck="false" value={state.notepadText}></textarea>
+                        </div>
+                    </form>
+                </Draggable>
+                <Draggable handle=".handle-mine">
+                    <form id="app-mine" role="dialog" style={{ visibility: state.mineVisibility ? 'visible' : 'hidden' }}>
+                        <h2 className="handle-mine">
+                            <i className="sm bomb"></i>
+                            <label className="label" onClick={() => { if (!state.mine) setState({ ...state, notepad: state.mine, mine: !state.mine, ie: state.mine }) }}>Minesweeper</label>
+                            <a className="btn min" onClick={() => {
+                                setState({ ...state, notepad: !state.mineVisibility, mine: !state.mineVisibility, ie: !state.mineVisibility, mineVisibility: !state.mineVisibility })
+                            }}></a>
+                            <a className="btn max" href="#error"></a>
+                            <label className="btn close" htmlFor="open-mine"></label>
+                        </h2>
+                        <nav className="menu">
+                            <a href="#error">Game</a>
+                            <a href="#error">Help</a>
+                        </nav>
+                        <div className="client">
 
-                        {
-                            [...Array(65).keys()].map((index) => {
-                                const name = 'm'+index
-                                return (
-                                    <input type="radio" key={index} name="mine" id={name} onChange={(event) => { }} checked={state[name]} />
-                                ) 
-                            })
-                        }
-                        
-                        <header>
-                            <div className="number init"><i className="num-0"></i><i className="num-6"></i><i className="num-3"></i></div>
-                            <div className="number won lose"><i className="num-0"></i><i className="num-0"></i><i className="num-0"></i></div>
-                            <label className="btn face init" htmlFor="m0">&#x1F642; </label>
-                            <label className="btn face won" htmlFor="m0">&#x1F60E; </label>
-                            <label className="btn face lose" htmlFor="m0">&#x1F635; </label>
-                            <div className="number init"><i className="num-0"></i><i className="num-0"></i><i className="num-0"></i></div>
-                            <div className="number won lose"><i className="num-0"></i><i className="num-0"></i><i className="num-1"></i></div>
-                        </header>
-                        <nav className="minefield" id="mf-0">
                             {
-                                [...Array(64).keys()].map((index) => {
-                                    const pointer = index + 1;
-                                    const name = 'm'+pointer
+                                [...Array(65).keys()].map((index) => {
+                                    const name = 'm' + index
                                     return (
-                                        <label 
-                                            key={index} 
-                                            htmlFor={name} 
-                                            className="btn" 
-                                            onClick={(event) => { 
-                                                const newState = { ...state }
-                                                newState[name] = !state[name]
-                                                setState(newState) }}
-                                        ></label>
-                                    ) 
+                                        <input type="radio" key={index} name="mine" id={name} onChange={(event) => { }} checked={state[name]} />
+                                    )
                                 })
                             }
-                        </nav>
-                        <ul className="minefield" id="mf-1">
-                            <li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-2">
-                            <li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-3">
-                            <li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-4">
-                            <li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-5">
-                            <li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-6">
-                            <li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-7">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-8">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-9">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-10">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-11">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-12">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-13">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-14">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-15">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-16">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-17">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-18">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-19">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-20">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-21">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-22">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-23">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-24">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-25">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-26">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-27">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-28">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-29">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-30">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-31">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-32">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-33">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-34">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-35">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-36">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield flags" id="mf-37">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="num-8">8</li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-38">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-39">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-40">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-41">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-42">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-43">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-44">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-45">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-46">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-47">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-48">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-49">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-50">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-51">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-52">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-53">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-54">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-55">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-56">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-57">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-58">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-59">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-60">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-61">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-62">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-63">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li>
-                        </ul>
-                        <ul className="minefield" id="mf-64">
-                            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li>
-                        </ul>
-                    </div>
-                </form>
+
+                            <header>
+                                <div className="number init"><i className="num-0"></i><i className="num-6"></i><i className="num-3"></i></div>
+                                <div className="number won lose"><i className="num-0"></i><i className="num-0"></i><i className="num-0"></i></div>
+                                <label className="btn face init" htmlFor="m0">&#x1F642; </label>
+                                <label className="btn face won" htmlFor="m0">&#x1F60E; </label>
+                                <label className="btn face lose" htmlFor="m0">&#x1F635; </label>
+                                <div className="number init"><i className="num-0"></i><i className="num-0"></i><i className="num-0"></i></div>
+                                <div className="number won lose"><i className="num-0"></i><i className="num-0"></i><i className="num-1"></i></div>
+                            </header>
+                            <nav className="minefield" id="mf-0">
+                                {
+                                    [...Array(64).keys()].map((index) => {
+                                        const pointer = index + 1;
+                                        const name = 'm' + pointer
+                                        return (
+                                            <label
+                                                key={index}
+                                                htmlFor={name}
+                                                className="btn"
+                                                onClick={(event) => {
+                                                    const newState = { ...state }
+                                                    newState[name] = !state[name]
+                                                    setState(newState)
+                                                }}
+                                            ></label>
+                                        )
+                                    })
+                                }
+                            </nav>
+                            <ul className="minefield" id="mf-1">
+                                <li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-2">
+                                <li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-3">
+                                <li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-4">
+                                <li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-5">
+                                <li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-6">
+                                <li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-7">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-8">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-9">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-10">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-11">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-12">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-13">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-14">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-15">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-16">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-17">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-18">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-19">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-20">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-21">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-22">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-23">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-24">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-25">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-26">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-27">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-28">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-29">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-30">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-31">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-32">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-33">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-34">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-35">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-36">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield flags" id="mf-37">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="num-8">8</li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-38">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-39">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-40">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-41">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-42">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-43">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-44">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-45">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-46">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-47">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-48">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-49">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-50">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-51">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-52">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-53">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-54">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-55">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-56">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-57">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-58">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-59">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-60">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-61">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-62">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-63">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li><li></li>
+                            </ul>
+                            <ul className="minefield" id="mf-64">
+                                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="safe"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li className="hit"></li>
+                            </ul>
+                        </div>
+                    </form>
+                </Draggable>
                 <form id="poopup" role="dialog">
                     <div className="client">
-                        <label htmlFor="open-poop" onClick={()=> { setState( {...state, poopup: !state.poopup, poopVisibility: !state.poopup}) }}>&#x1F4A9; Cheers!</label>
+                        <label htmlFor="open-poop" onClick={() => { setState({ ...state, poopup: !state.poopup, poopVisibility: !state.poopup }) }}>&#x1F4A9; Cheers!</label>
                     </div>
                 </form>
                 <article id="error" className="blue">
