@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/HackingHero/static/css/main.94af05f7.css",
-    "main.js": "/HackingHero/static/js/main.461078a3.js",
+    "main.css": "/HackingHero/static/css/main.cffb08e3.css",
+    "main.js": "/HackingHero/static/js/main.41b1c929.js",
     "static/media/introloop.mp3": "/HackingHero/static/media/introloop.9e044df6741ce16c76ca.mp3",
+    "static/media/hacker.jpeg": "/HackingHero/static/media/hacker.a808d0b09876eabc9571.jpeg",
     "static/media/logo.png": "/HackingHero/static/media/logo.552f6b157f6e9e242bf4.png",
     "index.html": "/HackingHero/index.html",
-    "main.94af05f7.css.map": "/HackingHero/static/css/main.94af05f7.css.map",
-    "main.461078a3.js.map": "/HackingHero/static/js/main.461078a3.js.map"
+    "main.cffb08e3.css.map": "/HackingHero/static/css/main.cffb08e3.css.map",
+    "main.41b1c929.js.map": "/HackingHero/static/js/main.41b1c929.js.map"
   },
   "entrypoints": [
-    "static/css/main.94af05f7.css",
-    "static/js/main.461078a3.js"
+    "static/css/main.cffb08e3.css",
+    "static/js/main.41b1c929.js"
   ]
 }
