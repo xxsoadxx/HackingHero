@@ -1,7 +1,15 @@
+import React, { useEffect, useState } from 'react';
 import './Screen.scss';
 import TypeWriter from '../components/TypeWriter';
+import PressEnter from './PressEnter';
+const audio = new Audio("../assets/challengeaccepted.mp3")
+
 function Screen({ next }) {
-  console.log('Screen Screen');
+  
+  const [state, setState] = useState(1);
+
+
+
   return (
     <div className="Screen">
 
@@ -10,12 +18,27 @@ function Screen({ next }) {
 
       </div>
       <div className="interactions">
-        <TypeWriter contents={[`it's another day at upshow you are very calm working when suddenly...`, 3000, `Something happened!!`, 3000, 'TABARE: UpShow was hacked we need help!',3000,'HORACIO: But Andres is in vacations',3000, 'It seems that you are the only hope for UpShow, are you ready for this adventure?']}
-          speed={100}
-          onDone={() => {
-            console.log('terminooo')
-            next()
-          }} />
+        {state < 3 &&
+          <TypeWriter contents={[`In the year 20XX, there’s an evil hacker called ‘Laser’ who’s threatening to control humanity at hands of his evil robot army.`,
+            3000,
+            `Only you… YOU, who bears the knowledge to hack through his mainframe can stand a chance against him. Are you ready to take the challenge?`,
+            3000]}
+            speed={100}
+            onDone={() => {
+              if (state === 1) setState(state + 1);
+            }} />}
+        {state === 2 &&
+         <PressEnter onEnter={() => {
+          setState(state + 1);
+          audio.play();
+         }}/>}
+        {state === 3 &&
+          <TypeWriter contents={['You’re the hacking hero! Humanity’s last hope...', 2000]}
+            speed={100}
+            onDone={() => {
+              next()
+            }} />}
+
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import PressEnter from './PressEnter.js'
 import Logo from '../assets/logo.png';
 import './Splash.scss';
 function Splash({ next, duration }) {
@@ -13,7 +14,10 @@ function Splash({ next, duration }) {
     }, [duration, next]);
 
     return (
-        <div><img className="logo" src={Logo}></img></div>
+        <>
+            <div><img className="logo" src={Logo}></img></div>
+            <PressEnter onEnter={next}/>
+        </>
     )
 }
 

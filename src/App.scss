@@ -9,4 +9,89 @@
 
 }
 
+.hackerblink {
+    visibility: hidden;
+    animation: blink-animation-hacker 10s;
+    -webkit-animation: blink-animation-hacker 10s;
+    animation-fill-mode: forwards;
 
+}
+.blink {
+    animation: blink-animation 0.9s steps(5, start) infinite;
+    -webkit-animation: blink-animation 0.9s steps(5, start) infinite;
+  }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+
+  @keyframes blink-animation-hacker {
+    10% {
+        visibility: hidden;
+    }
+    20% {
+        visibility: hidden;
+    }
+    30% {
+        visibility: visible;
+    }
+    40% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    60% {
+      visibility: visible;
+    }
+    70% {
+        visibility: hidden;
+    }
+    80% {
+        visibility: hidden;
+    }
+    90% {
+        visibility: visible;
+    }
+    100% {
+        visibility: visible;
+    }
+  }
+  @-webkit-keyframes blink-animation-hacker {
+    10% {
+        visibility: hidden;
+    }
+    20% {
+        visibility: hidden;
+    }
+    30% {
+        visibility: visible;
+    }
+    40% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    60% {
+      visibility: visible;
+    }
+    70% {
+        visibility: hidden;
+    }
+    80% {
+        visibility: hidden;
+    }
+    90% {
+        visibility: visible;
+    }
+    100% {
+        visibility: visible;
+    }
+  }

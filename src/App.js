@@ -11,11 +11,11 @@ const SplashView = (props) => <Splash {...props} />;
 const MazeView = (props) => <MazeGame {...props} />;
 
 
-
 const STAGES = [
-  { Component: Windows, duration: 0 },
-  { Component: SplashView, duration: 3000 },
+  
+  { Component: SplashView, duration: 0 },
   { Component: ScreenView, duration: 0, audio: intro },
+  { Component: Windows, duration: 0 },
   { Component: MazeView, duration: 0 },
 ]
 
