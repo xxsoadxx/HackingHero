@@ -7,6 +7,7 @@ import GenericCode from './views/GenericCode';
 import { useStopwatch } from 'react-timer-hook';
 import Q81V from './assets/Q81V.gif';
 import Q82V from './assets/Q82V.gif';
+import heartSVG from './assets/heart.svg';
 //import Windows from './views/Windows';
 //import intro from './assets/introloop.mp3';
 
@@ -20,7 +21,7 @@ const STAGES = [
   
   { Component: SplashView, config: {} },
   { Component: GenericScreenView, config: { image: Q81V, contents:['Screen 1 Text', 2000] } },
-  { Component: GenericScreenView, config: { image: Q82V, contents:['Screen 2 Text', 2000], showTimer: true } },
+  { Component: GenericScreenView, config: { image: Q82V, contents:['Screen 2 Text', 2000], showTimer: true , showEnergy: true} },
   { Component: GenericCodeView, config: { image: Q82V, contents:['Enter the code to decrypt the message:', 2000] , answer: '1234', length: 4, hint:'Esta es tu ayuda flaco', startTimer: true} },
 
 
@@ -31,6 +32,8 @@ const STAGES = [
 ]
 
 function App() {
+  const [showEnergy, setShowEnergy] = useState(false);
+  const [energy, setEnergy] = useState(3);
   const [startTimer, setStartTimer] = useState(false);
   const [resetTimer, setResetTimer] = useState(0);
   const [showTimer, setShowTimer] = useState(false);
@@ -43,6 +46,11 @@ function App() {
     if(Stage.config.showTimer) {
       setShowTimer(Stage.config.showTimer);
     } 
+    if(Stage.config.showEnergy) {
+      setShowEnergy(Stage.config.showEnergy);
+    } 
+
+    
   }, [index])
   const next = () => {
     console.log('Stage Ended');
@@ -63,6 +71,15 @@ function App() {
          <Timer startTimer={startTimer} resetTimer={resetTimer}/>
         </div>
       }
+      {
+        showEnergy &&
+        <div style={{ position: 'absolute', left: '54px', bottom: '12px'}}>
+          ENERGY
+          { [...Array(energy).keys()].map((i) => { return (<img src={heartSVG} className="heart" key={i}></img>)}) }
+        </div>
+        
+      }
+
       
     </div>
   );
@@ -101,6 +118,6 @@ const [offsetTimestamp, setOffsetTimestamp] = useState(new Date());
   },[resetTimer]);
 
   return (<div style={{fontSize: '16px'}}>
-          <span>{hours > 9 ? hours : '0' + hours.toString() }</span>:<span>{minutes > 9 ? minutes : '0' + minutes.toString() }</span>:<span>{seconds > 9 ? seconds : '0' + seconds.toString() }</span>
+          <span>TIME {hours > 9 ? hours : '0' + hours.toString() }</span>:<span>{minutes > 9 ? minutes : '0' + minutes.toString() }</span>:<span>{seconds > 9 ? seconds : '0' + seconds.toString() }</span>
         </div>)
 }

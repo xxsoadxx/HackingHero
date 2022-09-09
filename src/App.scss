@@ -8,7 +8,13 @@
     flex-direction: column;
 
 }
-
+.heart {
+  display: inline-block;
+    width: 28px;
+    margin-left: 5px;
+    position: relative;
+    top: 4px;
+}
 .enter {
   position: absolute;
     bottom: 0px;
@@ -17,7 +23,7 @@
 
 .timer {
   position: absolute;
-  bottom: 17px;
+  bottom: 12px;
   right: 54px;
 }
 .Screen {
