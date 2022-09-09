@@ -34,31 +34,34 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
 
   const onKeyDown = (key) => {
     if (key === 'Shift') {
-      if(!hintUsed){
+      if (!hintUsed) {
         setHintUsed(true);
         setResetTimer(value => value + 1)
       }
-      
+
       setShowHint(!showHint)
     }
     if (key === 'Enter') {
-      if(answer === value) {
-        next()
-      } else {
-        denyAudio.play()
-        setValue('')
-        setResetTimer(value => value + 1)
+      if (value.length === length) {
+        if (answer === value) {
+          next()
+        } else {
+          denyAudio.play()
+          setValue('')
+          setResetTimer(value => value + 1)
+        }
       }
+
     }
     if (key === 'Backspace') {
-      setValue((value) => { 
+      setValue((value) => {
         return value.slice(0, -1)
       })
     }
-    
-    if (['0','1','2','3','4','5','6','7','8','9'].includes(key)) {
+
+    if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(key)) {
       setValue((value) => {
-        if(length > 0 && length > value.length) {
+        if (length > 0 && length > value.length) {
           return value + key.toString()
         }
         return value;
@@ -81,19 +84,19 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
           <>
             <p className="input">{value}</p>
             {
-              [...Array(length).keys()].map((i) => { return (<div className="line" key={i}></div>)})
+              [...Array(length).keys()].map((i) => { return (<div className="line" key={i}></div>) })
             }
-              
-            { value.length === length &&
+
+            {value.length === length &&
               <img src={EnterSVG} className="enter blink"></img>
             }
-            
+
             <KeyPress onKeyDown={onKeyDown}>
               <p className="hint">press SHIFT for hint (+5 min)</p>
             </KeyPress>
           </>
-         }
-         
+        }
+
 
 
       </div>
