@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/HackingHero/static/css/main.d398a7d5.css",
-    "main.js": "/HackingHero/static/js/main.9811d91c.js",
+    "main.css": "/HackingHero/static/css/main.9d68616f.css",
+    "main.js": "/HackingHero/static/js/main.50ed77ed.js",
     "static/media/Q82V.gif": "/HackingHero/static/media/Q82V.f7bcc8ea32bb63edd545.gif",
     "static/media/Q81V.gif": "/HackingHero/static/media/Q81V.deeebf5d1936dc78b51b.gif",
+    "static/media/heart.svg": "/HackingHero/static/media/heart.8d176a26e31742add49926d25e51a757.svg",
     "static/media/logo.png": "/HackingHero/static/media/logo.552f6b157f6e9e242bf4.png",
     "static/media/deny.mp3": "/HackingHero/static/media/deny.98a3fd6d93a1581c6f99.mp3",
     "index.html": "/HackingHero/index.html",
     "static/media/enter.svg": "/HackingHero/static/media/enter.a48fc67854ce9a0c8cd3935eac2f3b1b.svg",
-    "main.d398a7d5.css.map": "/HackingHero/static/css/main.d398a7d5.css.map",
-    "main.9811d91c.js.map": "/HackingHero/static/js/main.9811d91c.js.map"
+    "main.9d68616f.css.map": "/HackingHero/static/css/main.9d68616f.css.map",
+    "main.50ed77ed.js.map": "/HackingHero/static/js/main.50ed77ed.js.map"
   },
   "entrypoints": [
-    "static/css/main.d398a7d5.css",
-    "static/js/main.9811d91c.js"
+    "static/css/main.9d68616f.css",
+    "static/js/main.50ed77ed.js"
   ]
 }
