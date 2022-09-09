@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Screen.scss';
 import TypeWriter from '../components/TypeWriter';
-import PressEnter from './PressEnter';
+//import KeyPress from './KeyPress';
 const audio = new Audio("../assets/challengeaccepted.mp3")
 
 function Screen({ next }) {
@@ -26,9 +26,9 @@ function Screen({ next }) {
             speed={100}
             onDone={() => {
               if (state === 1) setState(state + 1);
-            }} />}
+            }} />}s
         {state === 2 &&
-         <PressEnter onEnter={() => {
+         <KeyPress onEnter={() => {
           setState(state + 1);
           audio.play();
          }}/>}

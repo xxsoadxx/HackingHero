@@ -9,6 +9,43 @@
 
 }
 
+.enter {
+  position: absolute;
+    bottom: 0px;
+    right: 14px;
+}
+
+.timer {
+  position: absolute;
+  bottom: 17px;
+  right: 54px;
+}
+.Screen {
+    display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+  
+      .content {
+  
+        img {
+          height: 50vh;
+        }
+      }
+  }
+  .interactions {
+    margin-top: 22px;
+    border: 5px solid;
+    border-radius: 6px;
+    padding: 15px;
+    font-size: 22px;
+    max-width: 90%;
+      width: 90%;
+      height: 30vh;
+      position: relative;
+  }
+
 .hackerblink {
     visibility: hidden;
     animation: blink-animation-hacker 10s;

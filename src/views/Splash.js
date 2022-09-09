@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import PressEnter from './PressEnter.js'
+import KeyPress from './KeyPress.js'
 import Logo from '../assets/logo.png';
 import './Splash.scss';
-function Splash({ next, duration }) {
+function Splash({ next, config: { duration }}) {
 
     useEffect(() => {
         if (duration > 0) {
@@ -12,11 +12,17 @@ function Splash({ next, duration }) {
             return () => clearTimeout(timer);
         }
     }, [duration, next]);
-
+    const onKeyDown = (key) => {
+        if(key === 'Enter') {
+            next()
+        }
+    }
     return (
         <>
             <div><img className="logo" src={Logo}></img></div>
-            <PressEnter onEnter={next}/>
+            <KeyPress onKeyDown={onKeyDown}>
+                <div className="blink" style={{marginTop:'24px'}}>PRESS ENTER</div>
+            </KeyPress>
         </>
     )
 }
