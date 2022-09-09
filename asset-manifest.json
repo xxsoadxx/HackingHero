@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/HackingHero/static/css/main.cffb08e3.css",
-    "main.js": "/HackingHero/static/js/main.41b1c929.js",
-    "static/media/introloop.mp3": "/HackingHero/static/media/introloop.9e044df6741ce16c76ca.mp3",
-    "static/media/hacker.jpeg": "/HackingHero/static/media/hacker.a808d0b09876eabc9571.jpeg",
+    "main.css": "/HackingHero/static/css/main.d398a7d5.css",
+    "main.js": "/HackingHero/static/js/main.9811d91c.js",
+    "static/media/Q82V.gif": "/HackingHero/static/media/Q82V.f7bcc8ea32bb63edd545.gif",
+    "static/media/Q81V.gif": "/HackingHero/static/media/Q81V.deeebf5d1936dc78b51b.gif",
     "static/media/logo.png": "/HackingHero/static/media/logo.552f6b157f6e9e242bf4.png",
+    "static/media/deny.mp3": "/HackingHero/static/media/deny.98a3fd6d93a1581c6f99.mp3",
     "index.html": "/HackingHero/index.html",
-    "main.cffb08e3.css.map": "/HackingHero/static/css/main.cffb08e3.css.map",
-    "main.41b1c929.js.map": "/HackingHero/static/js/main.41b1c929.js.map"
+    "static/media/enter.svg": "/HackingHero/static/media/enter.a48fc67854ce9a0c8cd3935eac2f3b1b.svg",
+    "main.d398a7d5.css.map": "/HackingHero/static/css/main.d398a7d5.css.map",
+    "main.9811d91c.js.map": "/HackingHero/static/js/main.9811d91c.js.map"
   },
   "entrypoints": [
-    "static/css/main.cffb08e3.css",
-    "static/js/main.41b1c929.js"
+    "static/css/main.d398a7d5.css",
+    "static/js/main.9811d91c.js"
   ]
 }
