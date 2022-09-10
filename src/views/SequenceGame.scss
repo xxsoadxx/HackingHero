@@ -1,0 +1,59 @@
+.sequence {
+  .small-icon {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 26px;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .content {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img {
+      height: 100px;
+    width: 100px;
+    }
+  }
+
+  .line {
+    display: inline-block;
+    width: 50px;
+    background-color: white;
+    height: 4px;
+    margin-right: 19px;
+  }
+  .input {
+    font-size: 41px;
+    margin-bottom: 0px;
+    letter-spacing: 29px;
+    padding-left: 5px;
+    height: 34px;
+  }
+  .hint {
+    position: absolute;
+    bottom: 0px;
+  }
+  .hint-container {
+    position: absolute;
+    background: black;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .close {
+      position: absolute;
+      bottom: 1px;
+    }
+  }
+}
+
