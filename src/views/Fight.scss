@@ -1,0 +1,62 @@
+.Fight {
+
+  .content {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .timerfight{
+    background-color: white;
+    height: 18px;
+    margin: 10px 0px 10px 0px;
+    width: 100%;
+  }
+
+
+  .text-zone {
+    width: 463px;
+    display: flex;
+    align-items: center;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+
+    .option {
+      margin: 0;
+    }
+  }
+  .line {
+    display: inline-block;
+    width: 50px;
+    background-color: white;
+    height: 4px;
+    margin-right: 19px;
+  }
+  .input {
+    font-size: 41px;
+    margin-bottom: 0px;
+    letter-spacing: 29px;
+    padding-left: 5px;
+    height: 34px;
+  }
+  .hint {
+    position: absolute;
+    bottom: 0px;
+  }
+  .hint-container {
+    position: absolute;
+    background: black;
+    border: 3px solid white;
+    padding: 30px;
+    min-height: 150px;
+
+    .close {
+      position: absolute;
+      bottom: 1px;
+    }
+  }
+}
+

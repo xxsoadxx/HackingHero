@@ -18,6 +18,7 @@ function GenericScreen({ next, config }) {
   }, [config])
 
   const onDone = () => {
+    console.log('onDone');
     if(!video) {
       setShowEnter(true);
     }

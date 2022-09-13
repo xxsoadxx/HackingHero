@@ -12,14 +12,19 @@ import SoundGame from './views/SoundGame'
 import { useStopwatch } from 'react-timer-hook';
 import ShipIdle from './assets/idle.gif';
 import Q82V from './assets/Q82V.gif';
-
+import Fight from './views/Fight'
 import Loop from './assets/loop.mp3';
 
-
+import LaughtImage from './assets/ogvhs-laughing.gif';
+import Level1 from './fights/level1.json';
 import heartSVG from './assets/heart.svg';
 import Windows from './views/Windows';
 
 import Nave from './assets/Blastoff.m4v'
+
+import Laught from './assets/laught.wav';
+const laughtAudio = new Audio(Laught)
+
 const LoopAudio = new Audio(Loop)
 LoopAudio.loop = true;
 //import intro from './assets/introloop.mp3';
@@ -33,13 +38,15 @@ const SplashView = (props) => <Splash {...props} />;
 const GenericCodeView = (props) => <GenericCode {...props} />;
 const SoundGameView = (props) => <SoundGame {...props} />
 const WindowsView = (props) => <Windows {...props} />
+const FightView = (props) => <Fight {...props} />
 const STAGES = [
   
   { Component: SplashView, config: {} },
   //{ Component: WindowsView, config: {} },
 
-  { Component: GenericScreenView, config: { video: Nave, contents:['Alright! Everybody get in position, we’re ready for blast off! Godspeed investigators, the future of humanity is in your hands, we’re counting on you!', 10000], showTimer: true , showEnergy: true, speed: 50, endOnVideo: true} },
-
+  { Component: GenericScreenView, config: { video: Nave, contents:['Alright! Everybody get in position, we’re ready for blast off! Godspeed investigators, the future of humanity is in your hands, we’re counting on you!', 1000], showTimer: true , showEnergy: true, speed: 50, endOnVideo: true} },
+  
+  { Component: FightView, config: { image: Q82V, level: Level1, timer: 10, lifes: 5 } },
 
   { Component: DirectionsGameView, config: { image: ShipIdle, contents:['Type the correct directions with the arrow keys to reach their planet', 2000] , answer: 'UDLRU', length: 5 , startTimer: true, audio: LoopAudio} },
 
@@ -77,6 +84,10 @@ function App() {
   const [resetTimer, setResetTimer] = useState(0);
   const [showTimer, setShowTimer] = useState(false);
   const [index, setIndex] = useState(0);
+
+
+  const [showLooser, setShowLooser] = useState(false);
+  
   const Stage = STAGES[index];
   console.log('Stage',Stage);
 
@@ -91,6 +102,20 @@ function App() {
 
     
   }, [index])
+
+  useEffect(() => {
+    if(energy === 0) {
+      laughtAudio.play()
+      setShowLooser(true)
+      const timerGameOver = setTimeout(() => {
+        back(1);
+        setEnergy(3);
+        setShowLooser(false)
+      }, 4000)
+      return () => clearTimeout(timerGameOver)
+    } 
+  }, [energy])
+  
   const next = () => {
     console.log('Stage Ended');
     setIndex(index + 1);
@@ -102,12 +127,7 @@ function App() {
 
   return (
     <div className="App">
-      { Stage.audio && 
-        <audio className='intro' loop autoPlay >
-          <source src={Stage.audio} type="audio/mpeg"/>
-        </audio> 
-      }
-      <Stage.Component index={index} next={next} back={back} setStartTimer={setStartTimer} setResetTimer={setResetTimer} config={{...Stage.config}} />
+      <Stage.Component setEnergy={setEnergy} index={index} next={next} back={back} setStartTimer={setStartTimer} setResetTimer={setResetTimer} config={{...Stage.config}} />
 
       { showTimer && 
         <div className="timer"> 
@@ -118,9 +138,19 @@ function App() {
         showEnergy &&
         <div style={{ position: 'absolute', left: '54px', bottom: '12px'}}>
           ENERGY
-          { [...Array(energy).keys()].map((i) => { return (<img src={heartSVG} className="heart" key={i}></img>)}) }
+          { energy > 0 && [...Array(energy).keys()]?.map((i) => { return (<img src={heartSVG} className="heart" key={i}></img>)}) }
         </div>
         
+      }
+      {
+        showLooser && 
+          <div className="looser">
+              <div style={{textAlign: 'center'}}>
+                <img src={LaughtImage}/>
+                <p>You can't beat me insect</p>
+              </div>
+             
+          </div>
       }
 
       

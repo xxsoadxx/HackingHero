@@ -8,6 +8,16 @@
     flex-direction: column;
 
 }
+
+.looser {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .heart {
   display: inline-block;
     width: 28px;
@@ -35,7 +45,7 @@
   
       .content {
   
-        img {
+        > img {
           height: 50vh;
         }
       }
@@ -74,7 +84,15 @@
       visibility: hidden;
     }
   }
+  @keyframes fight-timer {
+    0% {
+      width: 100%;
+    }
+    100% {
+      width: 0%;
+    }
 
+  }
   @keyframes blink-animation-hacker {
     10% {
         visibility: hidden;

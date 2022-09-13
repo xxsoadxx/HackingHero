@@ -10,6 +10,7 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
     const content = contents[contentIndex];
 
     useEffect(() => {
+        console.log('use effect contents')
         setIndex(0)
         setDisplayedContent('')
         setcontentIndex(0)
@@ -19,7 +20,6 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
     }, [contents]);
 
     useEffect(() => {
-        console.log('useEffect', index, contentIndex, content, speed, contents.length);
         if (!ended) {
             if (typeof (content) === 'string') {
                 const run = () => {
@@ -38,23 +38,21 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
 
                 return () => clearInterval(animKey);
             } else if (typeof (content) === 'number') {
-                console.log('es length', contents.length)
-                console.log('es contentIndex', contentIndex)
 
                 const run = () => {
-                    console.log('setTimeout', content, 'contentIndex = ', contentIndex, 'contents.length', contents.length, 'index', index);
+    
                     if ((contents.length - 1) === contentIndex) {
                         if (!ended) {
-                            console.log('done')
+               
                             if (!cursor) {
-                                console.log('cursor off')
+                       
                                 setCssStyle('');
                             }
                             setEnded(true)
                         }
 
                     } else {
-                        console.log('aumento')
+         
                         setDisplayedContent('')
                         setcontentIndex(contentIndex + 1)
 
@@ -66,7 +64,7 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
             }
         }
 
-    }, [index, contentIndex, content, onDone, speed, contents.length]);
+    }, [index, contentIndex, content, onDone, speed, contents.length, cursor, ended]);
 
     useEffect(() => {
 
@@ -78,9 +76,9 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
     }, [index, content]);
 
     useEffect(() => {
-        console.log('useeffect', 'done')
+        
         if (ended) {
-            console.log('doneee')
+            console.log('use effect ended, onDone')
             onDone();
         }
     }, [ended]);
