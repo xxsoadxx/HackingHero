@@ -111,7 +111,7 @@ function App() {
         back(1);
         setEnergy(3);
         setShowLooser(false)
-      }, 4000)
+      }, 2000)
       return () => clearTimeout(timerGameOver)
     } 
   }, [energy])
