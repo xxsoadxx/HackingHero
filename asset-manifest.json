@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/HackingHero/static/css/main.58495899.css",
-    "main.js": "/HackingHero/static/js/main.d3401932.js",
+    "main.css": "/HackingHero/static/css/main.6f3a9b46.css",
+    "main.js": "/HackingHero/static/js/main.9bac9aa3.js",
     "static/media/left.gif": "/HackingHero/static/media/left.e23905f46461b1450876.gif",
     "static/media/end.gif": "/HackingHero/static/media/end.4c5b426813dbde0aaf62.gif",
     "static/media/up_down.gif": "/HackingHero/static/media/up_down.4c5b426813dbde0aaf62.gif",
@@ -10,8 +10,10 @@
     "static/media/idle.gif": "/HackingHero/static/media/idle.c207537e902edcb9c5ca.gif",
     "static/media/loop.mp3": "/HackingHero/static/media/loop.257defed624107d913aa.mp3",
     "static/media/Blastoff.m4v": "/HackingHero/static/media/Blastoff.cb0c78db3048647c7faf.m4v",
+    "static/media/ogvhs-laughing.gif": "/HackingHero/static/media/ogvhs-laughing.1be219c806abe39befed.gif",
     "static/media/Q82V.gif": "/HackingHero/static/media/Q82V.f7bcc8ea32bb63edd545.gif",
     "static/media/hacker.jpeg": "/HackingHero/static/media/hacker.a808d0b09876eabc9571.jpeg",
+    "static/media/laught.wav": "/HackingHero/static/media/laught.aa31f354e025dfeef018.wav",
     "static/media/heart.svg": "/HackingHero/static/media/heart.8d176a26e31742add49926d25e51a757.svg",
     "static/media/logo.png": "/HackingHero/static/media/logo.552f6b157f6e9e242bf4.png",
     "static/media/6.mp3": "/HackingHero/static/media/6.2e63bd3fe86c1a1c05a8.mp3",
@@ -23,11 +25,11 @@
     "static/media/deny.mp3": "/HackingHero/static/media/deny.98a3fd6d93a1581c6f99.mp3",
     "index.html": "/HackingHero/index.html",
     "static/media/enter.svg": "/HackingHero/static/media/enter.a48fc67854ce9a0c8cd3935eac2f3b1b.svg",
-    "main.58495899.css.map": "/HackingHero/static/css/main.58495899.css.map",
-    "main.d3401932.js.map": "/HackingHero/static/js/main.d3401932.js.map"
+    "main.6f3a9b46.css.map": "/HackingHero/static/css/main.6f3a9b46.css.map",
+    "main.9bac9aa3.js.map": "/HackingHero/static/js/main.9bac9aa3.js.map"
   },
   "entrypoints": [
-    "static/css/main.58495899.css",
-    "static/js/main.d3401932.js"
+    "static/css/main.6f3a9b46.css",
+    "static/js/main.9bac9aa3.js"
   ]
 }
