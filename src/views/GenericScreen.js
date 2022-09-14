@@ -3,10 +3,15 @@ import TypeWriter from '../components/TypeWriter';
 import KeyPress from './KeyPress';
 import EnterSVG from '../assets/enter.svg';
 import ReactPlayer from 'react-player';
-function GenericScreen({ next, config }) {
-  const { video, image, style, audio, contents, onlyVideo , speed, endOnVideo} = config;
+function GenericScreen({ profileImage, next, config }) {
+  const { video, image: stageImage, style, audio, contents, onlyVideo , speed, endOnVideo, useProfileImage} = config;
   const [showEnter, setShowEnter] = useState(false);
-
+  let image;
+  if(useProfileImage) {
+    image = profileImage
+  } else {
+    image = stageImage
+  }
   useEffect(() => {
     if(audio) {
       audio.play();
@@ -41,8 +46,8 @@ function GenericScreen({ next, config }) {
         :
         <>
           <div className="content">
-            { image ? <img src={image} style={style} /> :
-              <ReactPlayer url={video} style={style} playing={true} onEnded={() =>{ if(endOnVideo) { next() } else { setShowEnter(true)}}} controls={false}></ReactPlayer> }
+            { image && <img src={image} style={style} /> }
+            { video && <ReactPlayer url={video} style={style} playing={true} onEnded={() =>{ if(endOnVideo) { next() } else { setShowEnter(true)}}} controls={false}></ReactPlayer> }
           </div>
           <div className="interactions">
               <TypeWriter contents={contents}

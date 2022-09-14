@@ -31,7 +31,7 @@ function AllReady({ next, back, config }) {
       next()
     }
     if(key === '2' && showOptions) {
-      back(1)
+      back(3)
     }
   }
 

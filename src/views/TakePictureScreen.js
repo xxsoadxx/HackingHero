@@ -4,7 +4,7 @@ import KeyPress from './KeyPress';
 import EnterSVG from '../assets/enter.svg';
 import Webcam from "react-webcam";
 
-function TakePictureScreen({ next, config }) {
+function TakePictureScreen({ setProfileImage, next, config }) {
   const { audio, contents } = config;
   const [showEnter, setShowEnter] = useState(false);
   const [image, setImage] = useState();
@@ -34,6 +34,7 @@ function TakePictureScreen({ next, config }) {
   const onKeyDown = (key) => {
     console.log(key);
     if(key === 'Enter' && showEnter) {
+        setProfileImage(image);
         next()
     }
     if(key === ' ') {

@@ -23,8 +23,11 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
         if (!ended) {
             if (typeof (content) === 'string') {
                 const run = () => {
+                    console.log('running index',index, ' to ',content.length - 1)
+                    console.log('ended',ended)
                     if (index >= content.length - 1) {
                         clearInterval(animKey);
+                        
                         if ((contents.length - 1) === contentIndex && !ended) {
                             setEnded(true)
                         } else {
@@ -40,7 +43,8 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
             } else if (typeof (content) === 'number') {
 
                 const run = () => {
-    
+                    console.log('running timer',contentIndex, ' to ',contents.length - 1)
+                    console.log('ended',ended)
                     if ((contents.length - 1) === contentIndex) {
                         if (!ended) {
                
@@ -67,7 +71,6 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
     }, [index, contentIndex, content, onDone, speed, contents.length, cursor, ended]);
 
     useEffect(() => {
-
         if (typeof (content) === 'string') {
             setDisplayedContent(
                 (displayedContent) => displayedContent + content[index]
@@ -76,9 +79,9 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
     }, [index, content]);
 
     useEffect(() => {
-        
+        console.log('useEffect ended', ended)
         if (ended) {
-            console.log('use effect ended, onDone')
+            console.log('ENTRO AL ONDONE')
             onDone();
         }
     }, [ended]);

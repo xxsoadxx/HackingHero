@@ -45,9 +45,11 @@
   
       .content {
   
-        > img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
           height: 50vh;
-        }
+      
       }
   }
   .interactions {
