@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/HackingHero/static/css/main.6f3a9b46.css",
-    "main.js": "/HackingHero/static/js/main.9bac9aa3.js",
+    "main.js": "/HackingHero/static/js/main.892a4ba0.js",
     "static/media/left.gif": "/HackingHero/static/media/left.e23905f46461b1450876.gif",
     "static/media/end.gif": "/HackingHero/static/media/end.4c5b426813dbde0aaf62.gif",
     "static/media/up_down.gif": "/HackingHero/static/media/up_down.4c5b426813dbde0aaf62.gif",
@@ -26,10 +26,10 @@
     "index.html": "/HackingHero/index.html",
     "static/media/enter.svg": "/HackingHero/static/media/enter.a48fc67854ce9a0c8cd3935eac2f3b1b.svg",
     "main.6f3a9b46.css.map": "/HackingHero/static/css/main.6f3a9b46.css.map",
-    "main.9bac9aa3.js.map": "/HackingHero/static/js/main.9bac9aa3.js.map"
+    "main.892a4ba0.js.map": "/HackingHero/static/js/main.892a4ba0.js.map"
   },
   "entrypoints": [
     "static/css/main.6f3a9b46.css",
-    "static/js/main.9bac9aa3.js"
+    "static/js/main.892a4ba0.js"
   ]
 }
