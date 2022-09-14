@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/HackingHero/static/css/main.6f3a9b46.css",
-    "main.js": "/HackingHero/static/js/main.892a4ba0.js",
+    "main.css": "/HackingHero/static/css/main.9ca8e1f7.css",
+    "main.js": "/HackingHero/static/js/main.6a7fd95a.js",
     "static/media/left.gif": "/HackingHero/static/media/left.e23905f46461b1450876.gif",
     "static/media/end.gif": "/HackingHero/static/media/end.4c5b426813dbde0aaf62.gif",
     "static/media/up_down.gif": "/HackingHero/static/media/up_down.4c5b426813dbde0aaf62.gif",
@@ -10,8 +10,13 @@
     "static/media/idle.gif": "/HackingHero/static/media/idle.c207537e902edcb9c5ca.gif",
     "static/media/loop.mp3": "/HackingHero/static/media/loop.257defed624107d913aa.mp3",
     "static/media/Blastoff.m4v": "/HackingHero/static/media/Blastoff.cb0c78db3048647c7faf.m4v",
-    "static/media/ogvhs-laughing.gif": "/HackingHero/static/media/ogvhs-laughing.1be219c806abe39befed.gif",
+    "static/media/bert_laugh.gif": "/HackingHero/static/media/bert_laugh.9a50cefea8d86a44944d.gif",
+    "static/media/bert_talking.gif": "/HackingHero/static/media/bert_talking.5847032de6d551b8a43c.gif",
     "static/media/Q82V.gif": "/HackingHero/static/media/Q82V.f7bcc8ea32bb63edd545.gif",
+    "static/media/boss.png": "/HackingHero/static/media/boss.e7b4ba6371119d73070c.png",
+    "static/media/bert_still.png": "/HackingHero/static/media/bert_still.e4e34879caddf3229db5.png",
+    "static/media/equalizer.png": "/HackingHero/static/media/equalizer.60e5ab92faae03e4735f.png",
+    "static/media/colorscode.png": "/HackingHero/static/media/colorscode.ff3463d8209e64d68b88.png",
     "static/media/hacker.jpeg": "/HackingHero/static/media/hacker.a808d0b09876eabc9571.jpeg",
     "static/media/laught.wav": "/HackingHero/static/media/laught.aa31f354e025dfeef018.wav",
     "static/media/heart.svg": "/HackingHero/static/media/heart.8d176a26e31742add49926d25e51a757.svg",
@@ -25,11 +30,11 @@
     "static/media/deny.mp3": "/HackingHero/static/media/deny.98a3fd6d93a1581c6f99.mp3",
     "index.html": "/HackingHero/index.html",
     "static/media/enter.svg": "/HackingHero/static/media/enter.a48fc67854ce9a0c8cd3935eac2f3b1b.svg",
-    "main.6f3a9b46.css.map": "/HackingHero/static/css/main.6f3a9b46.css.map",
-    "main.892a4ba0.js.map": "/HackingHero/static/js/main.892a4ba0.js.map"
+    "main.9ca8e1f7.css.map": "/HackingHero/static/css/main.9ca8e1f7.css.map",
+    "main.6a7fd95a.js.map": "/HackingHero/static/js/main.6a7fd95a.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f3a9b46.css",
-    "static/js/main.892a4ba0.js"
+    "static/css/main.9ca8e1f7.css",
+    "static/js/main.6a7fd95a.js"
   ]
 }
