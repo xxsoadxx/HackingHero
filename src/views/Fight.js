@@ -84,13 +84,11 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
         setCorrectAnswers(correctAnswers + 1);
         setIndex(index+1);
         setShowOptions(false);
-        setShowAnimation(false);
       } else {
         denyAudio.play();
         setIndex(index+1);
         setEnergy((energy) => energy - 1);
         setShowOptions(false);
-        setShowAnimation(false);
       }
     }
   }
