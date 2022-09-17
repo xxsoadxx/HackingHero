@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import KeyPress from './KeyPress.js'
+import KeyPress from '../components/KeyPress.js'
 import Logo from '../assets/logo.png';
 import './Splash.scss';
 function Splash({ next, config: { duration }}) {

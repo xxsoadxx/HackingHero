@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TypeWriter from '../components/TypeWriter';
-import KeyPress from './KeyPress';
+import KeyPress from '../components/KeyPress';
 
 
 function AllReady({ next, back, config }) {

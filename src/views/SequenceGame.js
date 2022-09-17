@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SequenceGame.scss';
 import TypeWriter from '../components/TypeWriter';
-import KeyPress from './KeyPress';
+import KeyPress from '../components/KeyPress';
 import EnterSVG from '../assets/enter.svg';
 import Deny from '../assets/deny.mp3';
 import ReactPlayer from 'react-player';
@@ -10,6 +10,7 @@ const denyAudio = new Audio(Deny)
 function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
   const { style, audio, contents, answer, length, video } = config;
   const [showHint, setShowHint] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [value, setValue] = useState('');
   useEffect(() => {
@@ -36,7 +37,10 @@ function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
     if (key === 'Shift' && showHelp && !showHint) {
       setShowHint(!showHint)
     }
-    if (key === 'Enter') {
+    if (key === 'Shift' && showHelp && showHint) {
+      setShowVideo(true)
+    }
+    if (key === 'Enter' && !showHint) {
       if (value.length === length) {
         if (answer === value) {
           next()
@@ -105,29 +109,29 @@ function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
           onDone={onDone} />
         {showHelp &&
           <>
-            <p className="input">{value.split("").map((character, index) => {
+            {value.split("").map((character, index) => {
               if(character === '1') {
-                return <div className="small-icon">
+                return <div key={index} className="small-icon">
                   {mountain()}
                 </div>
               } else if(character === '2') {
-                return <div className="small-icon">
+                return <div key={index} className="small-icon">
                 {buildings()}
               </div>
               } else if(character === '3') {
-                return <div className="small-icon">
+                return <div key={index} className="small-icon">
                 {tree()}
               </div>
               } else if(character === '4') {
-                return <div className="small-icon">
+                return <div key={index} className="small-icon">
                 {woods()}
               </div>
               } else if(character === '5') {
-                return <div className="small-icon">
+                return <div key={index} className="small-icon">
                 {beach()}
               </div>
               }
-            })}</p>
+            })}
   
             {value.length === length &&
               <img src={EnterSVG} className="enter blink"></img>
@@ -136,6 +140,8 @@ function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
             <KeyPress onKeyDown={onKeyDown}>
               <p className="hint">press SHIFT to rewatch footage</p>
             </KeyPress>
+
+           
           </>
         }
 
@@ -143,8 +149,12 @@ function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
 
       </div>
       {showHint &&
-        <div className="hint-container">
-          <ReactPlayer url={video} style={style} playing={true} onEnded={() => setShowHint(false)} controls={false}></ReactPlayer>
+        <div className={`${!showVideo ? 'hint2' : 'hint-container'}`}>
+          {showVideo && <ReactPlayer url={video} style={style} playing={true} onEnded={() => { setShowHint(false);setShowVideo(false) }} controls={false}></ReactPlayer>}
+          {!showVideo && <p >Urgh! I knew you were distracted while the footage was playing.<br/><br/>
+                  You’re wasting time!
+                  press SHIFT to rewatch footage</p>}
+         
         </div>
       }
     </div>

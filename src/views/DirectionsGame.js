@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './DirectionsGame.scss';
 import TypeWriter from '../components/TypeWriter';
-import KeyPress from './KeyPress';
+import KeyPress from '../components/KeyPress';
 import EnterSVG from '../assets/enter.svg';
-import Deny from '../assets/deny.mp3';
+import Deny from '../assets/wrong.mp3';
 
 import Left from '../assets/left.png';
 import Right from '../assets/right.png';
@@ -13,7 +13,7 @@ import LeftGif from '../assets/left.gif';
 import RightGif from '../assets/right.gif';
 import UpDownGif from '../assets/up_down.gif';
 import EndGif from '../assets/end.gif';
-import DenyGif from '../assets/right.gif';
+import DenyGif from '../assets/wrong.gif';
 
 const denyAudio = new Audio(Deny)
 
@@ -92,12 +92,13 @@ function DirectionsGame({ next, config, setStartTimer, setResetTimer }) {
   }
 
   useEffect(() => {
-    if(gif !== null && gif !== EndGif) {
+    if(gif !== null && gif !== EndGif ) {
       setTimeout(() => {
         setGif(null);
         setAnimating(false);
       }, 4000)
     }
+
   }, [gif])
   console.log('CodeGeneric value', value)
   return (
@@ -126,12 +127,12 @@ function DirectionsGame({ next, config, setStartTimer, setResetTimer }) {
             })}</p>
           
 
-            {value.length === length &&
+            {value.length === length && !animating &&
               <img src={EnterSVG} className="enter blink"></img>
             }
 
             <KeyPress onKeyDown={onKeyDown}>
-              <p className="hint">press M to see the map</p>
+              <p className="hint">press M to see the map again</p>
             </KeyPress>
           </>
         }

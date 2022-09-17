@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SoundGame.scss';
 import TypeWriter from '../components/TypeWriter';
-import KeyPress from './KeyPress';
+import KeyPress from '../components/KeyPress';
 import EnterSVG from '../assets/enter.svg';
 import Deny from '../assets/deny.mp3';
 import ReactPlayer from 'react-player';
@@ -128,7 +128,7 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
     justifyContent: 'center'
   }
   return (
-    <div className="Screen sequence">
+    <div className="Screen soundgame">
 
       <div className="content">
 

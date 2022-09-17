@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import TypeWriter from '../components/TypeWriter';
-import KeyPress from './KeyPress';
+import KeyPress from '../components/KeyPress';
 import EnterSVG from '../assets/enter.svg';
 import ReactPlayer from 'react-player';
+
 function GenericScreen({ profileImage, next, config }) {
   const { video, image: stageImage, style, audio, contents, onlyVideo , speed, endOnVideo, useProfileImage} = config;
   const [showEnter, setShowEnter] = useState(false);
@@ -14,6 +15,7 @@ function GenericScreen({ profileImage, next, config }) {
   }
   useEffect(() => {
     if(audio) {
+      console.log('AUDIO');
       audio.play();
     }
   }, [audio])
@@ -32,6 +34,7 @@ function GenericScreen({ profileImage, next, config }) {
 
   const onKeyDown = (key) => {
     if(key === 'Enter') {
+      if(audio) audio.pause()
         next()
     }
   }

@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import TypeWriter from '../components/TypeWriter';
-import KeyPress from './KeyPress';
+import KeyPress from '../components/KeyPress';
 import EnterSVG from '../assets/enter.svg';
 import Webcam from "react-webcam";
+const text = ['Press enter to confirm or shift to take again',500];
 
 function TakePictureScreen({ setProfileImage, next, config }) {
   const { audio, contents } = config;
   const [showEnter, setShowEnter] = useState(false);
+  const [enableAction, setEnableAction] = useState(false);
   const [image, setImage] = useState();
   const webcamRef = useRef();
 
@@ -15,6 +17,7 @@ function TakePictureScreen({ setProfileImage, next, config }) {
     console.log(imageSrc);
     setImage(imageSrc);
     setShowEnter(true);
+    setEnableAction(false)
   }
 
   useEffect(() => {
@@ -25,24 +28,27 @@ function TakePictureScreen({ setProfileImage, next, config }) {
 
   useEffect(() => {
     setShowEnter(false)
+    setEnableAction(false)
   }, [config])
 
   const onDone = () => {
-      //setShowEnter(true);
+    setEnableAction(true)
   };
 
   const onKeyDown = (key) => {
     console.log(key);
-    if(key === 'Enter' && showEnter) {
+    if(key === 'Enter' && showEnter && enableAction  ) {
         setProfileImage(image);
         next()
     }
-    if(key === ' ') {
+    if(key === ' ' && !showEnter && enableAction) {
+     
       handleCaptureScreenshot()
     }
-    if(key === 'Shift') {
+    if(key === 'Shift' && showEnter && enableAction) {
       setImage(undefined)
       setShowEnter(false);
+      setEnableAction(false)
     }
     
   }
@@ -56,16 +62,18 @@ function TakePictureScreen({ setProfileImage, next, config }) {
             { image ? <img src={image} /> : <Webcam ref={webcamRef} audio={false} screenshotFormat="image/jpeg" height={400}/>}
           </div>
           <div className="interactions">
-          {!showEnter ? <TypeWriter contents={contents}
+          {!showEnter && <TypeWriter contents={contents}
                 speed={100}
                 onDone={onDone} />
-             :
-            <>
-            <TypeWriter contents={['Press enter to confirm or shift to take again']}
+            }
+            
+            {showEnter && <TypeWriter contents={text}
                 speed={100}
                 onDone={onDone} />
-            <img src={EnterSVG} className="enter blink"></img>
-            </>}
+            
+            }
+
+            {showEnter && enableAction && <img src={EnterSVG} className="enter blink"></img>}
             <KeyPress onKeyDown={onKeyDown}/>
           </div>
     </div>

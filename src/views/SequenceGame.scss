@@ -41,6 +41,19 @@
     position: absolute;
     bottom: 0px;
   }
+
+  .hint2 {
+    position: absolute;
+    background: black;
+    border: 3px solid white;
+    padding: 30px;
+    min-height: 150px;
+
+    .close {
+      position: absolute;
+      bottom: 1px;
+    }
+  }
   .hint-container {
     position: absolute;
     background: black;
