@@ -6,7 +6,7 @@ import Webcam from "react-webcam";
 const text = ['Press enter to confirm or shift to take again',500];
 
 function TakePictureScreen({ setProfileImage, next, config }) {
-  const { audio, contents } = config;
+  const { audio, contents, speed } = config;
   const [showEnter, setShowEnter] = useState(false);
   const [enableAction, setEnableAction] = useState(false);
   const [image, setImage] = useState();
@@ -63,12 +63,12 @@ function TakePictureScreen({ setProfileImage, next, config }) {
           </div>
           <div className="interactions">
           {!showEnter && <TypeWriter contents={contents}
-                speed={100}
+                speed={speed ? speed : 100}
                 onDone={onDone} />
             }
             
             {showEnter && <TypeWriter contents={text}
-                speed={100}
+                speed={speed ? speed : 100}
                 onDone={onDone} />
             
             }

@@ -114,7 +114,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { speed: 50, style:{ width: '200px'}, image:timerImg, contents:[`Oh yes, that right there is your TIMER.\n The team completing the game with the less amount of time, wins.\n Don’t worry, cutscenes stop the timer, so relax and enjoy retro magic.`, 2000], showTimer: true } },
   { Component: GenericScreenView, config: { speed: 50, style:{ width: '300px'}, image:energyImg, contents:[`Aaaand that’s your ENERGY.\n Yes, there are battles in this game so give the control to the most agile member of your team.\n If you lose a battle, your energy replenishes but you’ll have to start over again and the TIMER keeps going!`, 2000], showEnergy: true } },
   { Component: AllReadyView, config: { image: questionImg, contents:['All set?'] }},
-  { Component: TakePictureScreenView, config: { contents:['Alright! Before we start, let’s take a picture of the team!\n\n Press Space when you’re all in there'] }},
+  { Component: TakePictureScreenView, config: {  speed: 50, contents:['Alright! Before we start, let’s take a picture of the team!\n\n Press Space when you’re all in there'] }},
   { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents:[`Wow, what a great photograph! It will always bring back the fondest of memories...\n\n Get ready!`, 2000] } },
   { Component: GenericScreenView, config: { speed: 50,style:{ width: '700px'}, image:neoncity, contents:[`Neon City, a retrofuturistic town (if that can even be a thing). Monday, 3 PM.\n\n Just another regular day at the Investigator’s office.`, 2000] } },
   { Component: GenericScreenView, config: { speed: 50,style:{ width: '200px',  animation: 'shake 0.5s 400'}, audio:snd_phoneAudio,image:ringring, contents:[`RIIIING, RIIIING!\n RIIIIIG, RIIIIING!`, 2000] } },
@@ -172,7 +172,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Ahhhh!!`, 2000] } },
   { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents:[`After him!`, 2000] } },
   { Component: GenericScreenView, config: { speed: 50, image:phone, contents:[`Wait, he forgot his cellphone! It’s locked but it has something sticked on its back.`, 2000] } },
-  { Component: GenericCodeView, config: { style: { width: '90%'}, image: codephone, contents:['Enter the PIN:', 2000] , answer: '835', length: 3, disableHint:true } },
+  { Component: GenericCodeView, config: { style: { width: '70%'}, image: codephone, contents:['Enter the PIN:', 2000] , answer: '835', length: 3, disableHint:true } },
   { Component: GenericCodeView, config: { style: { width: '60%'}, image: book, contents:['Type the password to access the government server:', 2000] , answer: 'CORRUPTED', length: 9, disableHint:true, allowLetters:true , hideLines:true  } },
   //WINDOWSSSS
   { Component: GenericScreenView, config: { speed: 50, image:laser_new_talk_otro, contents:[`You bastards cut my signal!\nYou’ll pay for this.`, 2000] } },

@@ -73,6 +73,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
       
       const hitTimer = setTimeout(() => {
         setIndex(index+1);
+        setEnergy((energy) => energy - 1);
         setShowHit(false);
       }, 1000);
 
@@ -122,7 +123,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
         } else {
  
           denyAudio.play();
-         
+          setIndex(index+1);
           setEnergy((energy) => energy - 1);
         }
        

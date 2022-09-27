@@ -54,8 +54,11 @@ function DirectionsGame({ next, config, setStartTimer, setResetTimer }) {
       if (value.length === length) {
         if (answer === value) {
 
+          setAnimating(true);
           setGif(EndGif)
+
           setTimeout(() => {
+            if(audio) audio.pause();
             next()
           }, 4000)
           
