@@ -8,7 +8,7 @@ import heartSVG from '../assets/heart.svg';
 const denyAudio = new Audio(Deny)
 
 function Fight({ setEnergy, next, config, setStartTimer }) {
-  const { image, timer, lifes, audio, style, talk, laugh, still,hit, final} = config;
+  const { introAudio, LoopAudio, image, timer, lifes, audio, style, talk, laugh, still,hit, final} = config;
 
   const [showHit, setShowHit] = useState(false)
   const [showAttac, setShowAttac] = useState(false)
@@ -37,17 +37,50 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
   useEffect(() => {
     if(correctAnswers === lifes) {
       console.log('WINNN')
+      if (introAudio) {
+        introAudio.pause();
+      }
+      if (LoopAudio) {
+        LoopAudio.pause();
+      }
+      
+      if (audio) {
+        audio.pause();
+      }
       next()
     }
   }, [correctAnswers, lifes, next])
 
  
-
+  useEffect(() => {
+    return () => {
+      if (LoopAudio) {
+        LoopAudio.pause();
+      }
+    }
+  }, [LoopAudio])
+  useEffect(() => {
+    if (introAudio) {
+      introAudio.play();
+    }
+    return () => {
+      if (introAudio) {
+        introAudio.pause();
+      }
+    }
+  }, [introAudio])
   useEffect(() => {
     if (audio) {
       audio.play();
     }
+    return () => {
+      if (audio) {
+        audio.pause();
+      }
+    }
   }, [audio])
+  
+
 
   
   useEffect(() => {

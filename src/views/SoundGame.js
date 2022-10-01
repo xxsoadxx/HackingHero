@@ -7,12 +7,12 @@ import Deny from '../assets/deny.mp3';
 import ReactPlayer from 'react-player';
 import endMusic from '../assets/endmusic.mp3'
 
-import sound1 from '../assets/1.mp3'
-import sound2 from '../assets/2.mp3'
-import sound3 from '../assets/3.mp3'
-import sound4 from '../assets/4.mp3'
-import sound5 from '../assets/5.mp3'
-import sound6 from '../assets/6.mp3'
+import sound1 from '../assets/1.m4a'
+import sound2 from '../assets/2.m4a'
+import sound3 from '../assets/3.m4a'
+import sound4 from '../assets/4.m4a'
+import sound5 from '../assets/5.m4a'
+import sound6 from '../assets/6.m4a'
 const denyAudio = new Audio(Deny)
 const endMusicAudio = new Audio(endMusic)
 const Note1 = new Audio(sound1)
@@ -61,7 +61,7 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
     if (key === 'Enter') {
       if (value.length === length) {
         if (answer === value) {
-         
+          endMusicAudio.play()
           //next()
         } else {
           denyAudio.play()
@@ -83,34 +83,35 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
 
       
       setValue((value) => {
+        console.log('length', length)
+        console.log('value', value)
+        
         if (length > 0 && length > value.length) {
+
           if(key === '1') {
             Note1.currentTime = 0;
             Note1.play();
           } else if(key === '2') {
             Note2.currentTime = 0;
             Note2.play();
-          } if(key === '3') {
+          } else if(key === '3') {
             Note3.currentTime = 0;
             Note3.play();
-          } if(key === '4') {
+          }else if(key === '4') {
             Note4.currentTime = 0;
             Note4.play();
-          } if(key === '5') {
+          }else if(key === '5') {
             Note5.currentTime = 0;
             Note5.play();
-          } if(key === '6') {
+          }else if(key === '6') {
             Note6.currentTime = 0;
             Note6.play();
           } 
-          const newVal = value + key.toString();
-         if(length > 0 && length === newVal.length) {endMusicAudio.play()}
-          return newVal
-        } else if(length > 0 && length === value.length) {
-          
-        }
-        return value;
-
+           const newVal = value + key.toString();
+  
+          return newVal;
+      } 
+      return value;
       });
     }
   }
@@ -165,7 +166,7 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
         {showHelp &&
           <>
             
-            <p className="input">{value.split("").map((character, index) => {
+            <div className="input">{value.split("").map((character, index) => {
               if(character === '1') {
                 return <div key={index} className="small-icon red">
                 
@@ -191,7 +192,7 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
           
               </div>
               }
-            })}</p>
+            })}</div>
             {
               [...Array(length).keys()].map((i) => { return (<div className="line" key={i}></div>) })
             }

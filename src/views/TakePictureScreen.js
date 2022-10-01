@@ -24,6 +24,7 @@ function TakePictureScreen({ setProfileImage, next, config }) {
     if(audio) {
       audio.play();
     }
+    return () => { if(audio) audio.pause()}
   }, [audio])
 
   useEffect(() => {

@@ -17,6 +17,11 @@ function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
     if (audio) {
       audio.play();
     }
+    return () => {
+      if (audio) {
+        audio.pause();
+      }
+    }
   }, [audio])
 
   /*useEffect(() => {

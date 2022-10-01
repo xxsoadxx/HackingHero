@@ -13,6 +13,9 @@ function AllReady({ next, back, config }) {
     if(audio) {
       audio.play();
     }
+    return () => {
+      if(audio) audio.pause();
+    }
   }, [audio])
 
   useEffect(() => {
