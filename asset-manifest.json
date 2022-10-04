@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/HackingHero/static/css/main.f35989dc.css",
-    "main.js": "/HackingHero/static/js/main.7e128258.js",
+    "main.js": "/HackingHero/static/js/main.e35e54f5.js",
     "static/media/speed.gif": "/HackingHero/static/media/speed.2da87d807743ad39f8f5.gif",
     "static/media/footage.m4v": "/HackingHero/static/media/footage.027fcd2ecc6e7e9078b7.m4v",
     "static/media/wrong.gif": "/HackingHero/static/media/wrong.ac23cb6c3c147b21e610.gif",
@@ -13,6 +13,7 @@
     "static/media/neon-city.mp3": "/HackingHero/static/media/neon-city.79fceee4113bec403df2.mp3",
     "static/media/game-intro.mp3": "/HackingHero/static/media/game-intro.4cc416bc6dff504500ce.mp3",
     "static/media/quiz.mp3": "/HackingHero/static/media/quiz.1185ad78bb5440aa4b14.mp3",
+    "static/media/Ending.m4v": "/HackingHero/static/media/Ending.9a40c1b43afb117fe3c9.m4v",
     "static/media/ship.gif": "/HackingHero/static/media/ship.d579dc93bf673935c086.gif",
     "static/media/laser_new_talk_angry.gif": "/HackingHero/static/media/laser_new_talk_angry.f5471129074077210ab3.gif",
     "static/media/laser_new_talk_otro.gif": "/HackingHero/static/media/laser_new_talk_otro.892d4d78bd01b84b001b.gif",
@@ -73,9 +74,9 @@
     "static/media/ringring.png": "/HackingHero/static/media/ringring.8c558727a5f7c045f021.png",
     "static/media/rage-run.mp3": "/HackingHero/static/media/rage-run.01784beeda5e774d27d1.mp3",
     "static/media/heart.svg": "/HackingHero/static/media/heart.8d176a26e31742add49926d25e51a757.svg",
-    "static/media/6.m4a": "/HackingHero/static/media/6.fee3a4d5e2ac97f47ec7.m4a",
-    "static/media/5.m4a": "/HackingHero/static/media/5.55aa04fc96327942ff83.m4a",
-    "static/media/4.m4a": "/HackingHero/static/media/4.e6ef56c0a273e4f945d5.m4a",
+    "static/media/6.m4a": "/HackingHero/static/media/6.e14bde3aae620c1d8281.m4a",
+    "static/media/5.m4a": "/HackingHero/static/media/5.09a5534e1dbd6e5f8fff.m4a",
+    "static/media/4.m4a": "/HackingHero/static/media/4.78c8365e44811ac643a2.m4a",
     "static/media/1.m4a": "/HackingHero/static/media/1.5a6fa31ab7495cbf514b.m4a",
     "static/media/3.m4a": "/HackingHero/static/media/3.c9b9642d6a4d10dfb38f.m4a",
     "static/media/deny.mp3": "/HackingHero/static/media/deny.98a3fd6d93a1581c6f99.mp3",
@@ -83,10 +84,10 @@
     "index.html": "/HackingHero/index.html",
     "static/media/enter.svg": "/HackingHero/static/media/enter.a48fc67854ce9a0c8cd3935eac2f3b1b.svg",
     "main.f35989dc.css.map": "/HackingHero/static/css/main.f35989dc.css.map",
-    "main.7e128258.js.map": "/HackingHero/static/js/main.7e128258.js.map"
+    "main.e35e54f5.js.map": "/HackingHero/static/js/main.e35e54f5.js.map"
   },
   "entrypoints": [
     "static/css/main.f35989dc.css",
-    "static/js/main.7e128258.js"
+    "static/js/main.e35e54f5.js"
   ]
 }
