@@ -109,6 +109,10 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
           } 
            const newVal = value + key.toString();
   
+           if (answer === newVal) {
+              //endMusicAudio.play()
+              next()
+           }
           return newVal;
       } 
       return value;

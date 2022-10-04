@@ -35,6 +35,8 @@ import Nave from './assets/Blastoff.m4v'
 import speed from './assets/speed.gif';
 import footage from './assets/footage.m4v'
 
+import Ending from './assets/Ending.m4v';
+
 import Laught from './assets/laught.wav';
 import NeonAudioFile from './assets/neon-city.mp3';
 import bert_still from './assets/bert_still.png';
@@ -348,9 +350,10 @@ const STAGES = [
   
   { Component: GenericScreenView, config: { speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`, 2000] } },
 
-  { Component: SoundGameView, config: { contents:['Use this synthetizer to play the correct melody.', 2000] , answer: '11123456', length: 9 } },
-  { Component: GenericScreenView, config: { speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Humanity has been returned back to normal!`, 2000] } },
+  { Component: SoundGameView, config: { contents:['Use this synthetizer to play the correct melody.', 2000] , answer: '111231456', length: 9 } },
+  { Component: GenericScreenView, config: { speed: 50,video:Ending, onlyVideo: true ,contents:[`Humanity has been returned back to normal!`, 2000] } },
   
+
   /*{ Component: ScreenView, duration: 0, audio: intro },
   { Component: Windows, duration: 0 },
   { Component: MazeView, duration: 0 },*/
@@ -423,7 +426,7 @@ function App() {
       laughtAudio.play()
       setShowLooser(true)
       const timerGameOver = setTimeout(() => {
-        
+        document.querySelectorAll('audio').forEach(el => el.pause());
         back(1);
         setEnergy(3);
         setShowLooser(false)
