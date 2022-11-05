@@ -27,6 +27,7 @@ import Fight from './views/Fight'
 import Loop from './assets/loop.mp3';
 import KeyPress from './components/KeyPress';
 import Level1 from './fights/level1.json';
+import Level2 from './fights/level2.json';
 import finalLevel from './fights/final.json';
 import heartSVG from './assets/heart.svg';
 import Windows from './views/Windows';
@@ -330,7 +331,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents:[`Ok, we need to find some information about what’s really going on here.`, 2000] } },
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Stop right there earthlings! You’ll never beat my knowledge`, 2000] } },
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents:[`Wow! You’re even uglier than the other guy!`, 2000] } },
-  { Component: FightView, config: {introAudio:RageIntroAudio, loopAudio:RageLoopAudio, talk: toto_talking, laugh: toto_laugh, still: toto_still, level: Level1, timer: 40, lifes: 6 } },
+  { Component: FightView, config: {introAudio:RageIntroAudio, loopAudio:RageLoopAudio, talk: toto_talking, laugh: toto_laugh, still: toto_still, level: Level2, timer: 40, lifes: 6 } },
   { Component: GenericScreenView, config: { audio:RageRunAudio, classes: 'animate__zoomOutRight', speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Ahhhh!! I’m sorry master.`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`After him!`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:phone, contents:[`Wait, he forgot his cellphone! It’s locked but it has something sticked on its back.`, 2000] } },
