@@ -43,6 +43,52 @@
         "question": [4000,"Question 9", 1000],
         "answer": 1,
         "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    
+    {
+        "question": [4000,"Question 10", 1000],
+        "answer": 1,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    {
+        "question": [4000,"Question 11", 1000],
+        "answer": 2,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    {
+        "question": [4000,"Question 12", 1000],
+        "answer": 3,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    {
+        "question": [4000,"Question 13", 1000],
+        "answer": 4,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    {
+        "question": [4000,"Question 14", 1000],
+        "answer": 1,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    {
+        "question": [4000,"Question 15", 1000],
+        "answer": 2,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    {
+        "question": [4000,"Question 16", 1000],
+        "answer": 3,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    {
+        "question": [4000,"Question 17", 1000],
+        "answer": 4,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+    },
+    {
+        "question": [4000,"Question 18", 1000],
+        "answer": 1,
+        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
     }
     
 ]

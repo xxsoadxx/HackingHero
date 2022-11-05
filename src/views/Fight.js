@@ -8,7 +8,7 @@ import heartSVG from '../assets/heart.svg';
 const denyAudio = new Audio(Deny)
 
 function Fight({ setEnergy, next, config, setStartTimer }) {
-  const { introAudio, LoopAudio, image, timer, lifes, audio, style, talk, laugh, still,hit, final} = config;
+  const { introAudio, loopAudio, image, timer, lifes, audio, style, talk, laugh, still,hit, final} = config;
 
   const [showHit, setShowHit] = useState(false)
   const [showAttac, setShowAttac] = useState(false)
@@ -20,13 +20,13 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
   const [timerOptions, setTimerOptions] = useState(null)
   const [showOptions, setShowOptions] = useState(false);
   const shuffled = useMemo(() => {
-    console.log('Suffle questions');
+   // console.log('Suffle questions');
     return config.level.sort(() => Math.random() - 0.5)
   }, [config])
   const levelData = shuffled[index];
-
+  console.log({loopAudio})
   useEffect(() => {
-    console.log('useeffect index',index);
+   // console.log('useeffect index',index);
     setShowAnimation(false);
     setShowOptions(false);
     if(index > (config.level.length - 1)) {
@@ -36,12 +36,12 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
 
   useEffect(() => {
     if(correctAnswers === lifes) {
-      console.log('WINNN')
+   //   console.log('WINNN')
       if (introAudio) {
         introAudio.pause();
       }
-      if (LoopAudio) {
-        LoopAudio.pause();
+      if (loopAudio) {
+        loopAudio.pause();
       }
       
       if (audio) {
@@ -54,17 +54,26 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
  
   useEffect(() => {
     return () => {
-      if (LoopAudio) {
-        LoopAudio.pause();
+      if (loopAudio) {
+        loopAudio.pause();
       }
     }
-  }, [LoopAudio])
+  }, [loopAudio])
   useEffect(() => {
     if (introAudio) {
       introAudio.play();
     }
+
+    const handleClick = (event) => {
+      
+      loopAudio.play()
+    };
+
+    introAudio.addEventListener('ended', handleClick);
+    
     return () => {
       if (introAudio) {
+        introAudio.removeEventListener('click', handleClick);
         introAudio.pause();
       }
     }
@@ -84,9 +93,9 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
 
   
   useEffect(() => {
-    console.log('useeffect showoptions',showOptions);
+   // console.log('useeffect showoptions',showOptions);
     if (showOptions) {
-      console.log('mostrando opciones');
+    //  console.log('mostrando opciones');
       setStartTimer(true);
       setShowAnimation(true)
       const optionsTimer = setTimeout(() => {
@@ -100,7 +109,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
   }, [showOptions])
 
   useEffect(() => {
-    console.log('useeffect showHit',showHit);
+   // console.log('useeffect showHit',showHit);
     if (showHit && final) {
       
       
@@ -114,7 +123,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
     }
   }, [showHit])
   useEffect(() => {
-    console.log('useeffect showAttac',showAttac);
+    //console.log('useeffect showAttac',showAttac);
     if (showAttac && final) {
       
       
@@ -136,16 +145,16 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
   };
 
   const onKeyDown = (key) => {
-    console.log('key',key);
+    //console.log('key',key);
     if (levelData.options.length >= parseInt(key) && parseInt(key) > 0 && showOptions) {
-      console.log('levelData.answer',levelData.answer);
+      //console.log('levelData.answer',levelData.answer);
       clearTimeout(timerOptions);
       if(levelData.answer === parseInt(key)) {
         if(final){
           setShowAttac(true);
           
         }else {
-          console.log('CORRECTO');
+         // console.log('CORRECTO');
           setCorrectAnswers(correctAnswers + 1);
           setIndex(index+1);
         }
@@ -165,7 +174,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
   }
   const fightTimer = showAnimation ? { animation: `fight-timer ${timer}s linear`, animationFillMode: 'forwards'} : {};
  
-  console.log('levelData',levelData);
+ // console.log('levelData',levelData);
   let animation;
   if(!showHit && !showAttac && showOptions) {
     animation=still

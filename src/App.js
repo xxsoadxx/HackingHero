@@ -174,9 +174,9 @@ const preloadSrcList = [
 const battleLaserintroAudio = new Audio(battleLaserintro);
 const battleLaserloopAudio = new Audio(battleLaserloop);
 battleLaserloopAudio.loop = true;
-battleLaserintroAudio.addEventListener('ended', (event) => {
-  battleLaserloopAudio.play()
-});
+//battleLaserintroAudio.addEventListener('ended', (event) => {
+  //battleLaserloopAudio.play()
+//});
 
 const RageIntroAudio = new Audio(RageIntroFIle);
 
@@ -185,9 +185,9 @@ const RageRunAudio = new Audio(RageRunFile);
 
 const RageLoopAudio = new Audio(RageLoopFile);
 RageLoopAudio.loop = true;
-RageIntroAudio.addEventListener('ended', (event) => {
-  RageLoopAudio.play()
-});
+//RageIntroAudio.addEventListener('ended', (event) => {
+ // RageLoopAudio.play()
+//});
 
 const Quiz2Audio = new Audio(QuizFile);
 Quiz2Audio.loop = true;
@@ -216,9 +216,9 @@ const TotoLoopAudio = new Audio(TotoLoopFileAudio);
 TotoLoopAudio.loop = true;
 const TotoIntroAudio = new Audio(TotoIntroFileAudio);
 
-TotoIntroAudio.addEventListener('ended', (event) => {
-  TotoLoopAudio.play()
-});
+//TotoIntroAudio.addEventListener('ended', (event) => {
+ // TotoLoopAudio.play()
+//});
 
 
 const ViperAudio = new Audio(ViperFile);
@@ -426,7 +426,6 @@ function App() {
       laughtAudio.play()
       setShowLooser(true)
       const timerGameOver = setTimeout(() => {
-        document.querySelectorAll('audio').forEach(el => el.pause());
         back(1);
         setEnergy(3);
         setShowLooser(false)
@@ -441,7 +440,9 @@ function App() {
     setIndex(index + 1);
   }
   const back = (stages) => {
-    document.querySelectorAll('audio').forEach(el => el.pause());
+    document.querySelectorAll('audio').forEach(el => {
+      el.pause();
+    });
     console.log('Stage back');
     setIndex(index - stages);
   }
