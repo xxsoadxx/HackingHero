@@ -1,122 +1,83 @@
 [
     {
-        "question": [4000,"Material of the first computer mouse?", 1000],
-        "answer": 3,
-        "options": ["Plastic","Metal","Wood","Hay"]
-    },
-    {
-        "question": [4000,"Which date is the Computer Security Day?", 1000],
-        "answer": 1,
-        "options": ["Nov 30th","May 25th","July 1st","Oct 24th"]
-    },
-    {
-        "question": [4000,"First console with a built-in modem?", 1000],
-        "answer": 2,
-        "options": ["Apple Pippin","Sega Dreamcast","Nintendo Gamecube","Sega Saturn"]
-    },
-	    {
-        "question": [4000,"What's the animal on Mozilla Firefox's logo?", 1000],
-        "answer": 4,
-        "options": ["Fox","Bear","Coyote","Panda"]
-    },
-	    {
-        "question": [4000,"Which command runs administrative permissions on Linux?", 1000],
-        "answer": 2,
-        "options": ["cp","sudo","ssh","ssl"]
-    },
-	    {
-        "question": [4000,"Name of the most expensive computer virus?", 1000],
-        "answer": 3,
-        "options": ["I Love you","Code Red","MyDoom","Covid"]
-    },
-	    {
-        "question": [4000,"Operative system developed by Sun Microsystems", 1000],
-        "answer": 2,
-        "options": ["Unix","Solaris","Oracle","Gnome"]
-    },
-	    {
-        "question": [4000,"Name of the 3D pinball game table on Windows", 1000],
-        "answer": 4,
-        "options": ["Space Rumble","Space Odyssey","Space Invader","Space Cadet"]
-    },
-	    {
-        "question": [4000,"How was Linux originally going to be named?", 1000],
-        "answer": 1,
-        "options": ["FreaX","Linus","Penguin","Lanux"]
-    },
-	    {
-        "question": [4000,"Name of the Linux mascot?", 1000],
-        "answer": 4,
-        "options": ["Rex","Mex","Lux","Tux"]
-    },
-	    {
-        "question": [4000,"Programming language in which most OS's are developed", 1000],
-        "answer": 2,
-        "options": ["Java","C",".NET","COBOL"]
-    },
-	    {
-        "question": [4000,"More than 30% of websites in the world run using this CMS", 1000],
-        "answer": 3,
-        "options": ["Joomla","Drupal","WordPress","Magento"]
-    },
-	    {
-        "question": [4000,"Largest social networking site from 2005 to 2009", 1000],
-        "answer": 3,
-        "options": ["MSN","Tumblr","MySpace","Facebook"]
-    },
-	    {
-        "question": [4000,"First eCommerce site?", 1000],
-        "answer": 1,
-        "options": ["Boston Computer Exchange","eBay","Amazon","California Holdings"]
-    },
-	    {
-        "question": [4000,"Name of the first YouTube video", 1000],
-        "answer": 2,
-        "options": ["Edgar's fall","Mee at the zoo","My Snowboarding Skillz","Youtube Test"]
-    },
-	    {
-        "question": [4000,"Name of the videogame created by Elon Musk", 1000],
-        "answer": 2,
-        "options": ["Polybius","Blastar","Pac-Man","Pulsar"]
-    },
-    {
-	    "question": [4000,"Where is the computer history museum located?", 1000],
+        "question": [1000,"Where is the computer history museum located?", 1000],
         "answer": 1,
         "options": ["California","Chicago","New York","Narnia"]
     },
     {
-        "question": [4000,"Which university did Elon Musk dropped out from?", 1000],
-        "answer": 3,
-        "options": ["Harvard","Yale","Stanford","Princeton"]
-    },
-	    {
-        "question": [4000,"Which university did Bill Gates dropped out from?", 1000],
-        "answer": 1,
-        "options": ["Harvard","Yale","Stanford","Princeton"]
-    },
-	    {
-        "question": [4000,"This music player had a llama as a mascot", 1000],
-        "answer": 4,
-        "options": ["Aimp","Windows Media","VLC","Winamp"]
-    },
-	    {
-        "question": [4000,"Name of the most famous MS Office assistant", 1000],
-        "answer": 3,
-        "options": ["Dot","Scribble","Clippy","Links"]
-    },
-	    {
-        "question": [4000,"How many levels does Pac-Man have?", 1000],
+        "question": [1000,"What was the name of the first computer virus?", 1000],
         "answer": 2,
-        "options": ["255","256","254","257"]
+        "options": ["Skeletor","Creeper","Reaper","Pac Man"]
+    },
+    {
+        "question": [1000,"Who created DOS?", 1000],
+        "answer": 3,
+        "options": ["Bill Gates","Steve Jobs","Tim Paterson","Sheldon Cooper"]
     },
 	    {
-        "question": [4000,"First home gaming console", 1000],
-        "answer": 1,
-        "options": ["Odyssey","Nintendo","Atari","Pong"]
-    },
-	    {
-        "question": [4000,"Name of Coca-Cola secret ingredient", 1000],
+        "question": [1000,"What was the name of the default Windows XP wallpaper?", 1000],
         "answer": 4,
-        "options": ["LX","A7X","K8","7X"]
+        "options": ["Praire","Nostalgia","Greenland","Happiness"]
+    },
+	    {
+        "question": [1000,"Storage capacity of a floppy disk?", 1000],
+        "answer": 2,
+        "options": ["3.5 MB","1.44 MB","5.25 MB","128 MB"]
+    },
+	    {
+        "question": [1000,"Name of the first programmable, general-purpose computer?", 1000],
+        "answer": 1,
+        "options": ["ENIAC","Deep Blue","Analytical Engine","MARTA"]
+    },
+	    {
+        "question": [1000,"Which of these lost one of the first format battles against the VHS?", 1000],
+        "answer": 3,
+        "options": ["8-track","Super 8","Betamax","VCR"]
+    },
+	    {
+        "question": [1000,"Name of the standard keyboard?", 1000],
+        "answer": 2,
+        "options": ["Magic","QWERTY","DVORAK","Key"]
+    },
+	    {
+        "question": [1000,"How was Windows originally going to be named?", 1000],
+        "answer": 3,
+        "options": ["Gates","Pear","Interface Manager","Visual Framework"]
+    },
+	    {
+        "question": [1000,"What was the name the first most deadly worm virus ever developed?", 1000],
+        "answer": 2,
+        "options": ["Worms Armageddon","I Love You","What is Love?","Baby don't hurt me"]
+    },
+	    {
+        "question": [1000,"Who created Linux?", 1000],
+        "answer": 4,
+        "options": ["Bill Gates","Richard Stallman","Tim Paterson","Linus Trovalds"]
+    },
+	    {
+        "question": [1000,"Which of these is the most hacked password?", 1000],
+        "answer": 2,
+        "options": ["password","123456","qwerty","1111111"]
+    },
+	    {
+        "question": [1000,"Which of these was Internet Explorer's first competitor?", 1000],
+        "answer": 4,
+        "options": ["Firefox","Opera","Safari","Netscape"]
+    },
+	    {
+        "question": [1000,"'615295455' would be my username in which of these platforms?", 1000],
+        "answer": 3,
+        "options": ["AOL Messenger","mIRC","ICQ","Blackberry"]
+    },
+	    {
+        "question": [1000,"What is the name of the first Apple computer?", 1000],
+        "answer": 1,
+        "options": ["Apple I","Lisa","Slow","Macintosh"]
+    },
+	    {
+        "question": [1000,"Which of these is bigger?", 1000],
+        "answer": 2,
+        "options": ["Gigabyte","Exabyte","Petabyte","Terabyte"]
     }
+    
 ]
