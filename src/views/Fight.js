@@ -24,7 +24,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
     return config.level.sort(() => Math.random() - 0.5)
   }, [config])
   const levelData = shuffled[index];
-  console.log({loopAudio})
+
   useEffect(() => {
    // console.log('useeffect index',index);
     setShowAnimation(false);
@@ -44,9 +44,6 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
         loopAudio.pause();
       }
       
-      if (audio) {
-        audio.pause();
-      }
       next()
     }
   }, [correctAnswers, lifes, next])
@@ -78,19 +75,6 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
       }
     }
   }, [introAudio])
-  useEffect(() => {
-    if (audio) {
-      audio.play();
-    }
-    return () => {
-      if (audio) {
-        audio.pause();
-      }
-    }
-  }, [audio])
-  
-
-
   
   useEffect(() => {
    // console.log('useeffect showoptions',showOptions);
@@ -186,7 +170,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
     animation=hit
   }
 
-
+  console.log({levelData})
   return (
     <div className="Screen Fight">
       <div className="content">
