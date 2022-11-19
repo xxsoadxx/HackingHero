@@ -43,7 +43,31 @@ $bs-caret: #a8a8a8;
     position: relative;
     cursor: default;
     }
-
+    .btn-confirm {
+        float: right;
+        padding: 6px;
+        background: #c0c0c0;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #fff #000 #000 #fff;
+        position: relative;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+    .inputpass {
+        width: 200px;
+        flex: 1 1;
+        border: none;
+        outline: none;
+        background: #fff;
+        color: #000;
+        margin: 20px;
+        padding: 4px;
+        line-height: 12px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #808080 #fff #fff #808080;
+    }
     a {
     cursor: default;
 
@@ -762,7 +786,11 @@ $bs-caret: #a8a8a8;
     color: $white;
     background: $d-blue;
     }
-
+    #app-pass {
+        z-index: 9;
+        left: 200px;
+        bottom: 50%;
+    }
     #app-notepad {
     left: 60px;
     bottom: 60px;
@@ -1282,7 +1310,7 @@ $bs-caret: #a8a8a8;
     }
     }
 
-    $apps: 'notepad' 'ie' 'mine';
+    $apps: 'notepad' 'ie' 'mine' 'pass';
 
     @for $i from 1 through length($apps) {
     $app: nth($apps, $i);

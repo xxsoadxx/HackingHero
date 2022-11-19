@@ -5,14 +5,10 @@ import EnterSVG from '../assets/enter.svg';
 import ReactPlayer from 'react-player';
 
 function GenericScreen({ profileImage, next, config }) {
-  const { video, image: stageImage, classes,loop, style, audio, audioSecundary, contents, onlyVideo , speed, endOnVideo, useProfileImage} = config;
+  const { videoWidth,video, image: stageImage, classes,loop, style, audio, audioSecundary, contents, onlyVideo , speed, endOnVideo, useProfileImage, secondimage,switchImageTime} = config;
   const [showEnter, setShowEnter] = useState(false);
-  let image;
-  if(useProfileImage) {
-    image = profileImage
-  } else {
-    image = stageImage
-  }
+  const [imagetoShow, setImagetoShow] = useState(useProfileImage ? profileImage: stageImage);
+  
   useEffect(() => {
     if(audio) {
       console.log('AUDIO');
@@ -33,13 +29,23 @@ function GenericScreen({ profileImage, next, config }) {
 
   
   useEffect(() => {
+    setImagetoShow(useProfileImage ? profileImage: stageImage);
     setShowEnter(false)
     if(audio) {
       console.log('AUDIO');
       audio.play();
     }
+
+    let timer = null;
+    
+    if (secondimage && switchImageTime) {
+      timer = setTimeout(() => {
+        setImagetoShow(secondimage)
+      }, switchImageTime);
+    }
     return () => {
       if(audio) audio.pause();
+      if(timer) clearTimeout(timer);
     }
   }, [config])
 
@@ -68,7 +74,7 @@ function GenericScreen({ profileImage, next, config }) {
         :
         <>
           <div className="content">
-            { image && <img src={image} className={classes} style={style} /> }
+            { imagetoShow && <img src={imagetoShow} className={classes} style={style} /> }
             { video && <ReactPlayer url={video} loop={loop || false} style={style} playing={true} onEnded={() =>{ if(endOnVideo) { next() } else { setShowEnter(true)}}} controls={false}></ReactPlayer> }
           </div>
           <div className="interactions">

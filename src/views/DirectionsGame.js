@@ -99,6 +99,24 @@ function DirectionsGame({ next, config, setStartTimer, setResetTimer }) {
       setTimeout(() => {
         setGif(null);
         setAnimating(false);
+        if(value.length === length) {
+          if (answer === value) {
+
+            setAnimating(true);
+            setGif(EndGif)
+  
+            setTimeout(() => {
+              if(audio) audio.pause();
+              next()
+            }, 4000)
+            
+          } else {
+            setGif(DenyGif)
+            denyAudio.play()
+            setValue('')
+            setResetTimer(value => value + 1)
+          }
+        }
       }, 4000)
     }
 

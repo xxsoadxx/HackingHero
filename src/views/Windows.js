@@ -3,8 +3,18 @@ import Draggable from "react-draggable";
 import ReactPlayer from 'react-player';
 import TypeWriter from '../components/TypeWriter';
 import './Windows.scss';
-const Windows = () => {
 
+const contents1 = [`We got into the server, let’s take this thing down.`, 3000,
+'What!? What is this operating system? Looks like ancient technology.', 3000,
+`It seems that the hacker used this server to send some kind of message, follow the trail he left`,
+3000];
+
+const great = [`Great work we disable the transmission lets keep moving.`, 3000]
+
+const Windows = ({next, config}) => {
+    const [clave, setClave] = useState(true)
+    const [mute, setMute] = useState(false)
+    const [transmission, setTransmission] = useState(true)
     const [state, setState] = useState({
         address: "https://ui.upshow.tv/",
         mineCode: false,
@@ -127,9 +137,87 @@ void main()
         m62: false,
         m63: false,
         m64: false,
-        poopup: false
+        poopup: false,
+        passVisibility: false,
+        pass: false,
     });
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setMute(true)
+        }, 10000)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    },[])
+    const reset = () => {
+        setState({...state,  m0: true,
+            m1: false,
+            m2: false,
+            m3: false,
+            m4: false,
+            m5: false,
+            m6: false,
+            m7: false,
+            m8: false,
+            m9: false,
+            m10: false,
+            m11: false,
+            m12: false,
+            m13: false,
+            m14: false,
+            m15: false,
+            m16: false,
+            m17: false,
+            m18: false,
+            m19: false,
+            m20: false,
+            m21: false,
+            m22: false,
+            m23: false,
+            m24: false,
+            m25: false,
+            m26: false,
+            m27: false,
+            m28: false,
+            m29: false,
+            m30: false,
+            m31: false,
+            m32: false,
+            m33: false,
+            m34: false,
+            m35: false,
+            m36: false,
+            m37: false,
+            m38: false,
+            m39: false,
+            m40: false,
+            m41: false,
+            m42: false,
+            m43: false,
+            m44: false,
+            m45: false,
+            m46: false,
+            m47: false,
+            m48: false,
+            m49: false,
+            m50: false,
+            m51: false,
+            m52: false,
+            m53: false,
+            m54: false,
+            m55: false,
+            m56: false,
+            m57: false,
+            m58: false,
+            m59: false,
+            m60: false,
+            m61: false,
+            m62: false,
+            m63: false,
+            m64: false});
+    }
 
     return (
         <>
@@ -141,10 +229,12 @@ void main()
                         <input type="checkbox" id="open-poop" checked onChange={() => { }} />
                         <input type="checkbox" id="open-notepad" checked onChange={() => { }} />
                         <input type="checkbox" id="open-mine" checked onChange={() => { }} />
+                        <input type="checkbox" id="open-pass" checked onChange={() => { }} />
                         <input type="checkbox" id="open-ie" checked onChange={() => { }} />
                         <input type="radio" name="task" id="fore-notepad" onChange={(event) => { }} checked={state.notepad} />
                         <input type="radio" name="task" id="fore-mine" onChange={(event) => { }} checked={state.mine} />
                         <input type="radio" name="task" id="fore-ie" onChange={(event) => { }} checked={state.ie} />
+                        <input type="radio" name="task" id="fore-pass" onChange={(event) => { }} checked={state.pass} />
                         <input type="radio" name="deskicon" id="focus-pc" />
                         <input type="radio" name="deskicon" id="focus-recycle" />
                         <div id="desktop">
@@ -171,15 +261,15 @@ void main()
                                 <span className="label">Start</span>
                             </label>
                             <nav id="tasklist">
-                                <label className="btn" id="task-notepad" htmlFor="fore-notepad" onClick={() => { if (!state.notepad) setState({ ...state, notepad: !state.notepad, mine: state.notepad, ie: state.notepad, notepadVisibility: !state.notepad }) }}>
+                                <label className="btn" id="task-notepad" htmlFor="fore-notepad" onClick={() => { if (!state.notepad) setState({ ...state,pass: state.notepad, notepad: !state.notepad, mine: state.notepad, ie: state.notepad, notepadVisibility: !state.notepad }) }}>
                                     <i className="sm pad"></i>
                                     <span className="label">virus.exe - Notepad</span>
                                 </label>
-                                <label className="btn" id="task-mine" onClick={() => { if (!state.mine) setState({ ...state, notepad: state.mine, mine: !state.mine, ie: state.mine, mineVisibility: !state.mine }) }}>
+                                <label className="btn" id="task-mine" onClick={() => { if (!state.mine) setState({ ...state,  pass: state.mine,notepad: state.mine, mine: !state.mine, ie: state.mine, mineVisibility: !state.mine }) }}>
                                     <i className="sm bomb"></i>
                                     <span className="label">Minesweeper</span>
                                 </label>
-                                <label className="btn" id="task-ie" htmlFor="fore-ie" onClick={() => { if (!state.ie) setState({ ...state, notepad: state.ie, mine: state.ie, ie: !state.ie, ieVisibility: !state.ie }) }}>
+                                <label className="btn" id="task-ie" htmlFor="fore-ie" onClick={() => { if (!state.ie) setState({ ...state, pass: state.ie, notepad: state.ie, mine: state.ie, ie: !state.ie, ieVisibility: !state.ie }) }}>
                                     <i className="sm globe"></i>
                                     <span className="label">Microsoft Internet Explorer - [One mind blowing fact you didn't know about CSS4]</span>
                                 </label>
@@ -246,7 +336,7 @@ void main()
                                         setState({ ...state, notepad: !state.ieVisibility, mine: !state.ieVisibility, ie: !state.ieVisibility, ieVisibility: !state.ieVisibility })
                                     }}></a>
                                     <a className="btn max" href="#error"></a>
-                                    <label className="btn close" htmlFor="open-ie"></label>
+                                    <a className="btn close" href="#error" htmlFor="open-ie"></a>
                                 </h2>
                                 <nav className="menu">
                                     <a href="#error">File</a>
@@ -269,8 +359,8 @@ void main()
                                         </div>
                                     </header>
                                     <div className="content">
-                                        <div className={`overlay hackerblink ${ state.transmission ? 'hacked' : '' }`}></div>
-                                        <ReactPlayer url={'https://www.youtube.com/watch?v=fHdaqrfXht8'} loop config={{ youtube: { playerVars: { disablekb: 1 } } }} controls={false} playing={true} />
+                                        <div className={`overlay hackerblink ${ transmission ? 'hacked' : '' }`}></div>
+                                        <ReactPlayer url={'https://www.youtube.com/watch?v=fHdaqrfXht8'} volume={1} loop config={{ youtube: { playerVars: { disablekb: 1 } } }} controls={false} muted={mute} playing={true} />
                                     </div>
                                     <footer>
                                         <div className="pane-1">&#8203;</div>
@@ -289,7 +379,7 @@ void main()
                                         setState({ ...state, notepad: !state.notepadVisibility, mine: !state.notepadVisibility, ie: !state.notepadVisibility, notepadVisibility: !state.notepadVisibility })
                                     }}></a>
                                     <a className="btn max" href="#error"></a>
-                                    <label className="btn close" htmlFor="open-notepad"></label>
+                                    <a className="btn close" href="#error" htmlFor="open-notepad"></a>
                                 </h2>
                                 <nav className="menu">
                                     <a href="#error">File</a>
@@ -302,6 +392,35 @@ void main()
                                 </div>
                             </form>
                         </Draggable>
+
+                        <Draggable handle=".handle-pass">
+                            <form id="app-pass" role="dialog" style={{ visibility: state.passVisibility ? 'visible' : 'hidden' }}>
+                                <h2 className="handle-pass">
+                                    <label className="label" htmlFor="fore-pass" onClick={() => { if (!state.pass) setState({ ...state, notepad: state.pass, mine: state.pass, pass: !state.pass }) }}>Enter Password</label>
+                                    <a className="btn min" href="#error"></a>
+                                    <a className="btn max" href="#error"></a>
+                                    <a className="btn close" href="#error" htmlFor="open-pass"></a>
+                                </h2>
+                                
+                                <div className="client">
+                                    <input type="text" className="inputpass" onChange={(e) => {
+                                        setClave(e.target.value);
+                                    }} style={{width: '200px'}}></input>
+                                    <br/>
+                                    
+                                    <button className="btn-confirm" onClick={(e) => {
+                                        if (clave === '24850') {
+                                            setState({ ...state, poopVisibility: false, passVisibility:false, pass: false, notepad: false, mine: false, ie: true, ieVisibility: true }); setTransmission(false);
+                                            setMute(false);
+                                            
+                                            setTimeout(() => {window.location.href='#restart';config.audio.play()}, 6000)
+                                            setTimeout(() => {next()}, 10000)
+                                        }
+                                        e.preventDefault();
+                                    }}>Confirm</button>
+                                </div>
+                            </form>
+                        </Draggable>
                         <Draggable handle=".handle-mine">
                             <form id="app-mine" role="dialog" style={{ visibility: state.mineVisibility ? 'visible' : 'hidden' }}>
                                 <h2 className="handle-mine">
@@ -311,7 +430,7 @@ void main()
                                         setState({ ...state, notepad: !state.mineVisibility, mine: !state.mineVisibility, ie: !state.mineVisibility, mineVisibility: !state.mineVisibility })
                                     }}></a>
                                     <a className="btn max" href="#error"></a>
-                                    <label className="btn close" htmlFor="open-mine"></label>
+                                    <a className="btn close" href="#error" htmlFor="open-mine"></a>
                                 </h2>
                                 <nav className="menu">
                                     <a href="#error">Game</a>
@@ -320,8 +439,9 @@ void main()
                                 <div className="client">
 
                                     {
-                                        [...Array(65).keys()].map((index) => {
-                                            const name = 'm' + index
+                                        [...Array(64).keys()].map((index) => {
+                                            const pointer = index
+                                            const name = 'm' + pointer;
                                             return (
                                                 <input type="radio" key={index} name="mine" id={name} onChange={(event) => { }} checked={state[name]} />
                                             )
@@ -331,9 +451,9 @@ void main()
                                     <header>
                                         <div className="number init"><i className="num-0"></i><i className="num-6"></i><i className="num-3"></i></div>
                                         <div className="number won lose"><i className="num-0"></i><i className="num-0"></i><i className="num-0"></i></div>
-                                        <label className="btn face init" htmlFor="m0">&#x1F642; </label>
-                                        <label className="btn face won" htmlFor="m0">&#x1F60E; </label>
-                                        <label className="btn face lose" htmlFor="m0">&#x1F635; </label>
+                                        <label className="btn face init" htmlFor="m0" >&#x1F642; </label>
+                                        <label className="btn face won" onClick={reset} htmlFor="m0">&#x1F60E; </label>
+                                        <label className="btn face lose" onClick={reset} htmlFor="m0">&#x1F635; </label>
                                         <div className="number init"><i className="num-0"></i><i className="num-0"></i><i className="num-0"></i></div>
                                         <div className="number won lose"><i className="num-0"></i><i className="num-0"></i><i className="num-1"></i></div>
                                     </header>
@@ -348,6 +468,7 @@ void main()
                                                         htmlFor={name}
                                                         className="btn"
                                                         onClick={(event) => {
+                                                            console.log({name});
                                                             const newState = { ...state }
                                                             newState[name] = !state[name]
                                                             setState(newState)
@@ -554,7 +675,7 @@ void main()
                         </Draggable>
                         <form id="poopup" role="dialog">
                             <div className="client">
-                                <label htmlFor="open-poop" onClick={() => { setState({ ...state, poopup: !state.poopup, poopVisibility: !state.poopup, transmission: false }) }}>&#x1F4A9; Exit</label>
+                                <label htmlFor="open-poop" onClick={() => { setState({ ...state, passVisibility: true, pass:true, poopup: false}); }}>&#x1F4A9; Exit</label>
                             </div>
                         </form>
                         <article id="error" className="blue">
@@ -605,26 +726,17 @@ void main()
                 </div>
 
             </div>
-            <div className="interactions">
+            <div className="interactions" style={{height: '22vh'}}>
                 {
-                    state.transmission &&
-                    <TypeWriter contents={[`We got into the server, let’s take this thing down.`, 3000,
-                    'What!? What is this operating system? Looks like ancient technology.', 3000,
-                    `It seems that the hacker used this server to send some kind of message, follow the trail he left`,
-                    3000]}
-                    speed={100}
+                    transmission &&
+                    <TypeWriter contents={contents1}
+                    speed={50}
                     onDone={() => { }} />
                 }
                 {
-                    !state.transmission && !state.m37 &&
-                    <TypeWriter contents={[`Great work you disable the transmission now we need to know what he's up to `, 3000,
-                    'That Minesweeper it seems that he wants to tell me something.']}
-                    speed={100}
-                    onDone={() => { }} />
-                }{
-                    state.m37 &&
-                    <TypeWriter contents={[`That code! where should i use it?`]}
-                    speed={100}
+                    !transmission &&
+                    <TypeWriter contents={great}
+                    speed={50}
                     onDone={() => { }} />
                 }
                 

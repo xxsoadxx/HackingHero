@@ -1,94 +1,112 @@
 [
     {
-        "question": [4000,"Question 1", 1000],
-        "answer": 1,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
-    },
-    {
-        "question": [4000,"Question 2", 1000],
+        "question": [1000,"What are Hz on a monitor?", 1000],
         "answer": 2,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["Power consumption","Refresh Rate","FPS","Dynamic Color Range"]
     },
     {
-        "question": [4000,"Question 3", 1000],
-        "answer": 3,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
-    },
-    {
-        "question": [4000,"Question 4", 1000],
-        "answer": 4,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
-    },
-    {
-        "question": [4000,"Question 5", 1000],
-        "answer": 1,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
-    },
-    {
-        "question": [4000,"Question 6", 1000],
+        "question": [1000,"More DPI's make my mouse go faster or slower?", 1000],
         "answer": 2,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["Slower","Faster","None","Both"]
     },
     {
-        "question": [4000,"Question 7", 1000],
-        "answer": 3,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
-    },
-    {
-        "question": [4000,"Question 8", 1000],
+        "question": [1000,"How does high impedance affect audio hardware?", 1000],
         "answer": 4,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["More Bass","More frequency range","More fidelity","Less volume"]
     },
-    {
-        "question": [4000,"Question 9", 1000],
+	    {
+        "question": [1000,"An urban legend says this hypotetic game caused nightmares and madness to whoever played it", 1000],
         "answer": 1,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["Polybius","Blastar","Supaplex","Pulsar"]
     },
-    
-    {
-        "question": [4000,"Question 10", 1000],
+	    {
+        "question": [1000,"You have to pay a license to use this Pantone pallete starting October 2022", 1000],
+        "answer": 3,
+        "options": ["CYMK Coated","CYMK Uncoated","CMYK Solid Coated","Metallic Coated"]
+    },
+	    {
+        "question": [1000,"Most used Linux distro", 1000],
+        "answer": 4,
+        "options": ["Suse","Mint","Fedora","Ubuntu"]
+    },
+	    {
+        "question": [1000,"This FORTRAN version added the capability for OOP", 1000],
         "answer": 1,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["FORTRAN 2003","FORTRAN 77","FORTRAN 95","FORTRAN 2008"]
     },
-    {
-        "question": [4000,"Question 11", 1000],
+	    {
+        "question": [1000,"How is it called when you see the system font prior to the real typeface to appear on a website?", 1000],
+        "answer": 1,
+        "options": ["FOUT","FOIT","FAIL","FOUL"]
+    },
+	    {
+        "question": [1000,"Which disease Edward Jenner was suffering from and tried to erradicate when he invented the vaccine?", 1000],
         "answer": 2,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["Cholera","Smallpox","HIV","EBOLA"]
     },
-    {
-        "question": [4000,"Question 12", 1000],
-        "answer": 3,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
-    },
-    {
-        "question": [4000,"Question 13", 1000],
-        "answer": 4,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
-    },
-    {
-        "question": [4000,"Question 14", 1000],
+	    {
+        "question": [1000,"What kind of reason led to the creation of ARPANET?", 1000],
         "answer": 1,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["Military","Commercial","Academic","Enviromental"]
     },
-    {
-        "question": [4000,"Question 15", 1000],
+	    {
+        "question": [1000,"How do you type \"SOS\" in Morse code?", 1000],
+        "answer": 3,
+        "options": ["·-- -·- ·--","--- ··· ---","··· --- ···","-·- --- -·-"]
+    },
+	    {
+        "question": [1000,"What's the outpout of the MacOS Calculator if you try to divide by zero?", 1000],
+        "answer": 3,
+        "options": ["Error","Divide by zero","Not a number","Undefined"]
+    },
+	    {
+        "question": [1000,"Name of the famous glitch Pokemon", 1000],
+        "answer": 4,
+        "options": ["Mewthree","Herobrine","Unknown","Missingno"]
+    },
+	    {
+        "question": [1000,"Name of the last official Winamp Skin", 1000],
+        "answer": 3,
+        "options": ["Ice","Llama","Bento","Whip"]
+    },
+	    {
+        "question": [1000,"What was the first web browser available for Windows?", 1000],
         "answer": 2,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["Internet Explorer","Cello","Lynx","Mosaic"]
     },
     {
-        "question": [4000,"Question 16", 1000],
+	    "question": [1000,"What was Comdex before it was shut down in the early 2000s?", 1000],
         "answer": 3,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["A tech recycling firm that became Newegg","An online index of web domains for sale","One of the largest technology trade shows","The first online multiplayer card game"]
     },
     {
-        "question": [4000,"Question 17", 1000],
+        "question": [1000,"In 2010, the U.S. Air Force used over 1,000 game consoles to build a supercomputer: Which one?", 1000],
+        "answer": 3,
+        "options": ["Xbox","Nintendo Wii","Play Station 3","Xbox 360"]
+    },
+	    {
+        "question": [1000,"What did the ESP button do on portable CD players?", 1000],
+        "answer": 2,
+        "options": ["Shuffled your playlist","Prevented songs from skipping","Changed your equalizer profile","Protected against electrostatic shock"]
+    },
+	    {
+        "question": [1000,"Which of the following was not a x86 CPU maker?", 1000],
+        "answer": 2,
+        "options": ["Cyrix","Motorola","IBM","VIA"]
+    },
+	    {
+        "question": [1000,"Android versions are named after dessert foods. They're also released...", 1000],
         "answer": 4,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["Every nine months","On the birthdays of visionaries","On even months because it's good luck","In alphabetical order"]
     },
-    {
-        "question": [4000,"Question 18", 1000],
+	    {
+        "question": [1000,"Where did the name \"Bluetooth\" come from?", 1000],
         "answer": 1,
-        "options": ["Opcion 1","Opcion 2","Opcion 3","Opcion 4"]
+        "options": ["A medieval Scandinavian king","An electric eel with blue teeth","A bear that loves blueberries","A Native American chieftain"]
+    },
+	    {
+        "question": [1000,"The original iPod had an Easter Egg accessed by holding down the center button for a few seconds on the \"About\" menu. What was it?", 1000],
+        "answer": 1,
+        "options": ["A version of the game Breakout for Atari","Pac-Man with the Apple logo as the main character","Solitaire with Apple executives on the cards","Steve Jobs was strictly against Easter Eggs"]
     }
-    
 ]

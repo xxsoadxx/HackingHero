@@ -13,6 +13,7 @@ import GameIntroAudio from './assets/game-intro.mp3';
 import BeforeFerrariFileAudio from './assets/before-ferrari.mp3';
 import PictureAudio from './assets/what-a-great-picture.mp3';
 import TotoFileAudio from './assets/toto.mp3';
+import io from 'socket.io-client';
 
 import AfterFerrariFile from './assets/after-ferrari.mp3';
 import TotoLoopFileAudio from './assets/toto-loop.mp3';
@@ -36,7 +37,7 @@ import Nave from './assets/Blastoff.m4v'
 import speed from './assets/speed.gif';
 import footage from './assets/footage.m4v'
 
-import Ending from './assets/Ending.m4v';
+import Ending from './assets/ending.mp4';
 
 import Laught from './assets/laught.wav';
 import NeonAudioFile from './assets/neon-city.mp3';
@@ -52,6 +53,7 @@ import colorscodeImg from './assets/colorscode.png';
 import map from './assets/map.png';
 import spaceship from './assets/spaceship.png';
 import mapquest from './assets/mapquest.png';
+import camerascene from './assets/camera.png';
 
 import toto_still from './assets/toto_still.png';
 import toto_laugh from './assets/toto_laugh.gif';
@@ -102,29 +104,35 @@ import QuizFile from './assets/quiz2.mp3';
 import PreFightLaser from './assets/prelaserfight.mp3';
 import ShipVideo2 from './assets/ship.gif';
 import LaserTalkAngry from './assets/laser_new_talk_angry.gif';
+import LaserReveal from './assets/laser_reveal.gif';
 
 import battleLaserintro from './assets/battle-laser-intro.mp3';
 import battleLaserloop from './assets/battle-laser-loop.mp3';
 
-
+import Mask from './assets/mask.png';
 import sound1 from './assets/1.m4a'
 import sound2 from './assets/2.m4a'
 import sound3 from './assets/3.m4a'
 import sound4 from './assets/4.m4a'
 import sound5 from './assets/5.m4a'
 import sound6 from './assets/6.m4a'
+import complete from './assets/complete.m4a'
 
+import windowssound from './assets/windows.mp3';
 const Note1 = new Audio(sound1)
 const Note2 = new Audio(sound2)
 const Note3 = new Audio(sound3)
 const Note4 = new Audio(sound4)
 const Note5 = new Audio(sound5)
 const Note6 = new Audio(sound6)
-
-
+const Complete = new Audio(complete)
+const WindowsSound = new Audio(windowssound)
 const preloadSrcList = [
+  Mask,
+  camerascene,
   ShipVideo2,
   LaserTalkAngry,
+  LaserReveal,
   Crater,
   message,
   laser_still,
@@ -303,9 +311,9 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents:[`Wow! You’re so ugly! Your mom must have got a ton of fines for littering when she dropped you off at school!`, 2000] } },
   { Component: FightView, config: { introAudio:TotoIntroAudio, loopAudio:TotoLoopAudio,talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 40, lifes: 4 } },
   { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, style:{ width: '250px'}, image:bert_talking, contents:[`I can’t believe you’re that smart,\nI cannot be beaten here, I need to warn the Master!`, 2000] } },
-  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, contents:[`He’s escaping! Follow him!`, 2000] } },
-  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, contents:[`It’s too fast, we missed him.`, 2000] } },
-  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, contents:[`Luckily we have this huge camera system, let’s check if we can see its escape route.`, 2000] } },
+  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, image:Q81V, speed: 50, contents:[`He’s escaping! Follow him!`, 2000] } },
+  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, useProfileImage: true, speed: 50, contents:[`It’s too fast, we missed him.`, 2000] } },
+  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, image:camerascene, contents:[`Luckily we have this huge camera system, let’s check if we can see its escape route.`, 2000] } },
   { Component: GenericScreenView, config: { video: footage, contents:['Screen 1 Text', 2000], onlyVideo: true } },
   { Component: GenericScreenView, config: { audio: AfterFerrariAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`WTF!? He’s driving a Ferrari F40?\nAliens must be loaded!\n\nSo, were you able to see where it went?`, 2000] } },
   { Component: SequenceGameView, config: { audio: AfterFerrariAudio, contents:['Type the correct sequence of the escape path.', 2000] , answer: '25413', length: 5 , video:footage} },
@@ -335,9 +343,26 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio:RageRunAudio, classes: 'animate__zoomOutRight', speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Ahhhh!! I’m sorry master.`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`After him!`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:phone, contents:[`Wait, he forgot his cellphone! It’s locked but it has something sticked on its back.`, 2000] } },
+  
+  
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Incoming videocall...`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserTalkAngry, contents:[`Hey! You better stop interfiering with my plans, it’s useless to resist!`, 2000] } },
+   
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Who are you?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserReveal, secondimage: laser_new_talk_otro, switchImageTime: 4000, contents:[`Heh, allow me to introduce myself. They call me Laser.`, 2000] } },
+ 
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Wait! Are you hu... human?!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserTalkAngry, contents:[`Something like that, at least I was before I became a cyborg and travelled to this planet. But enough chit-chat, enjoy your stay at Bogmire while I conquer humankind.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserTalkAngry, contents:[`BWAH HA HA!!`, 2000] } },
+ 
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`What’s wrong with this guy!? And why is he doing this... wanting to invade Earth, for what?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, image:Mask, speed: 50, contents:[`I wonder if that mask has something to do with it...`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Now, about that cellphone...`, 2000] } },
+  
+  
   { Component: GenericCodeView, config: { audio: Quiz2Audio, style: { width: '70%'}, image: codephone, contents:['Enter the PIN:', 2000] , answer: '835', length: 3, disableHint:true } },
   { Component: GenericCodeView, config: { audio: Quiz2Audio, style: { width: '60%'}, image: book, contents:['Type the password to access the government server:', 2000] , answer: 'CORRUPTED', length: 9, disableHint:true, allowLetters:true , hideLines:true  } },
-  //WINDOWSSSS
+  { Component: WindowsView, config: { audio: WindowsSound } },
   { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents:[`It stopped!`, 2000] } },
   { Component: GenericScreenView, config: { audio:PreFightLaserAudio, speed: 50, image:LaserTalkAngry, contents:[`You bastards cut my signal!\nYou’ll pay for this.`, 2000] } },
   { Component: GenericScreenView, config: { audio:PreFightLaserAudio, style: { width: '75%'} , image: ShipVideo2, speed: 50, contents:[`It doesn’t matter, I’ll just smash you and get the signal back online.`, 2000] } },
@@ -349,14 +374,14 @@ const STAGES = [
   { Component: GenericScreenView, config: {  speed: 50, image:laser_laugh_fgt, classes: 'animate__zoomOutRight', contents:[`BWA HA HA!`, 2000] } },
   { Component: GenericScreenView, config: {  speed: 50, useProfileImage: true, contents:[`Everyone’s been brainwashed, we need to restore everything back to normal.`, 2000] } },
   
-  { Component: GenericScreenView, config: { speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`, 2000] } },
+  { Component: GenericScreenView, config: { audio:Complete, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`, 2000] } },
 
   { Component: SoundGameView, config: { contents:['Use this synthetizer to play the correct melody.', 2000] , answer: '111231456', length: 9 } },
-  { Component: GenericScreenView, config: { speed: 50,video:Ending, onlyVideo: true ,contents:[`Humanity has been returned back to normal!`, 2000] } },
+  { Component: GenericScreenView, config: { videoWidth: '500px', speed: 50,video:Ending, onlyVideo: true ,contents:[`Humanity has been returned back to normal!`, 2000] } },
   
 
   /*{ Component: ScreenView, duration: 0, audio: intro },
-  { Component: Windows, duration: 0 },
+  
   { Component: MazeView, duration: 0 },*/
 ]
 
@@ -369,7 +394,9 @@ function App() {
   const [showTimer, setShowTimer] = useState(false);
   const [index, setIndex] = useState(0);
   const [laughImage, setLaughImage] = useState(null);
-  const [offsetTimestamp, setOffsetTimestamp] = useState(new Date());
+
+  const [penalty, setPenalty] = useState(0);
+  const [offsetTimestamp, setOffsetTimestamp] = useState(null);
   const [showLooser, setShowLooser] = useState(false);
   const [state, setState] = useState(null);
 
@@ -379,6 +406,7 @@ function App() {
   
 
   useEffect(() => {
+    const socket = io.connect('https://hacking-hero.herokuapp.com/');
     const storage = JSON.parse(localStorage.getItem('state'));
     if (storage) {
       console.log('storage', storage)
@@ -386,12 +414,14 @@ function App() {
     }
   }, []);
 
+
   useEffect(() => {
     if (state) {
       setProfileImage(state?.profileImage)
       setShowEnergy(state?.showEnergy)
       setEnergy(state?.energy)
       setStartTimer(state?.startTimer)
+      setResetTimer(state?.resetTimer)
       setShowTimer(state?.showTimer)
       setIndex(state?.index)
       setLaughImage(state?.laughImage)
@@ -460,7 +490,7 @@ function App() {
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
 
   if (!imagesPreloaded) {
-    return <p>Preloading Assets</p>
+    return <div className="row"> <div className="mario"></div>Preloading Assets</div>
   }
 
   return (
@@ -469,7 +499,7 @@ function App() {
 
       { showTimer && 
         <div className="timer"> 
-         <Timer startTimer={startTimer} resetTimer={resetTimer} offsetTimestamp={offsetTimestamp} setOffsetTimestamp={setOffsetTimestamp}/>
+         <Timer startTimer={startTimer} resetTimer={resetTimer} penalty={penalty} offsetTimestamp={offsetTimestamp} setOffsetTimestamp={setOffsetTimestamp}/>
         </div>
       }
       {
@@ -499,7 +529,7 @@ function App() {
 export default App;
 
 const Timer = ({startTimer,resetTimer, offsetTimestamp, setOffsetTimestamp}) => {
-
+  
 
   const {
     seconds,
@@ -510,29 +540,42 @@ const Timer = ({startTimer,resetTimer, offsetTimestamp, setOffsetTimestamp}) => 
     start,
     pause,
     reset,
-  } = useStopwatch({ autoStart: false });
+  } = useStopwatch({ autoStart: false});
 
   useEffect(() => {
     if(startTimer) {
-      start()
+      console.log('start')
+      
+      if (!offsetTimestamp) setOffsetTimestamp(new Date())
+
+      start();
+
+      console.log({resetTimer});
+      if(resetTimer > 0) {
+        const newDate = new Date();
+        const penalty = resetTimer * 300
+        const secs = (newDate.getTime() - offsetTimestamp.getTime()) / 1000 ;
+        
+        console.log({secs, resetTimer, penalty})
+        reset(newDate.setSeconds( newDate.getSeconds() + secs + penalty))
+      }
     }
   },[startTimer]);
+
   useEffect(() => {
-    console.log('resetTimer', resetTimer);
-    console.log('offsetTimestamp', offsetTimestamp);
-    if(resetTimer > 0 && offsetTimestamp) {
-      console.log('reset timer')
-      const newOffset = offsetTimestamp; 
-      console.log('offsetTimestamp', offsetTimestamp);
-      console.log('newOffset', newOffset);
-      newOffset.setSeconds(newOffset.getSeconds() + 300)
-      setOffsetTimestamp(newOffset);
-      reset(offsetTimestamp)
-    } else if(resetTimer === 0 && offsetTimestamp && startTimer) {
-      reset(offsetTimestamp)
+    if(resetTimer > 0) {
+      const newDate = new Date();
+      const penalty = resetTimer * 300
+      const secs = (newDate.getTime() - offsetTimestamp.getTime()) / 1000 ;
+      
+      console.log({secs, resetTimer, penalty})
+      reset(newDate.setSeconds( newDate.getSeconds() + secs + penalty))
     }
     
   },[resetTimer]);
+
+  
+  
 
   return (<div style={{fontSize: '16px'}}>
           <span>TIME {hours > 9 ? hours : '0' + hours.toString() }</span>:<span>{minutes > 9 ? minutes : '0' + minutes.toString() }</span>:<span>{seconds > 9 ? seconds : '0' + seconds.toString() }</span>

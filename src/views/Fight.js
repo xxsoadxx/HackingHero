@@ -182,7 +182,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
             
             <div className="text-zone">
             <TypeWriter contents={levelData.question}
-              speed={100}
+              speed={50}
               cursor={false}
               onDone={onDone} />
             </div>

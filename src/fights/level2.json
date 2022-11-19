@@ -72,7 +72,7 @@
 	    {
         "question": [1000,"Name of the first YouTube video", 1000],
         "answer": 2,
-        "options": ["Edgar's fall","Mee at the zoo","My Snowboarding Skillz","Youtube Test"]
+        "options": ["Edgar's fall","Me at the zoo","My Snowboarding Skillz","Youtube Test"]
     },
 	    {
         "question": [1000,"Name of the videogame created by Elon Musk", 1000],
@@ -118,5 +118,55 @@
         "question": [1000,"Name of Coca-Cola secret ingredient", 1000],
         "answer": 4,
         "options": ["LX","A7X","K8","7X"]
+    },
+    {
+	    "question": [1000,"Unit to measure audio volume", 1000],
+        "answer": 1,
+        "options": ["dB","100","Ω","W"]
+    },
+	    {
+        "question": [1000,"Name of the spaceship you used to get here", 1000],
+        "answer": 3,
+        "options": ["Nautilus","Gradius","Vic Viper","Star Blazer"]
+    },
+    {
+	    "question": [1000,"Where is the computer history museum located?", 1000],
+        "answer": 1,
+        "options": ["California","Chicago","New York","Narnia"]
+    },
+    {
+        "question": [1000,"Name of the computer's network port?", 1000],
+        "answer": 2,
+        "options": ["UTP","RJ45","LPT","Serial"]
+    },
+	    {
+        "question": [1000,"What does USB stand for?", 1000],
+        "answer": 3,
+        "options": ["Universal Socket Bus","Unique Side Bastard","Universal Serial Bus","Universal Standard Bus"]
+    },
+	{
+        "question": [1000,"Windows propietary sound format", 1000],
+        "answer": 4,
+        "options": [".wav",".mp3",".m4v",".wma"]
+    },
+	    {
+        "question": [1000,"Software used to bypass antipiracy measures", 1000],
+        "answer": 2,
+        "options": ["Hack","Crack","Nozip","Nulled"]
+    },
+	    {
+        "question": [1000,"Which of these colors require most power on a LED monitor?", 1000],
+        "answer": 3,
+        "options": ["Red","Green","Blue","Black"]
+    },
+	    {
+        "question": [1000,"Conventional, non-mechanical keyboards use this instead", 1000],
+        "answer": 2,
+        "options": ["Switches","Membrane","Keycap","Spring"]
+    },
+	    {
+        "question": [1000,"One of these is a standard for monitor mounts", 1000],
+        "answer": 4,
+        "options": ["MESA","LESA","BESA","VESA"]
     }
 ]

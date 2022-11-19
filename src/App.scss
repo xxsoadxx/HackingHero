@@ -211,3 +211,163 @@
     animation-fill-mode: forwards;
     animation-delay: 2s;
   }
+
+
+  $size: 6px; //size of pixels
+$tick: 0.2s;
+$b0: transparent;
+$b1: #000; //black
+$b2: #fff; //white
+$b3: #fbbcb1; //mario skin
+$b4: #d62a16; //red suit
+$b5: #9ffbf0; //sky blue
+
+
+@mixin pixelmatic-lr($art, $size: 10px){
+  display: block;
+  height: $size;
+  width: $size;
+  $shadow: 0 0 transparent;
+  @for $y from 1 through length($art){
+    @for $x from 1 through length(nth($art, $y)){
+      $shadow: $shadow
+      + ", " + 
+      ($x * $size)
+      + " " + 
+      ($y * $size) 
+      + " " + 
+      nth(nth($art, $y), $x) ;
+    }
+  }
+  box-shadow: unquote($shadow);
+}
+@mixin pixelmatic-ud($art, $size: 10px){
+  display: block;
+  height: $size;
+  width: $size;
+  $shadow: 0 0 transparent;
+  @for $x from 1 through length($art){
+    @for $y from 1 through length(nth($art, $x)){
+      $shadow: $shadow
+      + ", " + 
+      ($x * $size)
+      + " " + 
+      ($y * $size) 
+      + " " + 
+      nth(nth($art, $x), $y) ;
+    }
+  }
+  box-shadow: unquote($shadow);
+}
+
+$mario1: 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b1 $b0 $b1 $b1 $b1 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b4 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b4 $b4 $b4 $b4 $b4 $b1 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b3 $b1 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b1 $b3 $b3 $b3 $b1 $b3 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b1 $b1 $b3 $b3 $b3 $b1 $b3 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b1 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b1 $b3 $b3 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b3 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b3 $b3 $b3 $b3 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b1 $b4 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b1 $b1 $b3 $b3 $b3 $b1, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b1 $b1 $b3 $b3 $b1, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b0, 
+  $b0 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0, 
+  $b1 $b1 $b4 $b3 $b3 $b4 $b4 $b3 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b3 $b1 $b0 $b0, 
+  $b1 $b4 $b4 $b3 $b3 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b3 $b1 $b0 $b0, 
+  $b1 $b4 $b4 $b3 $b3 $b4 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b1 $b4 $b3 $b3 $b4 $b1 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b1 $b1 $b1 $b1 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b4 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b0 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0,
+  ;
+$mario2: 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b1 $b0 $b1 $b1 $b1 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b4 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b4 $b4 $b4 $b4 $b4 $b1 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b3 $b1 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b1 $b3 $b3 $b3 $b1 $b3 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b1 $b1 $b3 $b3 $b3 $b1 $b3 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b1 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b1 $b3 $b3 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b3 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b3 $b3 $b3 $b3 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0 $b0 $b0, 
+  $b0 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0, 
+  $b1 $b4 $b4 $b1 $b1 $b0 $b1 $b1 $b1 $b1 $b4 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b1 $b1 $b3 $b3 $b3 $b1, 
+  $b1 $b4 $b4 $b3 $b1 $b1 $b3 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b1 $b1 $b3 $b3 $b1, 
+  $b1 $b4 $b3 $b3 $b3 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b0, 
+  $b1 $b3 $b3 $b3 $b4 $b4 $b1 $b1 $b1 $b3 $b3 $b1 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0, 
+  $b0 $b1 $b3 $b4 $b4 $b4 $b3 $b3 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b1 $b1 $b4 $b3 $b3 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b4 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b0 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0,
+  ;
+$mario3: 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b1 $b0 $b1 $b1 $b1 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b4 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b4 $b4 $b4 $b4 $b4 $b1 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b4 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b3 $b1 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b1 $b3 $b3 $b3 $b1 $b3 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b1 $b1 $b3 $b3 $b3 $b1 $b3 $b1 $b3 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b1 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b1 $b3 $b3 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b3 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b3 $b3 $b3 $b3 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b0 $b0 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b1 $b4 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b1 $b1 $b3 $b3 $b3 $b1, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b1 $b1 $b3 $b3 $b1, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b3 $b3 $b3 $b3 $b3 $b1 $b4 $b4 $b4 $b1 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b3 $b3 $b1 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b0 $b0 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b0 $b1 $b1 $b3 $b3 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b3 $b3 $b1 $b1 $b3 $b1 $b0 $b0, 
+  $b0 $b0 $b1 $b4 $b4 $b3 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b1 $b4 $b4 $b4 $b4 $b1 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0, 
+  $b0 $b1 $b3 $b4 $b4 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0, 
+  $b1 $b3 $b3 $b3 $b4 $b1 $b4 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b1 $b4 $b3 $b3 $b3 $b1 $b4 $b4 $b1 $b4 $b4 $b1 $b1 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b1 $b4 $b4 $b3 $b1 $b0 $b1 $b1 $b0 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0, 
+  $b0 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0,
+  ;
+.row{
+  width: $size*26;
+  height: $size*30;
+  margin: 0 auto;
+  position: absolute;
+  top: 37%;
+    left: 43%;
+    text-align: center;
+}
+.mario {
+  margin-bottom: 171px;
+  @include pixelmatic-lr($mario1, $size);
+  animation: fly $tick infinite;
+}
+
+@keyframes fly {
+  0% { @include pixelmatic-lr($mario1, $size);}
+  33% { @include pixelmatic-lr($mario2, $size);}
+  66% { @include pixelmatic-lr($mario3, $size);}
+}
+
