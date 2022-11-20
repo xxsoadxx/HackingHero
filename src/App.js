@@ -396,7 +396,12 @@ const STAGES = [
   { Component: MazeView, duration: 0 },*/
 ]
 
+const search = window.location.search;
+const params = new URLSearchParams(search);
+const mode = params.get('mode');
+
 function App() {
+
 
   const [gameId, setGameId] = useState(uuid());
   const [ioSocket, setIoSocket] = useState(null);
@@ -512,10 +517,10 @@ function App() {
     setIndex(index - stages);
   }
   const onKeyDown = (key) => {
-    if(key === 'Escape') {
+    if(key === 'Escape' && mode === 'dev') {
         next()
     }
-    if(key === '0') {
+    if(key === '0' && mode === 'dev') {
       back(1)
   }
   }
@@ -523,7 +528,7 @@ function App() {
 
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
 
-  if (!imagesPreloaded) {
+  if (!imagesPreloaded || !soundEnabled) {
     return <>
       <MatrixRainingLetters key="foo-bar" custom_class="m-0 p-0" />
       <div className="row2"><TypeWriter contents={loadingContents}

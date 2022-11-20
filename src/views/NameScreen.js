@@ -49,8 +49,7 @@ function NameScreen({ next, config, setTeamName, profileImage}) {
         return value.slice(0, -1)
       })
     }
-    if(allowLetters) {
-      if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"].includes(key.toString().toUpperCase())) {
+    if (key !== 'Backspace' && key !== 'Enter' && key !== 'Shift' && key !== 'Alt' && key !== 'Meta' && key !== 'Tab' && key !== 'Control' && key !== 'CapsLock') {
         setValue((value) => {
           if (length > 0 && length > value.length) {
             return value + key.toString().toUpperCase()
@@ -58,18 +57,10 @@ function NameScreen({ next, config, setTeamName, profileImage}) {
           return value;
   
         });
+      
+
       }
-    } else {
-      if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(key)) {
-        setValue((value) => {
-          if (length > 0 && length > value.length) {
-            return value + key.toString()
-          }
-          return value;
   
-        });
-      }
-    }
     
   }
   console.log('CodeGeneric showHelp', showHelp)
