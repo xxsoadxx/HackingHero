@@ -7,7 +7,7 @@ import './Splash.scss';
 const audio = new Audio(Music);
 
 
-function Splash({ next, config: { duration }}) {
+function Splash({ setOffsetTimestamp, next, config: { duration }}) {
     const [showEnter, setShowEnter] = useState(false);
     useEffect(() => {
         if (duration > 0) {
@@ -25,6 +25,7 @@ function Splash({ next, config: { duration }}) {
 
     const onKeyDown = (key) => {
         if(key === 'Enter' && showEnter) {
+            setOffsetTimestamp(new Date())
             next()
         }
     }

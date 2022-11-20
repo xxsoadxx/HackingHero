@@ -5,7 +5,7 @@ import EnterSVG from '../assets/enter.svg';
 import Webcam from "react-webcam";
 const text = ['Press enter to confirm or shift to take again',500];
 
-function TakePictureScreen({ setProfileImage, next, config }) {
+function TakePictureScreen({ setProfileImage, next, config, ioSocket, gameId }) {
   const { audio, contents, speed } = config;
   const [showEnter, setShowEnter] = useState(false);
   const [enableAction, setEnableAction] = useState(false);
@@ -40,6 +40,7 @@ function TakePictureScreen({ setProfileImage, next, config }) {
     console.log(key);
     if(key === 'Enter' && showEnter && enableAction  ) {
         setProfileImage(image);
+        ioSocket?.emit('updateImage', {gameId, image})
         next()
     }
     if(key === ' ' && !showEnter && enableAction) {

@@ -350,6 +350,13 @@ $mario3:
   $b1 $b4 $b4 $b3 $b1 $b0 $b1 $b1 $b0 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0, 
   $b0 $b1 $b1 $b1 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0 $b0,
   ;
+
+ .row2 {
+    width: 100%;
+    position: absolute;
+    top: 44%;
+    text-align: center;
+}
 .row{
   width: $size*26;
   height: $size*30;
@@ -359,6 +366,14 @@ $mario3:
     left: 43%;
     text-align: center;
 }
+
+.sound{
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+}
+
 .mario {
   margin-bottom: 171px;
   @include pixelmatic-lr($mario1, $size);

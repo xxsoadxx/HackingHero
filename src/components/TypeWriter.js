@@ -89,7 +89,7 @@ const TypeWriter = ({ contents = [], speed = 1000, onDone, cursor = true }) => {
     }, [ended]);
 
 
-    return <p className={`${cssStyle}`} >{displayedContent}</p>;
+    return <p className={`${cssStyle}`} style={{ marginTop: '0', whiteSpace: 'pre-line' }} >{displayedContent}</p>;
 };
 
 export default TypeWriter;

@@ -2,6 +2,8 @@ import React, { useEffect, useState, Suspense, lazy } from 'react';
 import './App.scss';
 import Splash from './views/Splash';
 import GenericScreen from './views/GenericScreen';
+import NameScreen from './views/NameScreen';
+import { MatrixRainingLetters } from "react-mdr";
 import GenericCode from './views/GenericCode';
 import TakePictureScreen from './views/TakePictureScreen'
 import AllReady from './views/AllReady'
@@ -14,6 +16,7 @@ import BeforeFerrariFileAudio from './assets/before-ferrari.mp3';
 import PictureAudio from './assets/what-a-great-picture.mp3';
 import TotoFileAudio from './assets/toto.mp3';
 import io from 'socket.io-client';
+import uuid from 'react-uuid';
 
 import AfterFerrariFile from './assets/after-ferrari.mp3';
 import TotoLoopFileAudio from './assets/toto-loop.mp3';
@@ -108,7 +111,7 @@ import LaserReveal from './assets/laser_reveal.gif';
 
 import battleLaserintro from './assets/battle-laser-intro.mp3';
 import battleLaserloop from './assets/battle-laser-loop.mp3';
-
+import TypeWriter from './components/TypeWriter';
 import Mask from './assets/mask.png';
 import sound1 from './assets/1.m4a'
 import sound2 from './assets/2.m4a'
@@ -119,6 +122,7 @@ import sound6 from './assets/6.m4a'
 import complete from './assets/complete.m4a'
 
 import windowssound from './assets/windows.mp3';
+
 const Note1 = new Audio(sound1)
 const Note2 = new Audio(sound2)
 const Note3 = new Audio(sound3)
@@ -264,6 +268,8 @@ const GenericCodeView = (props) => <GenericCode {...props} />;
 const SoundGameView = (props) => <SoundGame {...props} />
 const WindowsView = (props) => <Windows {...props} />
 const FightView = (props) => <Fight {...props} />
+const NameScreenView = (props) => <NameScreen {...props} />
+const loadingContents = ['Preloading Assets...',5000,'Loading...',5000,'Connecting to server...',5000,'Preloading Assets...',5000];
 const STAGES = [
   
   { Component: SplashView, config: {} },
@@ -280,12 +286,17 @@ const STAGES = [
 
   ////
   { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, image:equalizer, contents:[`Hi!\n\n This is an audiovisual experience, so please turn on your speakers. Select stuff with the number keys, press enter to confirm or continue.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style:{ width: '200px'}, image:timerImg, contents:[`Oh yes, that right there is your TIMER.\n The team completing the game with the less amount of time, wins.\n Don’t worry, cutscenes stop the timer, so relax and enjoy retro magic.`, 2000], showTimer: true } },
+  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style:{ width: '200px'}, image:timerImg, contents:[`Oh yes, that right there is your TIMER.\n The team completing the game with the less amount of time, wins.`, 2000], showTimer: true } },
   { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style:{ width: '300px'}, image:energyImg, contents:[`Aaaand that’s your ENERGY.\n Yes, there are battles in this game so give the control to the most agile member of your team.\n If you lose a battle, your energy replenishes but you’ll have to start over again and the TIMER keeps going!`, 2000], showEnergy: true } },
   { Component: AllReadyView, config: { audio: IntroAudio, image: questionImg, contents:['All set?'] }},
   { Component: TakePictureScreenView, config: {  audio: FilePictureAudio , speed: 50, contents:['Alright! Before we start, let’s take a picture of the team!\n\n Press Space when you’re all in there'] }},
+
   { Component: GenericScreenView, config: { audio: FilePictureAudio ,speed: 50, useProfileImage: true, contents:[`Wow, what a great photograph! It will always bring back the fondest of memories...\n\n Get ready!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50,style:{ width: '700px'}, image:neoncity, contents:[`Neon City, a retrofuturistic town (if that can even be a thing). Monday, 3 PM.\n\n Just another regular day at the Investigator’s office.`, 2000] } },
+  
+
+  { Component: NameScreenView, config: { audio: FilePictureAudio, contents:['I almost forgot what\'s the name of this super hacker Agency? \n Type the name and press Enter', 2000] , length: 10, allowLetters:true , hideLines:false  } },
+  
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50,style:{ width: '700px'}, image:neoncity, contents:[`Neon City, a retrofuturistic town (if that can even be a thing). Monday, 3 PM.\n\n Just another regular day at the @teamName office.`, 2000] } },
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50,style:{ width: '200px',  animation: 'shake 0.5s 400'}, audioSecundary:snd_phoneAudio,image:ringring, contents:[`RIIIING, RIIIING!\n RIIIIIG, RIIIIING!`, 2000] } },
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents:[`Ain’t you gonna pick up?\n Phone’s ringing in case you didn’t notice... must be the boss.`, 2000] } },
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Was about time kid, there’s something serious going on.\n I got a call from the PRESIDENT saying their intel agency detected unusual activity on their network.`, 2000] } },
@@ -377,7 +388,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio:Complete, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`, 2000] } },
 
   { Component: SoundGameView, config: { contents:['Use this synthetizer to play the correct melody.', 2000] , answer: '111231456', length: 9 } },
-  { Component: GenericScreenView, config: { videoWidth: '500px', speed: 50,video:Ending, onlyVideo: true ,contents:[`Humanity has been returned back to normal!`, 2000] } },
+  { Component: GenericScreenView, config: { videoWidth: '100%', videoHeigth:'100%', speed: 50, video:Ending, onlyVideo: true ,contents:[`Humanity has been returned back to normal!`, 2000] } },
   
 
   /*{ Component: ScreenView, duration: 0, audio: intro },
@@ -386,6 +397,11 @@ const STAGES = [
 ]
 
 function App() {
+
+  const [gameId, setGameId] = useState(uuid());
+  const [ioSocket, setIoSocket] = useState(null);
+  const [soundEnabled, setSoundEnabled] = useState(false);
+  const [teamName, setTeamName] = useState(null);
   const [profileImage, setProfileImage] = useState(false);
   const [showEnergy, setShowEnergy] = useState(false);
   const [energy, setEnergy] = useState(3);
@@ -395,7 +411,6 @@ function App() {
   const [index, setIndex] = useState(0);
   const [laughImage, setLaughImage] = useState(null);
 
-  const [penalty, setPenalty] = useState(0);
   const [offsetTimestamp, setOffsetTimestamp] = useState(null);
   const [showLooser, setShowLooser] = useState(false);
   const [state, setState] = useState(null);
@@ -404,19 +419,31 @@ function App() {
   console.log('Stage',Stage);
 
   
+  const detectAudio = () => {
+    setSoundEnabled(true)
+  }
 
   useEffect(() => {
     const socket = io.connect('https://hacking-hero.herokuapp.com/');
+    setIoSocket(socket);
     const storage = JSON.parse(localStorage.getItem('state'));
     if (storage) {
       console.log('storage', storage)
       setState(storage);
     }
+
+    window.addEventListener("click", detectAudio);
+    return () => {
+        window.removeEventListener("click", detectAudio);
+    };
+
   }, []);
 
 
   useEffect(() => {
     if (state) {
+      setGameId(state?.gameId)
+      setTeamName(state?.teamName)
       setProfileImage(state?.profileImage)
       setShowEnergy(state?.showEnergy)
       setEnergy(state?.energy)
@@ -434,9 +461,13 @@ function App() {
 
    useEffect(() => {
      //console.log('offsetTimestamp', offsetTimestamp);
-      localStorage.setItem('state', JSON.stringify({profileImage, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser}));
-  }, [profileImage, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser])
-
+      localStorage.setItem('state', JSON.stringify({gameId,profileImage,teamName, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser}));
+      if(index > 0) {
+        ioSocket?.emit('updateState', {gameId,teamName, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser})
+      }
+     
+      
+  }, [profileImage, teamName, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser])
 
   useEffect(() => {
     if(Stage.config.showTimer) {
@@ -490,16 +521,22 @@ function App() {
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
 
   if (!imagesPreloaded) {
-    return <div className="row"> <div className="mario"></div>Preloading Assets</div>
+    return <>
+      <MatrixRainingLetters key="foo-bar" custom_class="m-0 p-0" />
+      <div className="row2"><TypeWriter contents={loadingContents}
+                speed={150}
+                onDone={()=>{}} /> </div>
+      {!soundEnabled && <p className="sound">Click on the screen to enable sound</p>}
+    </>
   }
 
   return (
     <div className="App">
-      <Stage.Component profileImage={profileImage} setProfileImage={setProfileImage} setEnergy={setEnergy} index={index} next={next} back={back} setStartTimer={setStartTimer} setResetTimer={setResetTimer} config={Stage.config} />
+      <Stage.Component profileImage={profileImage} ioSocket={ioSocket} gameId={gameId} setOffsetTimestamp={setOffsetTimestamp} teamName={teamName} setProfileImage={setProfileImage} setTeamName={setTeamName} setEnergy={setEnergy} index={index} next={next} back={back} setStartTimer={setStartTimer} setResetTimer={setResetTimer} config={Stage.config} />
 
-      { showTimer && 
+      { showTimer &&
         <div className="timer"> 
-         <Timer startTimer={startTimer} resetTimer={resetTimer} penalty={penalty} offsetTimestamp={offsetTimestamp} setOffsetTimestamp={setOffsetTimestamp}/>
+         <Timer startTimer={startTimer} resetTimer={resetTimer} offsetTimestamp={offsetTimestamp} setOffsetTimestamp={setOffsetTimestamp}/>
         </div>
       }
       {

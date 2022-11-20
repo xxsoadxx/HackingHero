@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import TypeWriter from '../components/TypeWriter';
 import KeyPress from '../components/KeyPress';
 import EnterSVG from '../assets/enter.svg';
 import ReactPlayer from 'react-player';
 
-function GenericScreen({ profileImage, next, config }) {
-  const { videoWidth,video, image: stageImage, classes,loop, style, audio, audioSecundary, contents, onlyVideo , speed, endOnVideo, useProfileImage, secondimage,switchImageTime} = config;
+function GenericScreen({ profileImage, next, config, teamName }) {
+  const { videoWidth, videoHeigth,video, image: stageImage, classes,loop, style, audio, audioSecundary, contents: contentConf, onlyVideo , speed, endOnVideo, useProfileImage, secondimage,switchImageTime} = config;
   const [showEnter, setShowEnter] = useState(false);
   const [imagetoShow, setImagetoShow] = useState(useProfileImage ? profileImage: stageImage);
-  
+  const contents = useMemo( () => {
+    return contentConf.map((c) => {
+      if(typeof(c) === 'string') {
+        return c.replace('@teamName', teamName);
+      } else {
+        return c
+      }
+    });
+  }, [contentConf, teamName]);
+
   useEffect(() => {
     if(audio) {
       console.log('AUDIO');
@@ -70,7 +79,7 @@ function GenericScreen({ profileImage, next, config }) {
     
     <div className="Screen">
       { onlyVideo ? 
-        <ReactPlayer url={video} style={style} playing={true} onEnded={() => next()} controls={false}></ReactPlayer>
+        <ReactPlayer url={video} width={videoWidth} height={videoHeigth} style={style} playing={true} onEnded={() => next()} controls={false}></ReactPlayer>
         :
         <>
           <div className="content">
