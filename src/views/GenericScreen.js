@@ -5,7 +5,7 @@ import EnterSVG from '../assets/enter.svg';
 import ReactPlayer from 'react-player';
 
 function GenericScreen({ profileImage, next, config, teamName }) {
-  const { videoWidth, videoHeigth,video, image: stageImage, classes,loop, style, audio, audioSecundary, contents: contentConf, onlyVideo , speed, endOnVideo, useProfileImage, secondimage,switchImageTime} = config;
+  const {onDone: redirect, videoWidth, videoHeigth,video, image: stageImage, classes,loop, style, audio, audioSecundary, contents: contentConf, onlyVideo , speed, endOnVideo, useProfileImage, secondimage,switchImageTime} = config;
   const [showEnter, setShowEnter] = useState(false);
   const [imagetoShow, setImagetoShow] = useState(useProfileImage ? profileImage: stageImage);
   const contents = useMemo( () => {
@@ -72,14 +72,14 @@ function GenericScreen({ profileImage, next, config, teamName }) {
         next()
     }
   }
-
+  const onEnded = redirect || function () { next() }
 
   return (
 
     
     <div className="Screen">
       { onlyVideo ? 
-        <ReactPlayer url={video} width={videoWidth} height={videoHeigth} style={style} playing={true} onEnded={() => next()} controls={false}></ReactPlayer>
+        <ReactPlayer url={video} width={videoWidth} height={videoHeigth} style={style} playing={true} onEnded={onEnded} controls={false}></ReactPlayer>
         :
         <>
           <div className="content">

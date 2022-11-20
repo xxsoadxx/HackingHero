@@ -388,7 +388,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio:Complete, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`, 2000] } },
 
   { Component: SoundGameView, config: { contents:['Use this synthetizer to play the correct melody.', 2000] , answer: '111231456', length: 9 } },
-  { Component: GenericScreenView, config: { videoWidth: '100%', videoHeigth:'100%', speed: 50, video:Ending, onlyVideo: true ,contents:[`Humanity has been returned back to normal!`, 2000] } },
+  { Component: GenericScreenView, config: { onDone: () => { window.location.href = 'https://xxsoadxx.github.io/HackingHero/rank'} ,videoWidth: '100%', videoHeigth:'100%', speed: 50, video:Ending, onlyVideo: true ,contents:[`Humanity has been returned back to normal!`, 2000] } },
   
 
   /*{ Component: ScreenView, duration: 0, audio: intro },
