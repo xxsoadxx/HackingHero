@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -7,7 +7,7 @@ import Rank from './views/Rank';
 
 function RoutesApp() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/">
             <Route index element={<App />} />
@@ -15,7 +15,7 @@ function RoutesApp() {
             <Route path="*" element={<App />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 
