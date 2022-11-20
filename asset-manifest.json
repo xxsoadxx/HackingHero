@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/HackingHero/static/css/main.6c334040.css",
-    "main.js": "/HackingHero/static/js/main.66b0c705.js",
+    "main.css": "/HackingHero/static/css/main.14ce8aab.css",
+    "main.js": "/HackingHero/static/js/main.2af35a3f.js",
     "static/media/speed.gif": "/HackingHero/static/media/speed.2da87d807743ad39f8f5.gif",
     "static/media/footage.m4v": "/HackingHero/static/media/footage.027fcd2ecc6e7e9078b7.m4v",
     "static/media/wrong.gif": "/HackingHero/static/media/wrong.ac23cb6c3c147b21e610.gif",
@@ -88,11 +88,11 @@
     "static/media/2.m4a": "/HackingHero/static/media/2.4050135375a896be3f8d.m4a",
     "index.html": "/HackingHero/index.html",
     "static/media/enter.svg": "/HackingHero/static/media/enter.a48fc67854ce9a0c8cd3935eac2f3b1b.svg",
-    "main.6c334040.css.map": "/HackingHero/static/css/main.6c334040.css.map",
-    "main.66b0c705.js.map": "/HackingHero/static/js/main.66b0c705.js.map"
+    "main.14ce8aab.css.map": "/HackingHero/static/css/main.14ce8aab.css.map",
+    "main.2af35a3f.js.map": "/HackingHero/static/js/main.2af35a3f.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c334040.css",
-    "static/js/main.66b0c705.js"
+    "static/css/main.14ce8aab.css",
+    "static/js/main.2af35a3f.js"
   ]
 }
