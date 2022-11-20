@@ -9,11 +9,9 @@ function RoutesApp() {
     return (
       <HashRouter>
         <Routes>
-          <Route path="/">
-            <Route index element={<App />} />
-            <Route path="rank" element={<Rank />} />
+            <Route path="/" element={<App />} />
+            <Route path="/rank" element={<Rank />} />
             <Route path="*" element={<App />} />
-          </Route>
         </Routes>
       </HashRouter>
     );
