@@ -583,19 +583,22 @@ const Timer = ({startTimer,resetTimer, offsetTimestamp, setOffsetTimestamp}) => 
     if(startTimer) {
       console.log('start')
       
-      if (!offsetTimestamp) setOffsetTimestamp(new Date())
+      if (!offsetTimestamp) {
+        console.log('new dateee');
+        setOffsetTimestamp(new Date())
+      } 
 
       start();
 
       console.log({resetTimer});
-      if(resetTimer > 0) {
+   
         const newDate = new Date();
         const penalty = resetTimer * 300
         const secs = (newDate.getTime() - offsetTimestamp.getTime()) / 1000 ;
         
         console.log({secs, resetTimer, penalty})
         reset(newDate.setSeconds( newDate.getSeconds() + secs + penalty))
-      }
+      
     }
   },[startTimer]);
 

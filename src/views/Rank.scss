@@ -1,0 +1,22 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main > *:nth-child(2) {
+    border-top: 4px solid white;
+}
+
+.rank {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  
+    border-bottom: 4px solid white;
+}
+.rank-item {
+    display: flex;
+    flex-direction: column;
+}
