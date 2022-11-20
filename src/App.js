@@ -434,6 +434,9 @@ function App() {
 
     window.addEventListener("click", detectAudio);
     return () => {
+        socket.off('connect');
+        socket.off('disconnect');
+        socket.off('pong');
         window.removeEventListener("click", detectAudio);
     };
 
