@@ -12,6 +12,7 @@ const contents1 = [`We got into the server, let’s take this thing down.`, 3000
 const great = [`Great work we disable the transmission lets keep moving.`, 3000]
 
 const Windows = ({next, config}) => {
+    const [error, setError] = useState('');
     const [clave, setClave] = useState(true)
     const [mute, setMute] = useState(false)
     const [transmission, setTransmission] = useState(true)
@@ -311,17 +312,17 @@ void main()
                                     <span className="label">Find</span>
                                     <div className="submenu">(None)</div>
                                 </div>
-                                <a className="item" href="#error">
+                                <a className="item" onClick={()=> setError('error')}>
                                     <i className="md help"></i>
                                     <span className="label">Help</span>
                                 </a>
-                                <a className="item" href="#error">
+                                <a className="item" onClick={()=> setError('error')}>
                                     <i className="md run"></i>
                                     <span className="label">Run...</span>
                                 </a>
                             </nav>
                             <nav className="group">
-                                <a className="item" href="#error">
+                                <a className="item" onClick={()=> setError('error')}>
                                     <i className="md shut"></i>
                                     <span className="label">Shut Down...</span>
                                 </a>
@@ -331,27 +332,27 @@ void main()
                             <form id="app-ie" role="dialog" style={{ visibility: state.ieVisibility ? 'visible' : 'hidden' }}>
                                 <h2 className="handle-ie">
                                     <i className="sm globe"></i>
-                                    <label className="label" htmlFor="fore-ie" onClick={() => { if (!state.ie) setState({ ...state, notepad: state.ie, mine: state.ie, ie: !state.ie }) }}>Microsoft Internet Explorer - [One mind blowing fact you didn't know about CSS3]</label>
+                                    <label className="label" htmlFor="fore-ie" onClick={() => { if (!state.ie) setState({ ...state, notepad: state.ie, mine: state.ie, ie: !state.ie }) }}>Microsoft Internet Explorer - UpShow</label>
                                     <a className="btn min" onClick={() => {
                                         setState({ ...state, notepad: !state.ieVisibility, mine: !state.ieVisibility, ie: !state.ieVisibility, ieVisibility: !state.ieVisibility })
                                     }}></a>
-                                    <a className="btn max" href="#error"></a>
-                                    <a className="btn close" href="#error" htmlFor="open-ie"></a>
+                                    <a className="btn max" onClick={()=> setError('error')}></a>
+                                    <a className="btn close" onClick={()=> setError('error')} htmlFor="open-ie"></a>
                                 </h2>
                                 <nav className="menu">
-                                    <a href="#error">File</a>
-                                    <a href="#error">Edit</a>
-                                    <a href="#error">View</a>
-                                    <a href="#error">Go</a>
-                                    <a href="#error">Favorites</a>
-                                    <a href="#error">Help</a>
+                                    <a onClick={()=> setError('error')}>File</a>
+                                    <a onClick={()=> setError('error')}>Edit</a>
+                                    <a onClick={()=> setError('error')}>View</a>
+                                    <a onClick={()=> setError('error')}>Go</a>
+                                    <a onClick={()=> setError('error')}>Favorites</a>
+                                    <a onClick={()=> setError('error')}>Help</a>
                                 </nav>
                                 <div className="client">
                                     <header>
                                         <div className="label">Address:</div>
                                         <div className="combo">
                                             <input spellCheck="false" onChange={(event) => { setState({ ...state, address: event.target.value }); }} value={state.address} />
-                                            <a className="dropdown" href="#error"></a>
+                                            <a className="dropdown" onClick={()=> setError('error')}></a>
                                         </div>
                                         <div className="win">
                                             <i className="clouds"></i>
@@ -378,14 +379,14 @@ void main()
                                     <a className="btn min" onClick={() => {
                                         setState({ ...state, notepad: !state.notepadVisibility, mine: !state.notepadVisibility, ie: !state.notepadVisibility, notepadVisibility: !state.notepadVisibility })
                                     }}></a>
-                                    <a className="btn max" href="#error"></a>
-                                    <a className="btn close" href="#error" htmlFor="open-notepad"></a>
+                                    <a className="btn max" onClick={()=> setError('error')}></a>
+                                    <a className="btn close" onClick={()=> setError('error')} htmlFor="open-notepad"></a>
                                 </h2>
                                 <nav className="menu">
-                                    <a href="#error">File</a>
-                                    <a href="#error">Edit</a>
-                                    <a href="#error">Search</a>
-                                    <a href="#error">Help</a>
+                                    <a onClick={()=> setError('error')}>File</a>
+                                    <a onClick={()=> setError('error')}>Edit</a>
+                                    <a onClick={()=> setError('error')}>Search</a>
+                                    <a onClick={()=> setError('error')}>Help</a>
                                 </nav>
                                 <div className="client">
                                     <textarea rows="22" cols="60" onChange={(event) => { setState({ ...state, notepadText: event.target.value }) }} spellCheck="false" value={state.notepadText}></textarea>
@@ -397,9 +398,9 @@ void main()
                             <form id="app-pass" role="dialog" style={{ visibility: state.passVisibility ? 'visible' : 'hidden' }}>
                                 <h2 className="handle-pass">
                                     <label className="label" htmlFor="fore-pass" onClick={() => { if (!state.pass) setState({ ...state, notepad: state.pass, mine: state.pass, pass: !state.pass }) }}>Enter Password</label>
-                                    <a className="btn min" href="#error"></a>
-                                    <a className="btn max" href="#error"></a>
-                                    <a className="btn close" href="#error" htmlFor="open-pass"></a>
+                                    <a className="btn min" onClick={()=> setError('error')}></a>
+                                    <a className="btn max" onClick={()=> setError('error')}></a>
+                                    <a className="btn close" onClick={()=> setError('error')} htmlFor="open-pass"></a>
                                 </h2>
                                 
                                 <div className="client">
@@ -429,12 +430,12 @@ void main()
                                     <a className="btn min" onClick={() => {
                                         setState({ ...state, notepad: !state.mineVisibility, mine: !state.mineVisibility, ie: !state.mineVisibility, mineVisibility: !state.mineVisibility })
                                     }}></a>
-                                    <a className="btn max" href="#error"></a>
-                                    <a className="btn close" href="#error" htmlFor="open-mine"></a>
+                                    <a className="btn max" onClick={()=> setError('error')}></a>
+                                    <a className="btn close" onClick={()=> setError('error')} htmlFor="open-mine"></a>
                                 </h2>
                                 <nav className="menu">
-                                    <a href="#error">Game</a>
-                                    <a href="#error">Help</a>
+                                    <a onClick={()=> setError('error')}>Game</a>
+                                    <a onClick={()=> setError('error')}>Help</a>
                                 </nav>
                                 <div className="client">
 
@@ -678,8 +679,8 @@ void main()
                                 <label htmlFor="open-poop" onClick={() => { setState({ ...state, passVisibility: true, pass:true, poopup: false}); }}>&#x1F4A9; Exit</label>
                             </div>
                         </form>
-                        <article id="error" className="blue">
-                            <a href="#another-error">
+                        { error === 'error' && <div id="error" className="blue">
+                            <a onClick={() => setError("another-error")}>
                                 <h2><em>Windows</em></h2>
                                 <header>
                                     A fatal exception 0E has occurred at 0123:CAFEBABE in VXD VMM(01) + 0000B00B. The current application will be terminated.
@@ -693,9 +694,9 @@ void main()
                                     <span className="caret"></span>
                                 </footer>
                             </a>
-                        </article>
-                        <article id="another-error" className="blue">
-                            <a href="#dead">
+                        </div> }
+                        { error === 'another-error' && <div id="another-error" className="blue">
+                            <a onClick={() => setError("dead")}>
                                 <h2><em>Windows</em></h2>
                                 <header>
                                     A fatal exception 0D has occurred at 0001:DEFEC8ED. The current application will be terminated.
@@ -709,19 +710,11 @@ void main()
                                     <span className="caret"></span>
                                 </footer>
                             </a>
-                        </article>
-                        <article id="dead"><a href="#restart"><i className="lg busy"></i></a></article>
+                        </div>}
+                        { error === 'dead' && <Dead setError={setError}> </Dead>}
                         <article id="black"></article>
-                        <article id="restart">
-                            <header className="starting">Starting Windows 95...</header>
-                            <section className="startup">
-                                <h2>Microsoft<em>Windows<sup>&reg;</sup><strong>95</strong></em></h2>
-                                <h3>Microsoft<sup>&reg;</sup></h3>
-                                <i className="clouds"></i>
-                                <i className="logo"></i>
-                                <footer className="bar"></footer>
-                            </section>
-                        </article>
+                        { error === 'restart' &&  <Restart setError={setError}></Restart> }
+
                     </div>
                 </div>
 
@@ -745,4 +738,44 @@ void main()
     )
 }
 
+const Dead = ({setError}) => {
+    useEffect(() => {
+        const timer = setTimeout(
+            () =>{
+                setError('restart')
+            }, 3000
+        )
+
+        return () => {
+            clearTimeout(timer);
+        }
+    }, [])
+    return <div id="dead"><a><i className="lg busy"></i></a></div>
+}
+
+const Restart = ({setError}) => {
+
+    useEffect(() => {
+        const timer = setTimeout(
+            () =>{
+                setError('')
+            }, 8000
+        )
+
+        return () => {
+            clearTimeout(timer);
+        }
+    }, [])
+
+    return <div id="restart">
+        <header className="starting">Starting Windows 95...</header>
+        <section className="startup">
+            <h2>Microsoft<em>Windows<sup>&reg;</sup><strong>95</strong></em></h2>
+            <h3>Microsoft<sup>&reg;</sup></h3>
+            <i className="clouds"></i>
+            <i className="logo"></i>
+            <footer className="bar"></footer>
+        </section>
+    </div>
+}
 export default Windows

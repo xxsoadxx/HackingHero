@@ -674,6 +674,9 @@ $bs-caret: #a8a8a8;
     line-height: 480px;
     z-index: 200;
     cursor: none;
+    width: 100%;
+    height: 100%;
+    background-color: black;
 
     a {
         @extend %fullscreen;
@@ -1170,7 +1173,20 @@ $bs-caret: #a8a8a8;
 
     .startup {
         @extend %fullscreen;
-        opacity: 0;
+        animation: apear 3s none;
+
+    }
+
+    @keyframes apear {
+        0% {
+            opacity: 0;
+        }
+        90% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
     }
 
     .clouds {
