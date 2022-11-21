@@ -52,7 +52,6 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
 
   const onKeyDown = (key) => {
     if (key === 'Shift' && showHelp && !showHint) {
-      setResetTimer(value => value + 1)
       audio.play();
     }
     if (key === 'Enter') {
@@ -202,7 +201,7 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
             }
 
             <KeyPress onKeyDown={onKeyDown}>
-              <p className="hint">press SHIFT to hear the melody again (+ min)</p>
+              <p className="hint">press SHIFT to hear the melody again</p>
             </KeyPress>
           </>
         }

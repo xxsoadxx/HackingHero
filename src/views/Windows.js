@@ -400,7 +400,7 @@ void main()
                                     <label className="label" htmlFor="fore-pass" onClick={() => { if (!state.pass) setState({ ...state, notepad: state.pass, mine: state.pass, pass: !state.pass }) }}>Enter Password</label>
                                     <a className="btn min" onClick={()=> setError('error')}></a>
                                     <a className="btn max" onClick={()=> setError('error')}></a>
-                                    <a className="btn close" onClick={()=> setError('error')} htmlFor="open-pass"></a>
+                                    <a className="btn close" onClick={() => { setState({ ...state, passVisibility: false  }) }} htmlFor="open-pass"></a>
                                 </h2>
                                 
                                 <div className="client">

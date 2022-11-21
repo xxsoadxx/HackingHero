@@ -163,6 +163,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
   if(!showHit && !showAttac && showOptions) {
     animation=still
   } else if(!showHit && !showAttac  && !showOptions) { 
+    console.log('talk')
     animation=talk
   } else if (showHit) {
     animation=laugh
@@ -170,7 +171,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
     animation=hit
   }
 
-  console.log({levelData})
+  console.log({showHit  ,showAttac  , showOptions, animation})
   return (
     <div className="Screen Fight">
       <div className="content">
