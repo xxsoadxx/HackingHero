@@ -34,11 +34,7 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
   const [showHint, setShowHint] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [value, setValue] = useState('');
-  useEffect(() => {
-    if (audio) {
-      audio.play();
-    }
-  }, [audio])
+
 
   /*useEffect(() => {
     console.log('useeffect config change')
@@ -56,7 +52,8 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
 
   const onKeyDown = (key) => {
     if (key === 'Shift' && showHelp && !showHint) {
-      setShowHint(!showHint)
+      setResetTimer(value => value + 1)
+      audio.play();
     }
     if (key === 'Enter') {
       if (value.length === length) {
@@ -89,11 +86,11 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
         if (length > 0 && length > value.length) {
 
           if(key === '1') {
-            Note1.currentTime = 0;
-            Note1.play();
+            Note5.currentTime = 0;
+            Note5.play();
           } else if(key === '2') {
-            Note2.currentTime = 0;
-            Note2.play();
+            Note6.currentTime = 0;
+            Note6.play();
           } else if(key === '3') {
             Note3.currentTime = 0;
             Note3.play();
@@ -101,11 +98,11 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
             Note4.currentTime = 0;
             Note4.play();
           }else if(key === '5') {
-            Note5.currentTime = 0;
-            Note5.play();
+            Note1.currentTime = 0;
+            Note1.play();
           }else if(key === '6') {
-            Note6.currentTime = 0;
-            Note6.play();
+            Note2.currentTime = 0;
+            Note2.play();
           } 
            const newVal = value + key.toString();
   
@@ -205,7 +202,7 @@ function SoundGame({ back, next, config, setStartTimer, setResetTimer }) {
             }
 
             <KeyPress onKeyDown={onKeyDown}>
-
+              <p className="hint">press SHIFT to hear the melody again (+ min)</p>
             </KeyPress>
           </>
         }
