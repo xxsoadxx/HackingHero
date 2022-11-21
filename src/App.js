@@ -322,7 +322,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents:[`Wow! You’re so ugly! Your mom must have got a ton of fines for littering when she dropped you off at school!`, 2000] } },
   { Component: FightView, config: { introAudio:TotoIntroAudio, loopAudio:TotoLoopAudio,talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 40, lifes: 4 } },
   { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, style:{ width: '250px'}, image:bert_talking, contents:[`I can’t believe you’re that smart,\nI cannot be beaten here, I need to warn the Master!`, 2000] } },
-  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, image:Q81V, speed: 50, contents:[`He’s escaping! Follow him!`, 2000] } },
+  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, style: { width: '65%'},image:Q81V, speed: 50, contents:[`He’s escaping! Follow him!`, 2000] } },
   { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, useProfileImage: true, speed: 50, contents:[`It’s too fast, we missed him.`, 2000] } },
   { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, image:camerascene, contents:[`Luckily we have this huge camera system, let’s check if we can see its escape route.`, 2000] } },
   { Component: GenericScreenView, config: { video: footage, contents:['Screen 1 Text', 2000], onlyVideo: true } },
@@ -357,17 +357,17 @@ const STAGES = [
   
   
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Incoming videocall...`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserTalkAngry, contents:[`Hey! You better stop interfiering with my plans, it’s useless to resist!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:laser_hidden, contents:[`Hey! You better stop interfiering with my plans, it’s useless to resist!`, 2000] } },
    
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Who are you?`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserReveal, secondimage: laser_new_talk_otro, switchImageTime: 4000, contents:[`Heh, allow me to introduce myself. They call me Laser.`, 2000] } },
  
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Wait! Are you hu... human?!`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserTalkAngry, contents:[`Something like that, at least I was before I became a cyborg and travelled to this planet. But enough chit-chat, enjoy your stay at Bogmire while I conquer humankind.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserTalkAngry, contents:[`BWAH HA HA!!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:laser_laugh_fgt, contents:[`BWAH HA HA!!`, 2000] } },
  
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`What’s wrong with this guy!? And why is he doing this... wanting to invade Earth, for what?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, image:Mask, speed: 50, contents:[`I wonder if that mask has something to do with it...`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, style: { width:'85%'},image:Mask, speed: 50, contents:[`I wonder if that mask has something to do with it...`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Now, about that cellphone...`, 2000] } },
   
   
@@ -421,7 +421,6 @@ function App() {
   const [state, setState] = useState(null);
 
   const Stage = STAGES[index];
-  console.log('Stage',Stage);
 
   
   const detectAudio = () => {

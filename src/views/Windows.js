@@ -3,7 +3,7 @@ import Draggable from "react-draggable";
 import ReactPlayer from 'react-player';
 import TypeWriter from '../components/TypeWriter';
 import './Windows.scss';
-
+import hypno from '../assets/giphy.webp';
 const contents1 = [`We got into the server, let’s take this thing down.`, 3000,
 'What!? What is this operating system? Looks like ancient technology.', 3000,
 `It seems that the hacker used this server to send some kind of message, follow the trail he left`,
@@ -271,7 +271,7 @@ void main()
                                 </label>
                                 <label className="btn" id="task-ie" htmlFor="fore-ie" onClick={() => { if (!state.ie) setState({ ...state, pass: state.ie, notepad: state.ie, mine: state.ie, ie: !state.ie, ieVisibility: !state.ie }) }}>
                                     <i className="sm globe"></i>
-                                    <span className="label">Microsoft Internet Explorer - [One mind blowing fact you didn't know about CSS4]</span>
+                                    <span className="label">Microsoft Internet Explorer - UpShow</span>
                                 </label>
                             </nav>
                             <div id="notify">

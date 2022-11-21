@@ -978,8 +978,10 @@ $bs-caret: #a8a8a8;
             z-index: 9999;
         }
         .hacked {
-            background-image: url('../assets/hacker.jpeg');
-            background-position-x: -200px;
+            background-image: url('../assets/giphy.webp');
+            background-repeat: no-repeat;
+            width: 100%;
+            background-size: cover;
         }
     }
     }
