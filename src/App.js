@@ -311,7 +311,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`It’s on its way. please hurry!`, 2000] } },
   { Component: GenericCodeView, config: { audio: QuizAudioFile, style: { width: '90%'}, image: colorscodeImg, contents:['Enter the code to decrypt the message:', 2000] , answer: '5413', length: 4, hint:() => (<>You should focus on colors.<br/><br/><br/>Order is the key.</>), startTimer: true } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents:[`We did it! What does it say?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, image:message, contents:[`“Everything is working just as you planned, master. Prepare phase 2”\n\n“Master”!? OMG they’re planning an invasion!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, image:message, contents:[`“Everything is working just as you planned, Master. Prepare phase 2”\n\n“Master”!? OMG they’re planning an invasion!`, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`There’s some kind of number from the sender, but this isn’t an Earth country code, would it work if I call from here?`, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, audioSecundary:mus_dialup_3Audio, contents:[`Calling...`, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'}, image:bert_talking, contents:[`Hello, who’s this? How did you get this number?`, 2000] } },
