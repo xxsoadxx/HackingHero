@@ -297,7 +297,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: FilePictureAudio, speed: 50, useProfileImage: true, contents: [`Wow, what a great photograph! It will always bring back the fondest of memories...\n\n Get ready!`, 2000] } },
 
 
-  { Component: NameScreenView, config: { audio: FilePictureAudio, contents: ['Oh, I almost forgot... what\'s the name of the team? \n Type the name and press Enter', 2000], length: 10, allowLetters: true, hideLines: false } },
+  { Component: NameScreenView, config: { audio: FilePictureAudio, contents: ['Oh, I almost forgot... what\'s the name of the team? \n Type the name and press Enter', 2000], length: 13, allowLetters: true, hideLines: false } },
 
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '700px' }, image: neoncity, contents: [`Neon City, a retrofuturistic town (if that can even be a thing). Monday, 8 PM.\n\n Just another regular day at @teamName headquarters.`, 2000] } },
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '200px', animation: 'shake 0.5s 400' }, audioSecundary: snd_phoneAudio, image: ringring, contents: [`RIIIING, RIIIING!\n RIIIIIG, RIIIIING!`, 2000] } },
@@ -385,7 +385,7 @@ const STAGES = [
   { Component: FightView, config: { introAudio: battleLaserintroAudio, loopAudio: battleLaserloopAudio, talk: laser_new_talk_fgt, hit: laser_hit, laugh: laser_laugh_fgt, still: laser_still, level: finalLevel, timer: 20, lifes: 9, final: true } },
 
   { Component: GenericScreenView, config: { speed: 50, image: LaserTalkAngry, contents: [`This isn’t over, I’ll be back and finish what I’ve started. Good luck with this zombie army, now they don’t have anyone to respond to! I broadcasted the signal to the entire solar system!`, 2000] } },
-  { Component: GenericScreenView, config: { speed: 50, image: laser_laugh_fgt, classes: 'animate__zoomOutRight', contents: [`BWA HA HA!`, 2000] } },
+  { Component: GenericScreenView, config: { speed: 50, image: laser_laugh, classes: 'animate__zoomOutRight', contents: [`BWA HA HA!`, 2000] } },
   { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents: [`Everyone’s been brainwashed, we need to restore everything back to normal.`, 2000] } },
 
   { Component: GenericScreenView, config: { audio: Complete, audioOnDone: true, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`] } },
