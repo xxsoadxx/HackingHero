@@ -52,7 +52,7 @@ import timerImg from './assets/timer.png';
 import energyImg from './assets/energy.png';
 import questionImg from './assets/question.png';
 import bossImg from './assets/boss_transp.gif';
-import colorscodeImg from './assets/colorscode.png';
+import colorscodeImg from './assets/colorscode2.png';
 import map from './assets/map.png';
 import spaceship from './assets/spaceship.png';
 import mapquest from './assets/mapquest.png';
@@ -309,7 +309,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`They were able to intercept a message, but it’s encrypted and they can't crack it up, that’s why they called us, the best PI office in the world. Could you take a look?`, 2000] } },
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents: [`You got it!`, 2000] } },
   { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`It’s on its way. please hurry!`, 2000] } },
-  { Component: GenericCodeView, config: { audio: QuizAudioFile, style: { width: '90%' }, image: colorscodeImg, contents: ['Enter the code to decrypt the message:', 2000], answer: '5413', length: 4, hint: () => (<>You should focus on colors.<br /><br /><br />Order is the key.</>), startTimer: true } },
+  { Component: GenericCodeView, config: { penalty: 0.2, audio: QuizAudioFile, style: { width: '90%' }, image: colorscodeImg, contents: ['Enter the code to decrypt the message:', 2000], answer: '5413', length: 4, hint: () => (<>You should focus on colors.<br /><br /><br />Order is the key.</>), startTimer: true } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents: [`We did it! What does it say?`, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, image: message, contents: [`“Everything is working just as you planned, Master. Prepare phase 2”\n\n“Master”!? OMG they’re planning an invasion!`, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`There’s some kind of number from the sender, but this isn’t an Earth country code, would it work if I call from here?`, 2000] } },
@@ -374,7 +374,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents: [`Now, about that cellphone...`, 2000] } },
 
 
-  { Component: GenericCodeView, config: { audio: Quiz2Audio, penalty: 0.2, style: { width: '70%' }, image: codephone, contents: ['Enter the PIN:', 2000], answer: '835', length: 3, disableHint: true } },
+  { Component: GenericCodeView, config: { audio: Quiz2Audio, style: { width: '70%' }, image: codephone, contents: ['Enter the PIN:', 2000], answer: '835', length: 3, disableHint: true } },
   { Component: GenericCodeView, config: { audio: Quiz2Audio, style: { width: '60%' }, image: book, contents: ['Type the password to access the government server:', 2000], answer: 'CORRUPTED', length: 9, disableHint: true, allowLetters: true, hideLines: false } },
   { Component: WindowsView, config: { audio: WindowsSound } },
   { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents: [`It stopped!`, 2000] } },
