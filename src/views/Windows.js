@@ -414,7 +414,7 @@ void main()
                                             setState({ ...state, poopVisibility: false, passVisibility:false, pass: false, notepad: false, mine: false, ie: true, ieVisibility: true }); setTransmission(false);
                                             setMute(false);
                                             
-                                            setTimeout(() => {window.location.href='#restart';config.audio.play()}, 6000)
+                                            setTimeout(() => {setError('restart');config.audio.play()}, 6000)
                                             setTimeout(() => {next()}, 10000)
                                         }
                                         e.preventDefault();

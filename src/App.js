@@ -47,7 +47,7 @@ import NeonAudioFile from './assets/neon-city.mp3';
 import bert_still from './assets/bert_still.png';
 import bert_laugh from './assets/bert_laugh.gif';
 import bert_talking from './assets/bert_talking.gif';
-import equalizer from './assets/equalizer.png';
+import equalizer from './assets/sound-wave-wave.gif';
 import timerImg from './assets/timer.png';
 import energyImg from './assets/energy.png';
 import questionImg from './assets/question.png';
@@ -100,9 +100,9 @@ import NightFile from './assets/night.mp3';
 import ViperFile from './assets/vic-viper.mp3';
 import RadioFile from './assets/radio.mp3';
 import LaserRageFile from './assets/laser-and-rage.mp3';
-import RageLoopFile from './assets/rage-loop.mp3';
+import RageLoopFile from './assets/src_assets_rage-loop.mp3';
 
-import RageIntroFIle from './assets/rage-intro.mp3';
+import RageIntroFIle from './assets/src_assets_rage-intro.mp3';
 import RageRunFile from './assets/rage-run.mp3';
 import ConfrontationFile from './assets/confrontation.mp3';
 import QuizFile from './assets/quiz2.mp3';
@@ -323,7 +323,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '600px'}, image:Q81V, contents:[`10 minutes later...`, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bert_talking, contents:[`There you are! Was about time. `, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents:[`Wow! You’re so ugly! Your mom must have got a ton of fines for littering when she dropped you off at school!`, 2000] } },
-  { Component: FightView, config: { introAudio:TotoIntroAudio, loopAudio:TotoLoopAudio,talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 40, lifes: 4 } },
+  { Component: FightView, config: { introAudio:TotoIntroAudio, loopAudio:TotoLoopAudio,talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 30, lifes: 4 } },
   { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, style:{ width: '250px'}, image:bert_talking, contents:[`I can’t believe you’re that smart,\nI cannot be beaten here, I need to warn the Master!`, 2000] } },
   { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, style: { width: '65%'},image:Q81V, speed: 50, contents:[`He’s escaping! Follow him!`, 2000] } },
   { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, useProfileImage: true, speed: 50, contents:[`He's too fast, we missed him.`, 2000] } },
@@ -353,7 +353,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents:[`Ok, we need to find some information about what’s really going on here.`, 2000] } },
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Stop right there earthlings! You’ll never beat my knowledge`, 2000] } },
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents:[`Wow! You’re even uglier than the other guy!`, 2000] } },
-  { Component: FightView, config: {introAudio:RageIntroAudio, loopAudio:RageLoopAudio, talk: toto_talking, laugh: toto_laugh, still: toto_still, level: Level2, timer: 40, lifes: 6 } },
+  { Component: FightView, config: {introAudio:RageIntroAudio, loopAudio:RageLoopAudio, talk: toto_talking, laugh: toto_laugh, still: toto_still, level: Level2, timer: 25, lifes: 6 } },
   { Component: GenericScreenView, config: { audio:RageRunAudio, classes: 'animate__zoomOutRight', speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Ahhhh!! I’m sorry Master.`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`After him!`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:phone, contents:[`Wait, he forgot his cellphone! It’s locked but it has something stuck on its back.`, 2000] } },
@@ -382,7 +382,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio:PreFightLaserAudio, style: { width: '75%'} , image: ShipVideo2, speed: 50, contents:[`It doesn’t matter, I’ll just smash you and get the signal back online.`, 2000] } },
   { Component: GenericScreenView, config: { audio:PreFightLaserAudio, speed: 50, useProfileImage: true, contents:[`Here you are! It’s on!`, 2000] } },
   
-  { Component: FightView, config: {introAudio: battleLaserintroAudio, loopAudio:battleLaserloopAudio ,talk: laser_new_talk_fgt, hit:laser_hit, laugh: laser_laugh_fgt, still: laser_still, level: finalLevel, timer: 40, lifes: 9, final:true } },
+  { Component: FightView, config: {introAudio: battleLaserintroAudio, loopAudio:battleLaserloopAudio ,talk: laser_new_talk_fgt, hit:laser_hit, laugh: laser_laugh_fgt, still: laser_still, level: finalLevel, timer: 20, lifes: 9, final:true } },
   
   { Component: GenericScreenView, config: {  speed: 50, image:LaserTalkAngry, contents:[`This isn’t over, I’ll be back and finish what I’ve started. Good luck with this zombie army, now they don’t have anyone to respond to! I broadcasted the signal to the entire solar system!`, 2000] } },
   { Component: GenericScreenView, config: {  speed: 50, image:laser_laugh_fgt, classes: 'animate__zoomOutRight', contents:[`BWA HA HA!`, 2000] } },
