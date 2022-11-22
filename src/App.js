@@ -191,7 +191,7 @@ const battleLaserintroAudio = new Audio(battleLaserintro);
 const battleLaserloopAudio = new Audio(battleLaserloop);
 battleLaserloopAudio.loop = true;
 //battleLaserintroAudio.addEventListener('ended', (event) => {
-  //battleLaserloopAudio.play()
+//battleLaserloopAudio.play()
 //});
 
 const RageIntroAudio = new Audio(RageIntroFIle);
@@ -202,7 +202,7 @@ const RageRunAudio = new Audio(RageRunFile);
 const RageLoopAudio = new Audio(RageLoopFile);
 RageLoopAudio.loop = true;
 //RageIntroAudio.addEventListener('ended', (event) => {
- // RageLoopAudio.play()
+// RageLoopAudio.play()
 //});
 
 const Quiz2Audio = new Audio(QuizFile);
@@ -233,7 +233,7 @@ TotoLoopAudio.loop = true;
 const TotoIntroAudio = new Audio(TotoIntroFileAudio);
 
 //TotoIntroAudio.addEventListener('ended', (event) => {
- // TotoLoopAudio.play()
+// TotoLoopAudio.play()
 //});
 
 
@@ -272,127 +272,127 @@ const SoundGameView = (props) => <SoundGame {...props} />
 const WindowsView = (props) => <Windows {...props} />
 const FightView = (props) => <Fight {...props} />
 const NameScreenView = (props) => <NameScreen {...props} />
-const loadingContents = ['Preloading Assets...',5000,'Loading...',5000,'Connecting to server...',5000,'Preloading Assets...',5000];
+const loadingContents = ['Preloading Assets...', 5000, 'Loading...', 5000, 'Connecting to server...', 5000, 'Preloading Assets...', 5000];
 const STAGES = [
-  
-  { Component: SplashView, config: {} },
-////
-/*
-{ Component: GenericScreenView, config: { speed: 50, style:{ width: '200px'}, image:timerImg, contents:[`Oh yes, that right there is your TIMER.\n The team completing the game with the less amount of time, wins.\n Don’t worry, cutscenes stop the timer, so relax and enjoy retro magic.`, 2000], showTimer: true } },
 
-{ Component: GenericCodeView, config: { style: { width: '90%'}, image: colorscodeImg, contents:['Enter the code to decrypt the message:', 2000] , answer: '5413', length: 4, hint:() => (<>You shoud focus on colors.<br/><br/><br/>Order is the key.</>), startTimer: true } },
-{ Component: FightView, config: {talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 40, lifes: 4 } },
+  { Component: SplashView, config: {} },
+  ////
+  /*
+  { Component: GenericScreenView, config: { speed: 50, style:{ width: '200px'}, image:timerImg, contents:[`Oh yes, that right there is your TIMER.\n The team completing the game with the less amount of time, wins.\n Don’t worry, cutscenes stop the timer, so relax and enjoy retro magic.`, 2000], showTimer: true } },
   
-{ Component: SequenceGameView, config: { contents:['Type the correct sequence of the escape path.', 2000] , answer: '25413', length: 5 , video:footage} },
-  */
+  { Component: GenericCodeView, config: { style: { width: '90%'}, image: colorscodeImg, contents:['Enter the code to decrypt the message:', 2000] , answer: '5413', length: 4, hint:() => (<>You shoud focus on colors.<br/><br/><br/>Order is the key.</>), startTimer: true } },
+  { Component: FightView, config: {talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 40, lifes: 4 } },
+    
+  { Component: SequenceGameView, config: { contents:['Type the correct sequence of the escape path.', 2000] , answer: '25413', length: 5 , video:footage} },
+    */
 
 
   ////
-  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, image:equalizer, contents:[`Hi!\n\n This is an audiovisual experience, so please turn on your speakers. Select stuff with the number keys, press enter to confirm or continue.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style:{ width: '200px'}, image:timerImg, contents:[`Oh yes, that right there is your TIMER.\n The team completing the game with the less amount of time, wins.`, 2000], showTimer: true } },
-  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style:{ width: '300px'}, image:energyImg, contents:[`Aaaand that’s your ENERGY.\n Yes, there are battles in this game so give the control to the most agile member of your team.\n If you lose a battle, your energy replenishes but you’ll have to start over again and the TIMER keeps going!`, 2000], showEnergy: true } },
-  { Component: AllReadyView, config: { audio: IntroAudio, image: questionImg, contents:['All set?'] }},
-  { Component: TakePictureScreenView, config: {  audio: FilePictureAudio , speed: 50, contents:['Alright! Before we start, let’s take a picture of the team!\n\n Press Space when you’re all in there'] }},
+  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, image: equalizer, contents: [`Hi!\n\n This is an audiovisual experience, so please turn on your speakers. Select stuff with the number keys, press enter to confirm or continue.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style: { width: '200px' }, image: timerImg, contents: [`Oh yes, that right there is your TIMER.\n The team completing the game with the less amount of time, wins.`, 2000], showTimer: true } },
+  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style: { width: '300px' }, image: energyImg, contents: [`Aaaand that’s your ENERGY.\n Yes, there are battles in this game so give the control to the most agile member of your team.\n If you lose a battle, your energy replenishes but you’ll have to start over again and the TIMER keeps going!`, 2000], showEnergy: true } },
+  { Component: AllReadyView, config: { audio: IntroAudio, image: questionImg, contents: ['All set?'] } },
+  { Component: TakePictureScreenView, config: { audio: FilePictureAudio, speed: 50, contents: ['Alright! Before we start, let’s take a picture of the team!\n\n Press Space when you’re all in there'] } },
 
-  { Component: GenericScreenView, config: { audio: FilePictureAudio ,speed: 50, useProfileImage: true, contents:[`Wow, what a great photograph! It will always bring back the fondest of memories...\n\n Get ready!`, 2000] } },
-  
+  { Component: GenericScreenView, config: { audio: FilePictureAudio, speed: 50, useProfileImage: true, contents: [`Wow, what a great photograph! It will always bring back the fondest of memories...\n\n Get ready!`, 2000] } },
 
-  { Component: NameScreenView, config: { audio: FilePictureAudio, contents:['Oh, I almost forgot... what\'s the name of the team? \n Type the name and press Enter', 2000] , length: 10, allowLetters:true , hideLines:false  } },
-  
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50,style:{ width: '700px'}, image:neoncity, contents:[`Neon City, a retrofuturistic town (if that can even be a thing). Monday, 8 PM.\n\n Just another regular day at @teamName headquarters.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50,style:{ width: '200px',  animation: 'shake 0.5s 400'}, audioSecundary:snd_phoneAudio,image:ringring, contents:[`RIIIING, RIIIING!\n RIIIIIG, RIIIIING!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents:[`Ain’t you gonna pick up?\n Phone’s ringing in case you didn’t notice... must be the boss.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Was about time kid, there’s something serious going on.\n I got a call from the PRESIDENT saying their intel agency detected unusual activity on their network.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents:[`Business as usual...\n\nLet me guess, another trojan virus.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Nope, seems like someone or something is trying to intercept some packets on the TCP but there’s no IP address, appears to be coming from outer space!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents:[`Woah, outer space?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`They were able to intercept a message, but it’s encrypted and they can't crack it up, that’s why they called us, the best PI office in the world. Could you take a look?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents:[`You got it!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`It’s on its way. please hurry!`, 2000] } },
-  { Component: GenericCodeView, config: { audio: QuizAudioFile, style: { width: '90%'}, image: colorscodeImg, contents:['Enter the code to decrypt the message:', 2000] , answer: '5413', length: 4, hint:() => (<>You should focus on colors.<br/><br/><br/>Order is the key.</>), startTimer: true } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents:[`We did it! What does it say?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, image:message, contents:[`“Everything is working just as you planned, Master. Prepare phase 2”\n\n“Master”!? OMG they’re planning an invasion!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`There’s some kind of number from the sender, but this isn’t an Earth country code, would it work if I call from here?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, audioSecundary:mus_dialup_3Audio, contents:[`Calling...`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'}, image:bert_talking, contents:[`Hello, who’s this? How did you get this number?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`You tell me, punk!\n\nMeddling on the goverment network like that.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bert_talking, contents:[`Not very smart to be talking to me like that, you know.\n\nI see you intercepted my message for Master Laser, but nothing to worry about, first I’ll go deal with you and then go tell him myself personally.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bert_talking, contents:[`The Master’s gonna be so proud of me when I tell him all about it.\n\nBWA HA HA HA !!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`We’d love to see you try. Meet us at the city hall in 10 minutes.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bert_talking, contents:[`You make my job so easy WEE HE HE.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '600px'}, image:Q81V, contents:[`10 minutes later...`, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style:{ width: '250px'},image:bert_talking, contents:[`There you are! Was about time. `, 2000] } },
-  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents:[`Wow! You’re so ugly! Your mom must have got a ton of fines for littering when she dropped you off at school!`, 2000] } },
-  { Component: FightView, config: { introAudio:TotoIntroAudio, loopAudio:TotoLoopAudio,talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 30, lifes: 4 } },
-  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, style:{ width: '250px'}, image:bert_talking, contents:[`I can’t believe you’re that smart,\nI cannot be beaten here, I need to warn the Master!`, 2000] } },
-  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, style: { width: '65%'},image:Q81V, speed: 50, contents:[`He’s escaping! Follow him!`, 2000] } },
-  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, useProfileImage: true, speed: 50, contents:[`He's too fast, we missed him.`, 2000] } },
-  { Component: GenericScreenView, config: { audio:BeforeFerrariAudio, speed: 50, image:camerascene, contents:[`Luckily we have this huge camera system, let’s check if we can see his escape route.`, 2000] } },
-  { Component: GenericScreenView, config: { video: footage, contents:['Screen 1 Text', 2000], onlyVideo: true } },
-  { Component: GenericScreenView, config: { audio: AfterFerrariAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`WTF!? He’s driving a Ferrari F40?\nAliens must be loaded!\n\nSo, were you able to see where he went?`, 2000] } },
-  { Component: SequenceGameView, config: { audio: AfterFerrariAudio, contents:['Type the correct sequence of the escape path.', 2000] , answer: '25413', length: 5 , video:footage} },
-  { Component: GenericScreenView, config: { audio: CarpassingAudio, speed: 50, image:speed, contents:[`You nailed it! I’ve set the coordinates on my GPS, we better hurry.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NightAudio, speed: 50, image:Crater, contents:[`We’re too late... looks like the spot where his spaceship was.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NightAudio, speed: 50, style:{ width: '800px'},image:map, contents:[`Wait a minute, what’s that?\nHe dropped something while escaping.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NightAudio, speed: 50, style:{ width: '800px'},image:map, contents:[`Hmmm... of course the instructions were not going to be that straightforward, and even if we decypher them, how are we gonna get there at all? It’s in outer space!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: NightAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Heh, don’t worry, you think the government didn’t research about space travel? Where do you think your taxes are going, road repairs? Ha!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ViperAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Make someone bring the Vic Viper over here!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ViperAudio, audioSecundary: RadioAudio, speed: 50, image:spaceship, contents:[`RADIO: Your presence is required, sending coordinates.\n\nPILOT: On my way.\n(Ugh, I was on my break...)`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ViperAudio, speed: 50, useProfileImage: true, contents:[`If you had a spaceship this whole time, why did we get here by CAR?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ViperAudio, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`RIGHT, I should have called a spaceship taxi to pick us up in the middle of the city!\n\nNevermind, let’s take a look at that map`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ViperAudio, speed: 50, style:{ width: '90%'},image:mapquest, contents:[`Write down the correct directions (UP, DOWN, LEFT or RIGHT) and press ENTER to blast off when you think you’re ready.`, 2000] } },
-  { Component: GenericScreenView, config: { speed: 50, video:Nave,endOnVideo:true, contents:[`Alright! Everybody get in position, we’re ready for blast off!\n\nGodspeed investigators, the future of humanity is in your hands, we’re counting on you!`, 2000] } },
-  { Component: DirectionsGameView, config: { style: { width: '80%'}, image: ShipIdle, contents:['Type the correct directions with the arrow keys to reach their planet', 2000] , answer: 'LURDL', length: 5 , startTimer: true, audio: LoopAudio} },
-  { Component: GenericScreenView, config: { video: landing_ship, contents:['Screen 1 Text', 2000], onlyVideo: true } },
-  { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents:[`We’ve finally arrived to their planet.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, contents:[`In the meantime...`, 2000] } },
 
- 
-  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, image: laser_hidden, contents:[`Haha, classic humans, they just took my bait so easily, now my road is free to become the king of the universe.\n\nRage, take good care of them!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Yes Master!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents:[`Ok, we need to find some information about what’s really going on here.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Stop right there earthlings! You’ll never beat my knowledge`, 2000] } },
-  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents:[`Wow! You’re even uglier than the other guy!`, 2000] } },
-  { Component: FightView, config: {introAudio:RageIntroAudio, loopAudio:RageLoopAudio, talk: toto_talking, laugh: toto_laugh, still: toto_still, level: Level2, timer: 25, lifes: 6 } },
-  { Component: GenericScreenView, config: { audio:RageRunAudio, classes: 'animate__zoomOutRight', speed: 50, style:{ width: '250px'},image:toto_talking, contents:[`Ahhhh!! I’m sorry Master.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`After him!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:phone, contents:[`Wait, he forgot his cellphone! It’s locked but it has something stuck on its back.`, 2000] } },
-  
-  
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Incoming videocall...`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:laser_hidden, contents:[`Hey! You better stop interfiering with my plans, it’s useless to resist!`, 2000] } },
-   
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Who are you?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:LaserReveal, secondimage: laser_new_talk_otro, switchImageTime: 4000, contents:[`Heh, allow me to introduce myself. They call me Laser.`, 2000] } },
- 
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Wait! Are you hu... human?!`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:laser_new_talk_otro, contents:[`Something like that, at least I was before I became a cyborg and travelled to this planet. But enough chit-chat, enjoy your stay at Bogmire while I conquer the universe.`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image:laser_laugh, contents:[`BWAH HA HA!!`, 2000] } },
- 
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`What’s wrong with this guy!? And why is he doing this... wanting to invade Earth, for what?`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, style: { width:'85%'},image:Mask, speed: 50, contents:[`I wonder if that mask has something to do with it...`, 2000] } },
-  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents:[`Now, about that cellphone...`, 2000] } },
-  
-  
-  { Component: GenericCodeView, config: { audio: Quiz2Audio, style: { width: '70%'}, image: codephone, contents:['Enter the PIN:', 2000] , answer: '835', length: 3, disableHint:true } },
-  { Component: GenericCodeView, config: { audio: Quiz2Audio, style: { width: '60%'}, image: book, contents:['Type the password to access the government server:', 2000] , answer: 'CORRUPTED', length: 9, disableHint:true, allowLetters:true , hideLines:false  } },
+  { Component: NameScreenView, config: { audio: FilePictureAudio, contents: ['Oh, I almost forgot... what\'s the name of the team? \n Type the name and press Enter', 2000], length: 10, allowLetters: true, hideLines: false } },
+
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '700px' }, image: neoncity, contents: [`Neon City, a retrofuturistic town (if that can even be a thing). Monday, 8 PM.\n\n Just another regular day at @teamName headquarters.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '200px', animation: 'shake 0.5s 400' }, audioSecundary: snd_phoneAudio, image: ringring, contents: [`RIIIING, RIIIING!\n RIIIIIG, RIIIIING!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents: [`Ain’t you gonna pick up?\n Phone’s ringing in case you didn’t notice... must be the boss.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`Was about time kid, there’s something serious going on.\n I got a call from the PRESIDENT saying their intel agency detected unusual activity on their network.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents: [`Business as usual...\n\nLet me guess, another trojan virus.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`Nope, seems like someone or something is trying to intercept some packets on the TCP but there’s no IP address, appears to be coming from outer space!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents: [`Woah, outer space?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`They were able to intercept a message, but it’s encrypted and they can't crack it up, that’s why they called us, the best PI office in the world. Could you take a look?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, useProfileImage: true, contents: [`You got it!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NeonAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`It’s on its way. please hurry!`, 2000] } },
+  { Component: GenericCodeView, config: { audio: QuizAudioFile, style: { width: '90%' }, image: colorscodeImg, contents: ['Enter the code to decrypt the message:', 2000], answer: '5413', length: 4, hint: () => (<>You should focus on colors.<br /><br /><br />Order is the key.</>), startTimer: true } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents: [`We did it! What does it say?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, image: message, contents: [`“Everything is working just as you planned, Master. Prepare phase 2”\n\n“Master”!? OMG they’re planning an invasion!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`There’s some kind of number from the sender, but this isn’t an Earth country code, would it work if I call from here?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, audioSecundary: mus_dialup_3Audio, contents: [`Calling...`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bert_talking, contents: [`Hello, who’s this? How did you get this number?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`You tell me, punk!\n\nMeddling on the goverment network like that.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bert_talking, contents: [`Not very smart to be talking to me like that, you know.\n\nI see you intercepted my message for Master Laser, but nothing to worry about, first I’ll go deal with you and then go tell him myself personally.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bert_talking, contents: [`The Master’s gonna be so proud of me when I tell him all about it.\n\nBWA HA HA HA !!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`We’d love to see you try. Meet us at the city hall in 10 minutes.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bert_talking, contents: [`You make my job so easy WEE HE HE.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '600px' }, image: Q81V, contents: [`10 minutes later...`, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bert_talking, contents: [`There you are! Was about time. `, 2000] } },
+  { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents: [`Wow! You’re so ugly! Your mom must have got a ton of fines for littering when she dropped you off at school!`, 2000] } },
+  { Component: FightView, config: { introAudio: TotoIntroAudio, loopAudio: TotoLoopAudio, talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 30, lifes: 4 } },
+  { Component: GenericScreenView, config: { audio: BeforeFerrariAudio, speed: 50, style: { width: '250px' }, image: bert_talking, contents: [`I can’t believe you’re that smart,\nI cannot be beaten here, I need to warn the Master!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: BeforeFerrariAudio, style: { width: '65%' }, image: Q81V, speed: 50, contents: [`He’s escaping! Follow him!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: BeforeFerrariAudio, useProfileImage: true, speed: 50, contents: [`He's too fast, we missed him.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: BeforeFerrariAudio, speed: 50, image: camerascene, contents: [`Luckily we have this huge camera system, let’s check if we can see his escape route.`, 2000] } },
+  { Component: GenericScreenView, config: { video: footage, contents: ['Screen 1 Text', 2000], onlyVideo: true } },
+  { Component: GenericScreenView, config: { audio: AfterFerrariAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`WTF!? He’s driving a Ferrari F40?\nAliens must be loaded!\n\nSo, were you able to see where he went?`, 2000] } },
+  { Component: SequenceGameView, config: { audio: AfterFerrariAudio, contents: ['Type the correct sequence of the escape path.', 2000], answer: '25413', length: 5, video: footage } },
+  { Component: GenericScreenView, config: { audio: CarpassingAudio, speed: 50, image: speed, contents: [`You nailed it! I’ve set the coordinates on my GPS, we better hurry.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NightAudio, speed: 50, image: Crater, contents: [`We’re too late... looks like the spot where his spaceship was.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NightAudio, speed: 50, style: { width: '800px' }, image: map, contents: [`Wait a minute, what’s that?\nHe dropped something while escaping.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NightAudio, speed: 50, style: { width: '800px' }, image: map, contents: [`Hmmm... of course the instructions were not going to be that straightforward, and even if we decypher them, how are we gonna get there at all? It’s in outer space!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: NightAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`Heh, don’t worry, you think the government didn’t research about space travel? Where do you think your taxes are going, road repairs? Ha!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ViperAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`Make someone bring the Vic Viper over here!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ViperAudio, audioSecundary: RadioAudio, speed: 50, image: spaceship, contents: [`RADIO: Your presence is required, sending coordinates.\n\nPILOT: On my way.\n(Ugh, I was on my break...)`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ViperAudio, speed: 50, useProfileImage: true, contents: [`If you had a spaceship this whole time, why did we get here by CAR?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ViperAudio, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`RIGHT, I should have called a spaceship taxi to pick us up in the middle of the city!\n\nNevermind, let’s take a look at that map`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ViperAudio, speed: 50, style: { width: '90%' }, image: mapquest, contents: [`Write down the correct directions (UP, DOWN, LEFT or RIGHT) and press ENTER to blast off when you think you’re ready.`, 2000] } },
+  { Component: GenericScreenView, config: { speed: 50, video: Nave, endOnVideo: true, contents: [`Alright! Everybody get in position, we’re ready for blast off!\n\nGodspeed investigators, the future of humanity is in your hands, we’re counting on you!`, 2000] } },
+  { Component: DirectionsGameView, config: { style: { width: '80%' }, image: ShipIdle, contents: ['Type the correct directions with the arrow keys to reach their planet', 2000], answer: 'LURDL', length: 5, startTimer: true, audio: LoopAudio } },
+  { Component: GenericScreenView, config: { video: landing_ship, contents: ['Screen 1 Text', 2000], onlyVideo: true } },
+  { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents: [`We’ve finally arrived to their planet.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, contents: [`In the meantime...`, 2000] } },
+
+
+  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, image: laser_hidden, contents: [`Haha, classic humans, they just took my bait so easily, now my road is free to become the king of the universe.\n\nRage, take good care of them!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, style: { width: '250px' }, image: toto_talking, contents: [`Yes Master!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents: [`Ok, we need to find some information about what’s really going on here.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, style: { width: '250px' }, image: toto_talking, contents: [`Stop right there earthlings! You’ll never beat my knowledge`, 2000] } },
+  { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents: [`Wow! You’re even uglier than the other guy!`, 2000] } },
+  { Component: FightView, config: { introAudio: RageIntroAudio, loopAudio: RageLoopAudio, talk: toto_talking, laugh: toto_laugh, still: toto_still, level: Level2, timer: 25, lifes: 6 } },
+  { Component: GenericScreenView, config: { audio: RageRunAudio, classes: 'animate__zoomOutRight', speed: 50, style: { width: '250px' }, image: toto_talking, contents: [`Ahhhh!! I’m sorry Master.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents: [`After him!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image: phone, contents: [`Wait, he forgot his cellphone! It’s locked but it has something stuck on its back.`, 2000] } },
+
+
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents: [`Incoming videocall...`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image: laser_hidden, contents: [`Hey! You better stop interfiering with my plans, it’s useless to resist!`, 2000] } },
+
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents: [`Who are you?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image: LaserReveal, secondimage: laser_new_talk_otro, switchImageTime: 4000, contents: [`Heh, allow me to introduce myself. They call me Laser.`, 2000] } },
+
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents: [`Wait! Are you hu... human?!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image: laser_new_talk_otro, contents: [`Something like that, at least I was before I became a cyborg and travelled to this planet. But enough chit-chat, enjoy your stay at Bogmire while I conquer the universe.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image: laser_laugh, contents: [`BWAH HA HA!!`, 2000] } },
+
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents: [`What’s wrong with this guy!? And why is he doing this... wanting to invade Earth, for what?`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, style: { width: '85%' }, image: Mask, speed: 50, contents: [`I wonder if that mask has something to do with it...`, 2000] } },
+  { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents: [`Now, about that cellphone...`, 2000] } },
+
+
+  { Component: GenericCodeView, config: { audio: Quiz2Audio, penalty: 0.2, style: { width: '70%' }, image: codephone, contents: ['Enter the PIN:', 2000], answer: '835', length: 3, disableHint: true } },
+  { Component: GenericCodeView, config: { audio: Quiz2Audio, style: { width: '60%' }, image: book, contents: ['Type the password to access the government server:', 2000], answer: 'CORRUPTED', length: 9, disableHint: true, allowLetters: true, hideLines: false } },
   { Component: WindowsView, config: { audio: WindowsSound } },
-  { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents:[`It stopped!`, 2000] } },
-  { Component: GenericScreenView, config: { audio:PreFightLaserAudio, speed: 50, image:LaserTalkAngry, contents:[`You bastards cut my signal!\nYou’ll pay for this.`, 2000] } },
-  { Component: GenericScreenView, config: { audio:PreFightLaserAudio, style: { width: '75%'} , image: ShipVideo2, speed: 50, contents:[`It doesn’t matter, I’ll just smash you and get the signal back online.`, 2000] } },
-  { Component: GenericScreenView, config: { audio:PreFightLaserAudio, speed: 50, useProfileImage: true, contents:[`Here you are! It’s on!`, 2000] } },
-  
-  { Component: FightView, config: {introAudio: battleLaserintroAudio, loopAudio:battleLaserloopAudio ,talk: laser_new_talk_fgt, hit:laser_hit, laugh: laser_laugh_fgt, still: laser_still, level: finalLevel, timer: 20, lifes: 9, final:true } },
-  
-  { Component: GenericScreenView, config: {  speed: 50, image:LaserTalkAngry, contents:[`This isn’t over, I’ll be back and finish what I’ve started. Good luck with this zombie army, now they don’t have anyone to respond to! I broadcasted the signal to the entire solar system!`, 2000] } },
-  { Component: GenericScreenView, config: {  speed: 50, image:laser_laugh_fgt, classes: 'animate__zoomOutRight', contents:[`BWA HA HA!`, 2000] } },
-  { Component: GenericScreenView, config: {  speed: 50, useProfileImage: true, contents:[`Everyone’s been brainwashed, we need to restore everything back to normal.`, 2000] } },
-  
-  { Component: GenericScreenView, config: { audio:Complete, audioOnDone:true, speed: 50, style:{ width: '250px'},image:bossImg, contents:[`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`] } },
+  { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents: [`It stopped!`, 2000] } },
+  { Component: GenericScreenView, config: { audio: PreFightLaserAudio, speed: 50, image: LaserTalkAngry, contents: [`You bastards cut my signal!\nYou’ll pay for this.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: PreFightLaserAudio, style: { width: '75%' }, image: ShipVideo2, speed: 50, contents: [`It doesn’t matter, I’ll just smash you and get the signal back online.`, 2000] } },
+  { Component: GenericScreenView, config: { audio: PreFightLaserAudio, speed: 50, useProfileImage: true, contents: [`Here you are! It’s on!`, 2000] } },
 
-  { Component: SoundGameView, config: {  audio:Complete, contents:['Use this synthetizer to play the correct melody.', 2000] , answer: '555635412', length: 9 } },
-  { Component: GenericScreenView, config: { onDone: () => { window.location.href = '#/rank'} ,videoWidth: '100%', videoHeigth:'100%', speed: 50, video:Ending, onlyVideo: true ,contents:[`Humanity has been returned back to normal!`, 2000] } },
-  
+  { Component: FightView, config: { introAudio: battleLaserintroAudio, loopAudio: battleLaserloopAudio, talk: laser_new_talk_fgt, hit: laser_hit, laugh: laser_laugh_fgt, still: laser_still, level: finalLevel, timer: 20, lifes: 9, final: true } },
+
+  { Component: GenericScreenView, config: { speed: 50, image: LaserTalkAngry, contents: [`This isn’t over, I’ll be back and finish what I’ve started. Good luck with this zombie army, now they don’t have anyone to respond to! I broadcasted the signal to the entire solar system!`, 2000] } },
+  { Component: GenericScreenView, config: { speed: 50, image: laser_laugh_fgt, classes: 'animate__zoomOutRight', contents: [`BWA HA HA!`, 2000] } },
+  { Component: GenericScreenView, config: { speed: 50, useProfileImage: true, contents: [`Everyone’s been brainwashed, we need to restore everything back to normal.`, 2000] } },
+
+  { Component: GenericScreenView, config: { audio: Complete, audioOnDone: true, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`] } },
+
+  { Component: SoundGameView, config: { audio: Complete, contents: ['Use this synthetizer to play the correct melody.', 2000], answer: '555635412', length: 9 } },
+  { Component: GenericScreenView, config: { onDone: () => { window.location.href = '#/rank' }, videoWidth: '100%', videoHeigth: '100%', speed: 50, video: Ending, onlyVideo: true, contents: [`Humanity has been returned back to normal!`, 2000] } },
+
 
   /*{ Component: ScreenView, duration: 0, audio: intro },
   
@@ -425,7 +425,7 @@ function App() {
 
   const Stage = STAGES[index];
 
-  
+
   const detectAudio = () => {
     setSoundEnabled(true)
   }
@@ -441,10 +441,10 @@ function App() {
 
     window.addEventListener("click", detectAudio);
     return () => {
-        socket.off('connect');
-        socket.off('disconnect');
-        socket.off('pong');
-        window.removeEventListener("click", detectAudio);
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('pong');
+      window.removeEventListener("click", detectAudio);
     };
 
   }, []);
@@ -469,32 +469,32 @@ function App() {
     }
   }, [state]);
 
-   useEffect(() => {
-     //console.log('offsetTimestamp', offsetTimestamp);
-      localStorage.setItem('state', JSON.stringify({gameId,profileImage,teamName, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser}));
-      if(index > 0) {
-        ioSocket?.emit('updateState', {gameId,teamName, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser})
-      }
-     
-      
+  useEffect(() => {
+    //console.log('offsetTimestamp', offsetTimestamp);
+    localStorage.setItem('state', JSON.stringify({ gameId, profileImage, teamName, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser }));
+    if (index > 0) {
+      ioSocket?.emit('updateState', { gameId, teamName, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser })
+    }
+
+
   }, [profileImage, teamName, showEnergy, energy, startTimer, resetTimer, showTimer, index, laughImage, offsetTimestamp, showLooser])
 
   useEffect(() => {
-    if(Stage.config.showTimer) {
+    if (Stage.config.showTimer) {
       setShowTimer(Stage.config.showTimer);
-    } 
-    if(Stage.config.showEnergy) {
+    }
+    if (Stage.config.showEnergy) {
       setShowEnergy(Stage.config.showEnergy);
-    } 
-    if(Stage.config.laugh) {
+    }
+    if (Stage.config.laugh) {
       setLaughImage(Stage.config.laugh);
-    } 
+    }
 
-  
+
   }, [index])
 
   useEffect(() => {
-    if(energy === 0) {
+    if (energy === 0) {
       laughtAudio.play()
       setShowLooser(true)
       const timerGameOver = setTimeout(() => {
@@ -503,10 +503,10 @@ function App() {
         setShowLooser(false)
       }, 2000)
       return () => clearTimeout(timerGameOver)
-    } 
+    }
 
   }, [energy])
-  
+
   const next = () => {
     console.log('Stage Ended');
     setIndex(index + 1);
@@ -519,12 +519,12 @@ function App() {
     setIndex(index - stages);
   }
   const onKeyDown = (key) => {
-    if(key === 'Escape' && mode === 'dev') {
-        next()
+    if (key === 'Escape' && mode === 'dev') {
+      next()
     }
-    if(key === '0' && mode === 'dev') {
+    if (key === '0' && mode === 'dev') {
       back(1)
-  }
+    }
   }
 
 
@@ -534,8 +534,8 @@ function App() {
     return <>
       <MatrixRainingLetters key="foo-bar" custom_class="m-0 p-0" />
       <div className="row2"><TypeWriter contents={loadingContents}
-                speed={150}
-                onDone={()=>{}} /> </div>
+        speed={150}
+        onDone={() => { }} /> </div>
       {!soundEnabled && <p className="sound">Click on the screen to enable sound</p>}
     </>
   }
@@ -544,39 +544,39 @@ function App() {
     <div className="App">
       <Stage.Component profileImage={profileImage} ioSocket={ioSocket} gameId={gameId} setOffsetTimestamp={setOffsetTimestamp} teamName={teamName} setProfileImage={setProfileImage} setTeamName={setTeamName} setEnergy={setEnergy} index={index} next={next} back={back} setStartTimer={setStartTimer} setResetTimer={setResetTimer} config={Stage.config} />
 
-      { showTimer &&
-        <div className="timer"> 
-         <Timer startTimer={startTimer} resetTimer={resetTimer} offsetTimestamp={offsetTimestamp} setOffsetTimestamp={setOffsetTimestamp}/>
+      {showTimer &&
+        <div className="timer">
+          <Timer startTimer={startTimer} resetTimer={resetTimer} offsetTimestamp={offsetTimestamp} setOffsetTimestamp={setOffsetTimestamp} />
         </div>
       }
       {
         showEnergy &&
-        <div style={{ position: 'absolute', left: '54px', bottom: '12px'}}>
+        <div style={{ position: 'absolute', left: '54px', bottom: '12px' }}>
           ENERGY
-          { energy > 0 && [...Array(energy).keys()]?.map((i) => { return (<img src={heartSVG} className="heart" key={i}></img>)}) }
+          {energy > 0 && [...Array(energy).keys()]?.map((i) => { return (<img src={heartSVG} className="heart" key={i}></img>) })}
         </div>
-        
+
       }
       {
-        showLooser && 
-          <div className="looser">
-              <div style={{textAlign: 'center'}}>
-                <img src={laughImage}/>
-                <p>BWA HA HA HA! Is that all you can do?</p>
-              </div>
-             
+        showLooser &&
+        <div className="looser">
+          <div style={{ textAlign: 'center' }}>
+            <img src={laughImage} />
+            <p>BWA HA HA HA! Is that all you can do?</p>
           </div>
+
+        </div>
       }
 
-      <KeyPress onKeyDown={onKeyDown}/>
+      <KeyPress onKeyDown={onKeyDown} />
     </div>
   );
 }
 
 export default App;
 
-const Timer = ({startTimer,resetTimer, offsetTimestamp, setOffsetTimestamp}) => {
-  
+const Timer = ({ startTimer, resetTimer, offsetTimestamp, setOffsetTimestamp }) => {
+
 
   const {
     seconds,
@@ -587,47 +587,47 @@ const Timer = ({startTimer,resetTimer, offsetTimestamp, setOffsetTimestamp}) => 
     start,
     pause,
     reset,
-  } = useStopwatch({ autoStart: false});
+  } = useStopwatch({ autoStart: false });
 
   useEffect(() => {
-    if(startTimer) {
+    if (startTimer) {
       console.log('start')
-      
+
       if (!offsetTimestamp) {
         console.log('new dateee');
         setOffsetTimestamp(new Date())
-      } 
+      }
 
       start();
 
-      console.log({resetTimer});
-   
-        const newDate = new Date();
-        const penalty = resetTimer * 300
-        const secs = (newDate.getTime() - offsetTimestamp.getTime()) / 1000 ;
-        
-        console.log({secs, resetTimer, penalty})
-        reset(newDate.setSeconds( newDate.getSeconds() + secs + penalty))
-      
-    }
-  },[startTimer]);
+      console.log({ resetTimer });
 
-  useEffect(() => {
-    if(resetTimer > 0) {
       const newDate = new Date();
       const penalty = resetTimer * 300
-      const secs = (newDate.getTime() - offsetTimestamp.getTime()) / 1000 ;
-      
-      console.log({secs, resetTimer, penalty})
-      reset(newDate.setSeconds( newDate.getSeconds() + secs + penalty))
+      const secs = (newDate.getTime() - offsetTimestamp.getTime()) / 1000;
+
+      console.log({ secs, resetTimer, penalty })
+      reset(newDate.setSeconds(newDate.getSeconds() + secs + penalty))
+
     }
-    
-  },[resetTimer]);
+  }, [startTimer]);
 
-  
-  
+  useEffect(() => {
+    if (resetTimer > 0) {
+      const newDate = new Date();
+      const penalty = resetTimer * 300
+      const secs = (newDate.getTime() - offsetTimestamp.getTime()) / 1000;
 
-  return (<div style={{fontSize: '16px'}}>
-          <span>TIME {hours > 9 ? hours : '0' + hours.toString() }</span>:<span>{minutes > 9 ? minutes : '0' + minutes.toString() }</span>:<span>{seconds > 9 ? seconds : '0' + seconds.toString() }</span>
-        </div>)
+      console.log({ secs, resetTimer, penalty })
+      reset(newDate.setSeconds(newDate.getSeconds() + secs + penalty))
+    }
+
+  }, [resetTimer]);
+
+
+
+
+  return (<div style={{ fontSize: '16px' }}>
+    <span>TIME {hours > 9 ? hours : '0' + hours.toString()}</span>:<span>{minutes > 9 ? minutes : '0' + minutes.toString()}</span>:<span>{seconds > 9 ? seconds : '0' + seconds.toString()}</span>
+  </div>)
 }

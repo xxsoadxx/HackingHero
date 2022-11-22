@@ -7,7 +7,7 @@ import Deny from '../assets/deny.mp3';
 const denyAudio = new Audio(Deny)
 
 function GenericCode({ next, config, setStartTimer, setResetTimer }) {
-  const { image, style, audio, contents, answer, length, hint, disableHint, allowLetters, hideLines } = config;
+  const { image, penalty, style, audio, contents, answer, length, hint, disableHint, allowLetters, hideLines } = config;
   const [showHint, setShowHint] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [hintUsed, setHintUsed] = useState(false);
@@ -38,7 +38,8 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
     if (key === 'Shift' && !disableHint) {
       if (!hintUsed) {
         setHintUsed(true);
-        setResetTimer(value => value + 1)
+        const resetVal = penalty ? penalty : 1;
+        setResetTimer(value => value + resetVal)
       }
 
       setShowHint(!showHint)
@@ -61,14 +62,14 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
         return value.slice(0, -1)
       })
     }
-    if(allowLetters) {
-      if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"].includes(key.toString().toUpperCase())) {
+    if (allowLetters) {
+      if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].includes(key.toString().toUpperCase())) {
         setValue((value) => {
           if (length > 0 && length > value.length) {
             return value + key.toString().toUpperCase()
           }
           return value;
-  
+
         });
       }
     } else {
@@ -78,11 +79,11 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
             return value + key.toString()
           }
           return value;
-  
+
         });
       }
     }
-    
+
   }
   console.log('CodeGeneric showHelp', showHelp)
   return (
@@ -98,7 +99,7 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
         {showHelp &&
           <>
             <p className="input">{value}</p>
-            { !hideLines &&
+            {!hideLines &&
               [...Array(length).keys()].map((i) => { return (<div className="line" key={i}></div>) })
             }
 
@@ -107,7 +108,7 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
             }
 
             <KeyPress onKeyDown={onKeyDown}>
-              { !disableHint && <p className="hint">press SHIFT for hint (+ min)</p>}
+              {!disableHint && <p className="hint">press SHIFT for hint (+ min)</p>}
             </KeyPress>
           </>
         }
@@ -117,7 +118,7 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
       </div>
       {showHint &&
         <div className="hint-container">
-          <p>{hint() }</p>
+          <p>{hint()}</p>
           <p className="close">press SHIFT to Close</p>
         </div>
       }
