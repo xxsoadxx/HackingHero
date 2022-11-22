@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/HackingHero/static/css/main.24360cdb.css",
-    "main.js": "/HackingHero/static/js/main.1d0812eb.js",
+    "main.js": "/HackingHero/static/js/main.73cac90f.js",
     "static/media/speed.gif": "/HackingHero/static/media/speed.2da87d807743ad39f8f5.gif",
     "static/media/footage.m4v": "/HackingHero/static/media/footage.027fcd2ecc6e7e9078b7.m4v",
     "static/media/wrong.gif": "/HackingHero/static/media/wrong.ac23cb6c3c147b21e610.gif",
@@ -69,7 +69,6 @@
     "static/media/snd_phone.wav": "/HackingHero/static/media/snd_phone.4362ea271cd6228fb810.wav",
     "static/media/windows.mp3": "/HackingHero/static/media/windows.81a86da8e0dd2ee47773.mp3",
     "static/media/carpassing.mp3": "/HackingHero/static/media/carpassing.dc80e7bb9200b3ad76e8.mp3",
-    "static/media/colorscode.png": "/HackingHero/static/media/colorscode.db576198ed8773648c2b.png",
     "static/media/phone-final.gif": "/HackingHero/static/media/phone-final.fbbb30675306f1a9a1a3.gif",
     "static/media/bert_still.png": "/HackingHero/static/media/bert_still.e4e34879caddf3229db5.png",
     "static/media/battle-laser-intro.mp3": "/HackingHero/static/media/battle-laser-intro.071435997505fddc64c1.mp3",
@@ -77,6 +76,7 @@
     "static/media/laught.wav": "/HackingHero/static/media/laught.aa31f354e025dfeef018.wav",
     "static/media/message.webp": "/HackingHero/static/media/message.1419f5e7cbd1883fdac6.webp",
     "static/media/ringring.png": "/HackingHero/static/media/ringring.8c558727a5f7c045f021.png",
+    "static/media/colorscode2.png": "/HackingHero/static/media/colorscode2.428868b935c3b6e73a92.png",
     "static/media/rage-run.mp3": "/HackingHero/static/media/rage-run.01784beeda5e774d27d1.mp3",
     "static/media/complete.m4a": "/HackingHero/static/media/complete.0b77645dc2bfa750471c.m4a",
     "static/media/heart.svg": "/HackingHero/static/media/heart.8d176a26e31742add49926d25e51a757.svg",
@@ -90,10 +90,10 @@
     "index.html": "/HackingHero/index.html",
     "static/media/enter.svg": "/HackingHero/static/media/enter.a48fc67854ce9a0c8cd3935eac2f3b1b.svg",
     "main.24360cdb.css.map": "/HackingHero/static/css/main.24360cdb.css.map",
-    "main.1d0812eb.js.map": "/HackingHero/static/js/main.1d0812eb.js.map"
+    "main.73cac90f.js.map": "/HackingHero/static/js/main.73cac90f.js.map"
   },
   "entrypoints": [
     "static/css/main.24360cdb.css",
-    "static/js/main.1d0812eb.js"
+    "static/js/main.73cac90f.js"
   ]
 }
