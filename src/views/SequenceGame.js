@@ -44,6 +44,7 @@ function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
     }
     if (key === 'Shift' && showHelp && showHint) {
       setShowVideo(true)
+      audio.pause();
     }
     if (key === 'Enter' && !showHint) {
       if (value.length === length) {
@@ -109,7 +110,7 @@ function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
       </div>
       <div className="interactions">
         <TypeWriter contents={contents}
-          speed={100}
+          speed={50}
           cursor={false}
           onDone={onDone} />
         {showHelp &&
@@ -155,7 +156,7 @@ function SequenceGame({ back, next, config, setStartTimer, setResetTimer }) {
       </div>
       {showHint &&
         <div className={`${!showVideo ? 'hint2' : 'hint-container'}`}>
-          {showVideo && <ReactPlayer url={video} style={style} playing={true} onEnded={() => { setShowHint(false);setShowVideo(false) }} controls={false}></ReactPlayer>}
+          {showVideo && <ReactPlayer url={video} style={style} playing={true} onEnded={() => { setShowHint(false);setShowVideo(false); audio.play(); }} controls={false}></ReactPlayer>}
           {!showVideo && <p >Urgh! I knew you were distracted while the footage was playing.<br/><br/>
                   You’re wasting time!
                   press SHIFT to rewatch footage</p>}

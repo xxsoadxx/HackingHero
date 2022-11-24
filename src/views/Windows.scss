@@ -1285,6 +1285,18 @@ $bs-caret: #a8a8a8;
     }
     }
 
+    #down:target {
+        animation: booting .5s 7s 1 forwards;
+    
+        header {
+            visibility: hidden;
+        }
+    
+        .startup {
+            animation: startup-logo 7s linear 1 forwards;
+        }
+    }
+
     @keyframes booting {
     from {
         transform: none;

@@ -414,7 +414,7 @@ void main()
                                             setState({ ...state, poopVisibility: false, passVisibility:false, pass: false, notepad: false, mine: false, ie: true, ieVisibility: true }); setTransmission(false);
                                             setMute(false);
                                             
-                                            setTimeout(() => {setError('restart');config.audio.play()}, 6000)
+                                            setTimeout(() => {setError('error');config.audio.play()}, 6000)
                                             setTimeout(() => {next()}, 10000)
                                         }
                                         e.preventDefault();
@@ -714,6 +714,7 @@ void main()
                         { error === 'dead' && <Dead setError={setError}> </Dead>}
                         <article id="black"></article>
                         { error === 'restart' &&  <Restart setError={setError}></Restart> }
+                        { error === 'down' &&  <Down setError={setError}></Down> }
 
                     </div>
                 </div>
@@ -769,6 +770,32 @@ const Restart = ({setError}) => {
 
     return <div id="restart">
         <header className="starting">Starting Windows 95...</header>
+        <section className="startup">
+            <h2>Microsoft<em>Windows<sup>&reg;</sup><strong>95</strong></em></h2>
+            <h3>Microsoft<sup>&reg;</sup></h3>
+            <i className="clouds"></i>
+            <i className="logo"></i>
+            <footer className="bar"></footer>
+        </section>
+    </div>
+}
+
+const Down = ({setError}) => {
+
+    useEffect(() => {
+        const timer = setTimeout(
+            () =>{
+                setError('')
+            }, 8000
+        )
+
+        return () => {
+            clearTimeout(timer);
+        }
+    }, [])
+
+    return <div id="down">
+         <header className="starting">Starting Windows 95...</header>
         <section className="startup">
             <h2>Microsoft<em>Windows<sup>&reg;</sup><strong>95</strong></em></h2>
             <h3>Microsoft<sup>&reg;</sup></h3>

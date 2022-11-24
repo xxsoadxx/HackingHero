@@ -23,7 +23,7 @@ function Screen({ next }) {
             3000,
             `Only you… YOU, who bears the knowledge to hack through his mainframe can stand a chance against him. Are you ready to take the challenge?`,
             3000]}
-            speed={100}
+            speed={50}
             onDone={() => {
               if (state === 1) setState(state + 1);
             }} />}s
@@ -34,7 +34,7 @@ function Screen({ next }) {
          }}/>}
         {state === 3 &&
           <TypeWriter contents={['You’re the hacking hero! Humanity’s last hope...', 2000]}
-            speed={100}
+            speed={50}
             onDone={() => {
               next()
             }} />}

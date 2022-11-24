@@ -17,7 +17,7 @@
 	    {
         "question": [1000,"What was the name of the default Windows XP wallpaper?", 1000],
         "answer": 4,
-        "options": ["Praire","Nostalgia","Greenland","Happiness"]
+        "options": ["Praire","Nostalgia","Greenland","Bliss"]
     },
 	    {
         "question": [1000,"Storage capacity of a floppy disk?", 1000],

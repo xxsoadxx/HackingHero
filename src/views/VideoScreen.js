@@ -35,7 +35,7 @@ function GenericScreen({ next, config }) {
       </div>
       <div className="interactions">
           <TypeWriter contents={contents}
-            speed={100}
+            speed={50}
             onDone={onDone} />
         {showEnter &&
         <>

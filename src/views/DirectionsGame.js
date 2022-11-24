@@ -129,7 +129,7 @@ function DirectionsGame({ next, config, setStartTimer, setResetTimer }) {
       </div>
       <div className="interactions">
         <TypeWriter contents={contents}
-          speed={100}
+          speed={50}
           cursor={false}
           onDone={onDone} />
         {showHelp &&

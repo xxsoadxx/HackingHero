@@ -38,8 +38,7 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
     if (key === 'Shift' && !disableHint) {
       if (!hintUsed) {
         setHintUsed(true);
-        const resetVal = penalty ? penalty : 1;
-        setResetTimer(value => value + resetVal)
+        setResetTimer(value => value + 1)
       }
 
       setShowHint(!showHint)
@@ -52,7 +51,8 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
         } else {
           denyAudio.play()
           setValue('')
-          setResetTimer(value => value + 1)
+          const resetVal = penalty ? penalty : 1;
+          setResetTimer(value => value + resetVal)
         }
       }
 
@@ -93,7 +93,7 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
       </div>
       <div className="interactions">
         <TypeWriter contents={contents}
-          speed={100}
+          speed={50}
           cursor={false}
           onDone={onDone} />
         {showHelp &&
@@ -108,7 +108,7 @@ function GenericCode({ next, config, setStartTimer, setResetTimer }) {
             }
 
             <KeyPress onKeyDown={onKeyDown}>
-              {!disableHint && <p className="hint">press SHIFT for hint (+ min)</p>}
+              {!disableHint && <p className="hint">press SHIFT for hint (+5 min)</p>}
             </KeyPress>
           </>
         }

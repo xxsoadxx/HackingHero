@@ -2,13 +2,15 @@ import React, { useEffect, useState, useMemo } from 'react';
 import './Fight.scss';
 import TypeWriter from '../components/TypeWriter';
 import KeyPress from '../components/KeyPress';
-import Deny from '../assets/deny.mp3';
+import Deny from '../assets/wound.wav';
 
 import heartSVG from '../assets/heart.svg';
 const denyAudio = new Audio(Deny)
 
 function Fight({ setEnergy, next, config, setStartTimer }) {
   const { introAudio, loopAudio, image, timer, lifes, audio, style, talk, laugh, still,hit, final} = config;
+
+  const [showIntro, setShowIntro] = useState(true)
 
   const [showHit, setShowHit] = useState(false)
   const [showAttac, setShowAttac] = useState(false)
@@ -26,7 +28,16 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
   const levelData = shuffled[index];
 
   useEffect(() => {
+    const intro =setTimeout(() => {
+      setShowIntro(false)
+    }, 1000)
+    return () => {
+      clearTimeout(intro);
+    }
+   }, [])
+  useEffect(() => {
    // console.log('useeffect index',index);
+   
     setShowAnimation(false);
     setShowOptions(false);
     if(index > (config.level.length - 1)) {
@@ -94,7 +105,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
 
   useEffect(() => {
    // console.log('useeffect showHit',showHit);
-    if (showHit && final) {
+    if (showHit) {
       
       
       const hitTimer = setTimeout(() => {
@@ -108,17 +119,15 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
   }, [showHit])
   useEffect(() => {
     //console.log('useeffect showAttac',showAttac);
-    if (showAttac && final) {
-      
-      
-      const attacTimer = setTimeout(() => {
-        setShowAttac(false);
-        setCorrectAnswers(correctAnswers + 1);
-        setIndex(index+1);
-      }, 1000);
-
-      return () => clearTimeout(attacTimer)
-    }
+    if (showAttac ) {
+        const attacTimer = setTimeout(() => {
+          setShowAttac(false);
+          setCorrectAnswers(correctAnswers + 1);
+          setIndex(index+1);
+        }, 1000);
+  
+        return () => clearTimeout(attacTimer)
+    } 
   }, [showAttac])
  
 
@@ -134,52 +143,61 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
       //console.log('levelData.answer',levelData.answer);
       clearTimeout(timerOptions);
       if(levelData.answer === parseInt(key)) {
-        if(final){
+        //if(final){
           setShowAttac(true);
           
-        }else {
+        //}else {
          // console.log('CORRECTO');
-          setCorrectAnswers(correctAnswers + 1);
-          setIndex(index+1);
-        }
+          //setCorrectAnswers(correctAnswers + 1);
+          //setIndex(index+1);
+        //}
        
       } else {
-        if(final){
-          setShowHit(true);
-        } else {
- 
+        //if(final){
           denyAudio.play();
-          setIndex(index+1);
-          setEnergy((energy) => energy - 1);
-        }
+          setShowHit(true);
+        //} else {
+ 
+         // denyAudio.play();
+        //  setIndex(index+1);
+        //  setEnergy((energy) => energy - 1);
+        //}
        
       }
     }
   }
-  const fightTimer = showAnimation ? { animation: `fight-timer ${timer}s linear`, animationFillMode: 'forwards'} : {};
+  const fightTimer = useMemo(() => {
+    return showAnimation ? { animation: `fight-timer ${timer}s linear`, animationFillMode: 'forwards'} : {};
+  },[showAnimation]);
  
  // console.log('levelData',levelData);
-  let animation;
-  if(!showHit && !showAttac && showOptions) {
-    animation=still
-  } else if(!showHit && !showAttac  && !showOptions) { 
-    console.log('talk')
-    animation=talk
-  } else if (showHit) {
-    animation=laugh
-  } else if (showAttac) {
-    animation=hit
-  }
+  const animation = useMemo(() => {
+    if(!showHit && !showAttac && showOptions) {
+      return still
+    } else if(!showHit && !showAttac  && !showOptions) { 
+      console.log('talk')
+      return talk
+    } else if (showHit) {
+      return laugh
+    } else if (showAttac) {
+      if(final) {
+        return hit
+      } else {
+        return still
+      }
+    }   
+  }, [showHit,showAttac ,showOptions])
+  
 
   console.log({showHit  ,showAttac  , showOptions, animation})
   return (
     <div className="Screen Fight">
-      <div className="content">
+      <div className="content" >
         <div>
           <div style={{display: 'flex', alignItems: 'center'}}>
             
     
-            <img src={animation} style={{ width:'314px', marginRight: '28px'}} /> 
+            <img src={animation} className={`${showIntro ? 'left-animate' : ''}`}style={{ width:'314px', marginRight: '28px' , animation: showAttac && !final ? 'blinkaso linear .3s, blinkaso linear .3s,blinkaso linear .3s' : ''}} /> 
             
             <div className="text-zone">
             <TypeWriter contents={levelData.question}
@@ -199,7 +217,7 @@ function Fight({ setEnergy, next, config, setStartTimer }) {
        
         
       </div>
-      <div className={`interactions options-grid ${showHit ? 'shake' : ''}`}>
+      <div className={`interactions ${showIntro ? 'up-animate' : ''} options-grid ${showHit ? 'shake' : ''}`}>
         {showOptions &&
           <>
            { showOptions ? levelData.options.map((item, i) => {

@@ -34,7 +34,8 @@
 .timer {
   position: absolute;
   bottom: 12px;
-  right: 54px;
+  animation: heartBeat 2s ease-in;
+  right: 4%;
 }
 .Screen {
     display: flex;

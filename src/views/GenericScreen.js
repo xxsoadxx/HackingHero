@@ -5,7 +5,7 @@ import EnterSVG from '../assets/enter.svg';
 import ReactPlayer from 'react-player';
 
 function GenericScreen({ profileImage, next, config, teamName }) {
-  const {onDone: redirect,audioOnDone, videoWidth, videoHeigth,video, image: stageImage, classes,loop, style, audio, audioSecundary, contents: contentConf, onlyVideo , speed, endOnVideo, useProfileImage, secondimage,switchImageTime} = config;
+  const {onDone: redirect,audioOnDone, videoWidth, videoHeigth,video, image: stageImage, classes,loop, style, audio, resetAudio, audioSecundary, contents: contentConf, onlyVideo , speed, endOnVideo, useProfileImage, secondimage,switchImageTime} = config;
   const [showEnter, setShowEnter] = useState(false);
   const [imagetoShow, setImagetoShow] = useState(useProfileImage ? profileImage: stageImage);
   const contents = useMemo( () => {
@@ -21,6 +21,10 @@ function GenericScreen({ profileImage, next, config, teamName }) {
   useEffect(() => {
     if(audio && !audioOnDone) {
       console.log('AUDIO');
+      if(resetAudio) {
+        audio.currentTime = 0;
+      }
+      
       audio.play();
     }
     return () => {

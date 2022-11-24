@@ -1,11 +1,36 @@
 .Fight {
 
+  @keyframes blinkaso {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
   .content {
     height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  .left-animate {
+    animation: 1s slideInLeft ease-in;
+  }
+  .up-animate {
+    animation: 1s slideInUp ease-in;
+  }
+
   .timerfight{
     background-color: white;
     height: 18px;
@@ -59,7 +84,11 @@
     }
   }
   .shake {
-    animation: shake 1s infinite;
+    animation: shakeX 1s infinite;
+  }
+
+  .blink {
+    animation: flash 1s;
   }
 }
 

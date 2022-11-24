@@ -49,7 +49,7 @@ function AllReady({ next, back, config }) {
           </div>
           <div className="interactions">
               <TypeWriter contents={contents}
-                speed={100}
+                speed={50}
                 onDone={onDone} />
 
                 { showOptions ? options.map((item, index) => {

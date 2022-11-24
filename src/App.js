@@ -41,6 +41,7 @@ import speed from './assets/speed.gif';
 import footage from './assets/footage.m4v'
 
 import Ending from './assets/ending.mp4';
+import Prebattle from './assets/prebattle.mp4';
 
 import Laught from './assets/laught.wav';
 import NeonAudioFile from './assets/neon-city.mp3';
@@ -52,7 +53,7 @@ import timerImg from './assets/timer.png';
 import energyImg from './assets/energy.png';
 import questionImg from './assets/question.png';
 import bossImg from './assets/boss_transp.gif';
-import colorscodeImg from './assets/colorscode2.png';
+import colorscodeImg from './assets/code.png';
 import map from './assets/map.png';
 import spaceship from './assets/spaceship.png';
 import mapquest from './assets/mapquest.png';
@@ -84,6 +85,8 @@ import landing_ship from './assets/landing.m4v';
 import laser_new_talk_otro from './assets/laser_new_talk_otro.gif';
 
 import Deny from './assets/wrong.mp3';
+
+import DenyFight from './assets/wound.wav';
 import QuizAudio from './assets/quiz.mp3';
 
 import Left from './assets/left.png';
@@ -123,7 +126,7 @@ import sound5 from './assets/5.m4a'
 import sound6 from './assets/6.m4a'
 import complete from './assets/complete.m4a'
 
-import windowssound from './assets/windows.mp3';
+import windowssound from './assets/bluescreen.mp3';
 
 const Note1 = new Audio(sound1)
 const Note2 = new Audio(sound2)
@@ -248,6 +251,7 @@ NeonAudio.loop = true;
 const IntroAudio = new Audio(GameIntroAudio);
 IntroAudio.loop = true;
 const DenyAudio = new Audio(Deny)
+const DenyFAudio = new Audio(DenyFight)
 const mus_dialup_3Audio = new Audio(mus_dialup_3)
 mus_dialup_3Audio.loop = true;
 const laughtAudio = new Audio(Laught)
@@ -290,7 +294,7 @@ const STAGES = [
   ////
   { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, image: equalizer, contents: [`Hi!\n\n This is an audiovisual experience, so please turn on your speakers. Select stuff with the number keys, press enter to confirm or continue.`, 2000] } },
   { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style: { width: '200px' }, image: timerImg, contents: [`Oh yes, that right there is your TIMER.\n The team completing the game with the less amount of time, wins.`, 2000], showTimer: true } },
-  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style: { width: '300px' }, image: energyImg, contents: [`Aaaand that’s your ENERGY.\n Yes, there are battles in this game so give the control to the most agile member of your team.\n If you lose a battle, your energy replenishes but you’ll have to start over again and the TIMER keeps going!`, 2000], showEnergy: true } },
+  { Component: GenericScreenView, config: { audio: IntroAudio, speed: 50, style: { width: '300px' }, image: energyImg, contents: [`Aaaand that’s your ENERGY.\n Yes, there are quiz battles in this game so give control to the most agile member of your team.\nEach time you answer incorrectly you lose one heart. If you run out of hearts you have to fight that battle again and the TIMER keeps going!`, 2000], showEnergy: true } },
   { Component: AllReadyView, config: { audio: IntroAudio, image: questionImg, contents: ['All set?'] } },
   { Component: TakePictureScreenView, config: { audio: FilePictureAudio, speed: 50, contents: ['Alright! Before we start, let’s take a picture of the team!\n\n Press Space when you’re all in there'] } },
 
@@ -323,6 +327,10 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '600px' }, image: Q81V, contents: [`10 minutes later...`, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, style: { width: '250px' }, image: bert_talking, contents: [`There you are! Was about time. `, 2000] } },
   { Component: GenericScreenView, config: { audio: TotoAudio, speed: 50, useProfileImage: true, contents: [`Wow! You’re so ugly! Your mom must have got a ton of fines for littering when she dropped you off at school!`, 2000] } },
+
+  { Component: GenericScreenView, config: { resetAudio: true,audio: TotoIntroAudio, videoWidth: '100%', videoHeigth: '100%', speed: 50, video: Prebattle, onlyVideo: true, contents: [] } },
+
+  
   { Component: FightView, config: { introAudio: TotoIntroAudio, loopAudio: TotoLoopAudio, talk: bert_talking, laugh: bert_laugh, still: bert_still, level: Level1, timer: 30, lifes: 4 } },
   { Component: GenericScreenView, config: { audio: BeforeFerrariAudio, speed: 50, style: { width: '250px' }, image: bert_talking, contents: [`I can’t believe you’re that smart,\nI cannot be beaten here, I need to warn the Master!`, 2000] } },
   { Component: GenericScreenView, config: { audio: BeforeFerrariAudio, style: { width: '65%' }, image: Q81V, speed: 50, contents: [`He’s escaping! Follow him!`, 2000] } },
@@ -353,7 +361,10 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents: [`Ok, we need to find some information about what’s really going on here.`, 2000] } },
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, style: { width: '250px' }, image: toto_talking, contents: [`Stop right there earthlings! You’ll never beat my knowledge`, 2000] } },
   { Component: GenericScreenView, config: { audio: LaserRageAudio, speed: 50, useProfileImage: true, contents: [`Wow! You’re even uglier than the other guy!`, 2000] } },
-  { Component: FightView, config: { introAudio: RageIntroAudio, loopAudio: RageLoopAudio, talk: toto_talking, laugh: toto_laugh, still: toto_still, level: Level2, timer: 25, lifes: 6 } },
+
+  { Component: GenericScreenView, config: { audio: RageIntroAudio, videoWidth: '100%', videoHeigth: '100%', speed: 50, video: Prebattle, onlyVideo: true, contents: [] } },
+
+  { Component: FightView, config: { resetAudio: true, introAudio: RageIntroAudio, loopAudio: RageLoopAudio, talk: toto_talking, laugh: toto_laugh, still: toto_still, level: Level2, timer: 25, lifes: 6 } },
   { Component: GenericScreenView, config: { audio: RageRunAudio, classes: 'animate__zoomOutRight', speed: 50, style: { width: '250px' }, image: toto_talking, contents: [`Ahhhh!! I’m sorry Master.`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, useProfileImage: true, contents: [`After him!`, 2000] } },
   { Component: GenericScreenView, config: { audio: ConfrontationAudio, speed: 50, image: phone, contents: [`Wait, he forgot his cellphone! It’s locked but it has something stuck on its back.`, 2000] } },
@@ -382,7 +393,9 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: PreFightLaserAudio, style: { width: '75%' }, image: ShipVideo2, speed: 50, contents: [`It doesn’t matter, I’ll just smash you and get the signal back online.`, 2000] } },
   { Component: GenericScreenView, config: { audio: PreFightLaserAudio, speed: 50, useProfileImage: true, contents: [`Here you are! It’s on!`, 2000] } },
 
-  { Component: FightView, config: { introAudio: battleLaserintroAudio, loopAudio: battleLaserloopAudio, talk: laser_new_talk_fgt, hit: laser_hit, laugh: laser_laugh_fgt, still: laser_still, level: finalLevel, timer: 20, lifes: 9, final: true } },
+  { Component: GenericScreenView, config: { audio: battleLaserintroAudio, videoWidth: '100%', videoHeigth: '100%', speed: 50, video: Prebattle, onlyVideo: true, contents: [] } },
+
+  { Component: FightView, config: { resetAudio: true, introAudio: battleLaserintroAudio, loopAudio: battleLaserloopAudio, talk: laser_new_talk_fgt, hit: laser_hit, laugh: laser_laugh_fgt, still: laser_still, level: finalLevel, timer: 20, lifes: 9, final: true } },
 
   { Component: GenericScreenView, config: { speed: 50, image: LaserTalkAngry, contents: [`This isn’t over, I’ll be back and finish what I’ve started. Good luck with this zombie army, now they don’t have anyone to respond to! I broadcasted the signal to the entire solar system!`, 2000] } },
   { Component: GenericScreenView, config: { speed: 50, image: laser_laugh, classes: 'animate__zoomOutRight', contents: [`BWA HA HA!`, 2000] } },
@@ -391,7 +404,7 @@ const STAGES = [
   { Component: GenericScreenView, config: { audio: Complete, audioOnDone: true, speed: 50, style: { width: '250px' }, image: bossImg, contents: [`Maybe... there’s was a melody that brought happiness to humanity once.\nIf I recall, it goes somewhat like this...`] } },
 
   { Component: SoundGameView, config: { audio: Complete, contents: ['Use this synthetizer to play the correct melody.', 2000], answer: '555635412', length: 9 } },
-  { Component: GenericScreenView, config: { onDone: () => { window.location.href = '#/rank' }, videoWidth: '100%', videoHeigth: '100%', speed: 50, video: Ending, onlyVideo: true, contents: [`Humanity has been returned back to normal!`, 2000] } },
+  { Component: GenericScreenView, config: { onDone: () => { localStorage.removeItem('state'); window.location.href = '#/rank' }, videoWidth: '100%', videoHeigth: '100%', speed: 50, video: Ending, onlyVideo: true, contents: [`Humanity has been returned back to normal!`, 2000] } },
 
 
   /*{ Component: ScreenView, duration: 0, audio: intro },
@@ -551,7 +564,7 @@ function App() {
       }
       {
         showEnergy &&
-        <div style={{ position: 'absolute', left: '54px', bottom: '12px' }}>
+        <div style={{ position: 'absolute', left: '4%', bottom: '12px', animation: 'heartBeat 2s ease-in' }}>
           ENERGY
           {energy > 0 && [...Array(energy).keys()]?.map((i) => { return (<img src={heartSVG} className="heart" key={i}></img>) })}
         </div>
